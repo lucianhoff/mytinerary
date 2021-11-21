@@ -5,6 +5,7 @@ import Slider from "../components/Slider";
 import CardInfo from "../components/CardInfo";
 import Title from "../components/Title";
 import Footer from "../components/Footer";
+import Hero from "../components/Hero"
 
 import "../style.css";
 
@@ -12,9 +13,12 @@ class Home extends React.Component {
   render() {
     return (
       <>
-        <header className="">
+        <header className="fixed z-50 w-full top-0 left-0">
           <Nav />
         </header>
+        <div>
+          <Hero />
+        </div>
         <div className="flex justify-center items-center py-20">
           <Title title="Trips that our users prefer" />
         </div>

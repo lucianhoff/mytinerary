@@ -8,8 +8,8 @@ const CardCarousel = ({ city }) => {
       <figure>
         <img src={imageSrc} alt="" />
         <div class="layer center">
-          <h3 class="">{cityName}</h3>
-          <p class="">{country}</p>
+          <h3 class="text-city">{cityName}</h3>
+          <p class="text-country">{country}</p>
         </div>
       </figure>
     </div>
