@@ -21,7 +21,7 @@ const CardInfo = () => {
             </div>
           </div>
         </div>
-
+      <div className="animate__animated animate__flipInX">
         <div className="card-main sm:my-5 bg-purple-500 kanji flex items-center rounded-lg justify-evenly-col sm:justify-center lg:flex-row  card-sm__responsive">
           <div className="card-main__img">
             <img src="./assets/japan-osaka.jpg" alt="Osaka"/>
@@ -35,6 +35,7 @@ const CardInfo = () => {
             <button class="custom-btn btn-14">See more</button>
           </div>
         </div>
+      </div>
       </div>
     </>
   );

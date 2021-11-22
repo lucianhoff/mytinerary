@@ -46,7 +46,7 @@ const Slider = () => {
         image: "Moscow"
       },
       {
-        country: "England",
+        country: "UK",
         cityName: "London",
         image: "London"
       },

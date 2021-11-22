@@ -37,8 +37,8 @@ function NavMain() {
               </div>
               <div className="w-full hidden md:flex md:justify-between md:ml-10 md:pr-4 md:space-x-8">
                 <div className="inline">
-                  <Link to="/">Home</Link>
-                  <Link to="/cities">Cities</Link>
+                  <Link to="/" className="text-gray-50 text-xl font-bold hover:text-purple-900 pl-5">Home</Link>
+                  <Link to="/cities" className="text-gray-50 text-xl font-bold hover:text-purple-900 pl-5">Cities</Link>
                 </div>
                 <div className="inline ">
                   <Link
@@ -84,8 +84,8 @@ function NavMain() {
                   </div>
                 </div>
                 <div className="px-2 pt-2 pb-3 space-y-1">
-                  <Link to="/">Home</Link>
-                  <Link to="/cities">Cities</Link>
+                <Link to="/" className="text-gray-50 text-xl font-bold hover:text-purple-900 pl-5">Home</Link>
+                  <Link to="/cities" className="text-gray-50 text-xl font-bold hover:text-purple-900 pl-5">Cities</Link>
                 </div>
                 <Link
                   to="/"

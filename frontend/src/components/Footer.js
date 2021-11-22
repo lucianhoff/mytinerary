@@ -6,13 +6,13 @@ const Footer = () => {
   const year = new Date().getFullYear();
   return (
     <>
-    <div className="flex justify-center items-center bg-purple-600 py-5">
+    <div className="footer flex justify-center items-center bg-purple-600 py-5">
       <div className="text-white flex flex-col">
         <div className="flex justify-evenly items-center text-2xl font-bold">
           <Link to="/" className="hover:text-purple-300">
             Home
           </Link>
-          <Link to="" clLinkssName="hover:text-purple-300">
+          <Link to="/cities" clLinkssName="hover:text-purple-300">
             Cities
           </Link>
         </div>
