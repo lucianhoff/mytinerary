@@ -79,7 +79,7 @@ function NavMain() {
                   <div className="-mr-2">
                     <Popover.Button className="bg-purple-500 rounded-md p-2 inline-flex items-center justify-center text-white hover:text-gray-500 hover:bg-purple-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500">
                       <span className="sr-only">Close main menu</span>
-                      <XIcon className="h-6 w-6" aria-hidden="true" />
+                      <XIcon className="h-6 w-6 " aria-hidden="true" />
                     </Popover.Button>
                   </div>
                 </div>
