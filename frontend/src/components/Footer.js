@@ -5,6 +5,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
   return (
     <>
+    <div className="flex justify-center items-center bg-purple-600 py-5">
       <div className="text-white flex flex-col">
         <div className="flex justify-evenly items-center text-2xl font-bold">
           <a href="" className="hover:text-purple-300">
@@ -30,6 +31,7 @@ const Footer = () => {
             &copy; {year} MyTinerary Inc. All rights reserved.
           </p>
         </div>
+      </div>
       </div>
     </>
   );

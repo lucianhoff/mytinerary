@@ -4,14 +4,15 @@ import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import "animate.css";
 import "../style.css";
+import {Link} from "react-router-dom";
+// const navigation = [
+//   { name: "Home", href: "#", component: "Home" },
+//   { name: "Cities", href: "#" },
+// ];
 
-const navigation = [
-  { name: "Home", href: "#", component: "Home" },
-  { name: "Cities", href: "#" },
-];
-
-export default function Example() {
+function NavMain() {
   return (
+    <header className="fixed z-50 w-full top-0 left-0">
     <div className="w-full overflow-hidden">
       <div className="w-full bg-purple-600 py-4">
         <Popover>
@@ -39,17 +40,8 @@ export default function Example() {
               </div>
               <div className="w-full hidden md:flex md:justify-between md:ml-10 md:pr-4 md:space-x-8">
                 <div className="inline">
-                  {navigation.map((item) => (
-                    <a
-                      exact
-                      path={item.href}
-                      key={item.name}
-                      href={item.href}
-                      className="text-gray-50 text-xl font-bold hover:text-purple-900 pl-5"
-                    >
-                      {item.name}
-                    </a>
-                  ))}
+                  <Link to="/">Home</Link>
+                  <Link to="/cities">Cities</Link>
                 </div>
                 <div className="inline ">
                   <a
@@ -95,15 +87,8 @@ export default function Example() {
                   </div>
                 </div>
                 <div className="px-2 pt-2 pb-3 space-y-1">
-                  {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-purple-900 hover:bg-purple-400"
-                    >
-                      {item.name}
-                    </a>
-                  ))}
+                  <Link to="/">Home</Link>
+                  <Link to="/cities">Cities</Link>
                 </div>
                 <a
                   href="#"
@@ -136,5 +121,8 @@ export default function Example() {
         /> 
       </div> */}
     </div>
+    </header>
   );
 }
+
+export default NavMain;

@@ -107,7 +107,7 @@
     transform: translate(0, -80px);
   }
 }
-@media screen (max-width: 1440px) {
+@media screen and (max-width: 1440px) {
   .card-main__img {
     transform: translate(-200px, 0px);
   }
@@ -285,10 +285,11 @@
 /* CARD  */
 
 .cardCountry {
-  /* width: 100%; */
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .cardCountry figure {
@@ -452,4 +453,15 @@
   .text-city {
     font-size: 15px;
   }
+}
+
+.carouse_custom_item {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.carousel_custom {
+  width: 75vw;
+  margin: auto;
 }
