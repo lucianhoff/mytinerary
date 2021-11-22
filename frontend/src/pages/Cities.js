@@ -7,7 +7,6 @@ export default class Cities extends React.Component {
         <div>
           <h1>Cities</h1>
           <p>hola</p>
-          <img src="./assets/cities/cityRioDeJaneiro"/>
         </div>
       </>
     );

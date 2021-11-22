@@ -69,7 +69,7 @@ const Login = () => {
                   <div className="text-center">
                     <a
                       className="inline-block text-sm text-purple-500 align-baseline hover:text-blue-800"
-                      href="./register.html"
+                      to="./register.html"
                     >
                       Create an Account!
                     </a>
@@ -77,7 +77,7 @@ const Login = () => {
                   <div className="text-center">
                     <a
                       className="inline-block text-sm text-purple-500 align-baseline hover:text-blue-800"
-                      href="./forgot-password.html"
+                      to="./forgot-password.html"
                     >
                       Forgot Password?
                     </a>

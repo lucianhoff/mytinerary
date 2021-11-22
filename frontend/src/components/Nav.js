@@ -5,10 +5,6 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import "animate.css";
 import "../style.css";
 import {Link} from "react-router-dom";
-// const navigation = [
-//   { name: "Home", href: "#", component: "Home" },
-//   { name: "Cities", href: "#" },
-// ];
 
 function NavMain() {
   return (
@@ -23,13 +19,14 @@ function NavMain() {
             >
               <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                 <div className="flex items-center justify-between w-full md:w-auto">
-                  <a href="#">
+                  <Link to="/">
                     <span className="sr-only">Workflow</span>
                     <img
                       className="h-8 w-auto font-2xl sm:h-10"
                       src="./assets/logo.png"
+                      alt="Workflow"
                     />
-                  </a>
+                  </Link>
                   <div className="-mr-2 flex items-center md:hidden">
                     <Popover.Button className="rounded-md p-3 inline-flex items-center justify-center text-gray-50 hover:text-purple-900 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500 sticky">
                       <span className="sr-only">Open main menu</span>
@@ -44,18 +41,18 @@ function NavMain() {
                   <Link to="/cities">Cities</Link>
                 </div>
                 <div className="inline ">
-                  <a
-                    href="#"
+                  <Link
+                    to="/"
                     className="text-gray-50 text-xl font-bold hover:text-purple-900 pl-5"
                   >
                     Log In
-                  </a>
-                  <a
-                    href="#"
+                  </Link>
+                  <Link
+                    to="/"
                     className="text-gray-50 text-xl font-bold hover:text-purple-900 pl-5"
                   >
                     Sing Up
-                  </a>
+                  </Link>
                 </div>
               </div>
             </nav>
@@ -90,36 +87,23 @@ function NavMain() {
                   <Link to="/">Home</Link>
                   <Link to="/cities">Cities</Link>
                 </div>
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="block w-full px-5 py-3 text-center font-medium text-white bg-purple-400  hover:text-purple-900 hover:bg-purple-700 hover:font-bold"
                 >
                   Log In
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="/"
                   className="block w-full px-5 py-3 text-center font-medium text-white bg-purple-400 hover:bg-purple-700 hover:text-purple-900 hover:font-bold"
                 >
                   Sing Up
-                </a>
+                </Link>
               </div>
             </Popover.Panel>
           </Transition>
         </Popover>
       </div>
-
-      {/* <div className="animate__animated animate__jello lg:absolute lg:inset-y-0 lg:right-0 ">
-        <img
-          className="airplane-main h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full "
-          src="./assets/airplane.png"
-          alt=""
-        />
-         <img
-          className="airplane h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-          src="./assets/airplane-sm.png"
-          alt=""
-        /> 
-      </div> */}
     </div>
     </header>
   );

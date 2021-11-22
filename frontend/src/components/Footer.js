@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import { FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
@@ -8,23 +9,23 @@ const Footer = () => {
     <div className="flex justify-center items-center bg-purple-600 py-5">
       <div className="text-white flex flex-col">
         <div className="flex justify-evenly items-center text-2xl font-bold">
-          <a href="" className="hover:text-purple-300">
+          <Link to="/" className="hover:text-purple-300">
             Home
-          </a>
-          <a href="" className="hover:text-purple-300">
+          </Link>
+          <Link to="" clLinkssName="hover:text-purple-300">
             Cities
-          </a>
+          </Link>
         </div>
         <div className="flex items-center justify-evenly text-2xl py-10">
-          <a href="" className="hover:text-purple-300">
+          <Link to="" className="hover:text-purple-300">
             <FaGithub />
-          </a>
-          <a href="" className="hover:text-purple-300">
+          </Link>
+          <Link to="" className="hover:text-purple-300">
             <FaInstagram />
-          </a>
-          <a href="" className="hover:text-purple-300">
+          </Link>
+          <Link to="" className="hover:text-purple-300">
             <FaTwitter />
-          </a>
+          </Link>
         </div>
         <div className="flex items-center justify-evenly">
           <p className="text-center">

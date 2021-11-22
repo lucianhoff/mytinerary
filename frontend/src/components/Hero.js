@@ -1,3 +1,6 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 const Hero = () => {
   return (
     <div className="w-full flex justify-evenly items-center py-20 px-4 sm:mt-12 sm:px-6 md:mt-16 lg:px-8">
@@ -12,17 +15,17 @@ const Hero = () => {
         </p>
         <div className="flex justify-center">
           <div className="mt-3 sm:mt-0 sm:ml-3">
-            <a
-              href="#"
+            <Link
+              to="/cities"
               className="w-full flex items-center justify-center px-8 py-3 text-gray-50 rounded-md  bg-purple-600 hover:bg-purple-800 hover:text-gray-50 font-bold md:py-4 md:text-lg md:px-10"
             >
               Cities
-            </a>
+            </Link>
           </div>
         </div>
       </div>
       <div className="flex justify-center items-center">
-        <img className="h-80" src="./assets/airplane-only-w.png" />
+        <img className="h-80" src="./assets/airplane-only-w.png" alt="airplane"/>
       </div>
     </div>
   );

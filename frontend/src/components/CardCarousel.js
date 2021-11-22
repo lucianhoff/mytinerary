@@ -1,5 +1,3 @@
-import { Card } from "react-bootstrap";
-
 const CardCarousel = ({ city }) => {
   const { country, cityName, image } = city;
 

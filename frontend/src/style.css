@@ -47,12 +47,6 @@
   max-width: 350px;
 }
 
-.card-main__title {
-}
-
-.card-main__text {
-}
-
 .card-main__btn {
   /* letter-spacing: 0.5px; */
   padding: 15px 40px;
@@ -266,10 +260,6 @@
   .carousel-control-next {
     display: none !important;
   }
-}
-
-.carousel-control-prev,
-.carousel-control-next {
 }
 
 .carousel-control-prev-icon,
