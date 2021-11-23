@@ -3,6 +3,7 @@ import "../style.css";
 import CardCarousel from "./CardCarousel";
 
 const Slider = () => {
+  
   const cities = [
     [
       {
@@ -10,7 +11,7 @@ const Slider = () => {
         cityName: "Tokyo",
         description:
           "Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples.",
-        image: "Tokyo",
+        image: "Tokyo"
       },
       {
         country: "Japan",
