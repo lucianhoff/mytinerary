@@ -41,7 +41,7 @@ function NavMain() {
                 </div>
                 <div className="inline ">
                   <Link
-                    to="/"
+                    to="/login"
                     className="text-gray-50 text-xl font-bold hover:text-purple-900 pl-5"
                   >
                     Log In
@@ -87,7 +87,7 @@ function NavMain() {
                   <Link to="/cities" className="text-gray-50 text-xl font-bold hover:text-purple-900 pl-5">Cities</Link>
                 </div>
                 <Link
-                  to="/"
+                  to="/login"
                   className="block w-full px-5 py-3 text-center font-medium text-white bg-purple-400  hover:text-purple-900 hover:bg-purple-700 hover:font-bold"
                 >
                   Log In

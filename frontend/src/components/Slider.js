@@ -3,7 +3,6 @@ import "../style.css";
 import CardCarousel from "./CardCarousel";
 
 const Slider = () => {
-  
   const cities = [
     [
       {
@@ -11,7 +10,7 @@ const Slider = () => {
         cityName: "Tokyo",
         description:
           "Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples.",
-        image: "Tokyo"
+        image: "Tokyo",
       },
       {
         country: "Japan",
@@ -22,10 +21,10 @@ const Slider = () => {
       },
       {
         country: "China",
-        cityName: "Shangai",
+        cityName: "Shanghai",
         description:
           "Shanghai, on China’s central coast, is the country's biggest city and a global financial hub.",
-        image: "Shangai",
+        image: "Shanghai",
       },
       {
         country: "Thailand",
@@ -39,62 +38,64 @@ const Slider = () => {
       {
         country: "Germany",
         cityName: "Berlin",
-        image: "Berlin"
+        image: "Berlin",
       },
       {
         country: "Russia",
         cityName: "Moscow",
-        image: "Moscow"
+        image: "Moscow",
       },
       {
         country: "UK",
         cityName: "London",
-        image: "London"
+        image: "London",
       },
       {
         country: "France",
         cityName: "Paris",
-        image: "Paris"
+        image: "Paris",
       },
     ],
     [
       {
         country: "Mexico",
         cityName: "Guadalajara",
-        image: "Guadalajara"
+        image: "Guadalajara",
       },
       {
         country: "Argentina",
         cityName: "Buenos Aires",
-        image: "BuenosAires"
+        image: "BuenosAires",
       },
       {
         country: "Brazil",
         cityName: "Rio de Janeiro",
-        image: "RioDeJaneiro"
+        image: "RioDeJaneiro",
       },
       {
         country: "Peru",
         cityName: "Lima",
-        image: "Lima"
+        image: "Lima",
       },
-    ]
+    ],
   ];
 
   return (
-    <Carousel className="pb-10 sm:px-20 md:px-32 lg:px-44 w-full">
-      {cities.map((cityAux) => {
-        return (
-          <Carousel.Item>
-            <div className="carouse_custom_item">
+    <div className="flex justify-center align-center w-full carousel-padding pt-5">
+      <Carousel className="pb-10 sm:px-20 md:px-32 lg:px-44 w-full">
+        {cities.map((cityAux, index) => {
+          return (
+            <Carousel.Item key={index}>
+              <div className="carouse_custom_item">
                 {cityAux.map((city) => {
-                 return <CardCarousel city={city} />;
+                  return <CardCarousel key={city.cityName} city={city} />;
                 })}
-            </div>
-          </Carousel.Item>
-        );
-      })}
-    </Carousel>
+              </div>
+            </Carousel.Item>
+          );
+        })}
+      </Carousel>
+    </div>
   );
 };
 

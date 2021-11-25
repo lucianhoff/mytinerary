@@ -3,14 +3,14 @@ import React from "react";
 const Login = () => {
   return (
     <>
-      <body className="rubik">
+      <div className="rubik mt-32">
         <div className="container mx-auto">
           <div className="flex justify-center px-6 my-12">
             <div className="w-full xl:w-3/4 lg:w-11/12 flex">
-              <div
-                className="w-full h-auto bg-purple-500 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
-                src="https://images.unsplash.com/photo-1637224774680-e5b8d732b7eb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80"
-              ></div>
+              <img
+                className="w-full h-autohidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
+                src="./assets/loginHero3.jpg"
+              />
 
               <div className="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
                 <h3 className="pt-4 text-2xl text-center text-purple-500">
@@ -42,7 +42,7 @@ const Login = () => {
                       className="w-full px-3 py-2 mb-3 text-sm leading-tight text-purple-500 border border-red-500 rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       id="password"
                       type="password"
-                      placeholder="******************"
+                      placeholder="********"
                     />
                     <p className="text-xs italic text-red-500">
                       Please choose a password.
@@ -52,9 +52,11 @@ const Login = () => {
                     <label class="inline-flex items-center">
                       <input
                         type="checkbox"
-                        class="form-checkbox text-pink-600"
+                        className="form-checkbox bg-pink-600"
                       />
-                      <span class="ml-2">Option 3</span>
+                      <div className="flex justify-center align-center">
+                      <span className="ml-2 text-purple-600">Remember me</span>
+                      </div>
                     </label>
                   </div>
                   <div className="mb-6 text-center">
@@ -63,6 +65,12 @@ const Login = () => {
                       type="button"
                     >
                       Log In
+                    </button>
+                    <button
+                      className="w-full mt-2 px-4 py-2 font-bold text-white bg-purple-500 rounded-full hover:bg-purple-700 focus:outline-none focus:shadow-outline"
+                      type="button"
+                    >
+                      Log In with Google
                     </button>
                   </div>
                   <hr className="mb-6 border-t" />
@@ -87,7 +95,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </body>
+      </div>
     </>
   );
 };

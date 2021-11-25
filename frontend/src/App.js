@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import Cities from "./pages/Cities";
+import LoginPage from "./pages/LoginPage";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cities" element={<Cities />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
 
         <Footer />

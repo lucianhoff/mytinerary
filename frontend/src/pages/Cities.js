@@ -1,12 +1,37 @@
 import React from "react";
+import CardCities from "../components/CardCities";
 
 export default class Cities extends React.Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      cities: []
+    }
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:4000/api/cities")
+      .then((res) => res.json())
+      .then((data) => this.setState({ cities: data.response.cities }))
+      .catch((error) => console.log(error));
+  }
+
   render() {
     return (
       <>
-        <div className="flex flex-col justify-center  mt-20" >
-          <h1 className="text-5xl py-5 text-center text-purple-600 rubik">Cities</h1>
+        <div
+          className="cityHero rubik"
+          style={{ backgroundImage: "url(./assets/cityHero.jpg)" }}
+        >
+          <h1 className="text-center">The best cities in the world!</h1>
         </div>
+
+        <div className="flex items-center justify-center mt-12 ">
+          <CardCities />
+        </div>
+
       </>
     );
   }
