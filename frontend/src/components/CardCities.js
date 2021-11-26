@@ -20,29 +20,31 @@ const CardCities = () => {
     console.log(e.target.value)
   }
 
-  let buscarFiltrado = cities.filter(ciudad => ciudad.cityName.toString().toLowerCase().includes(filtrarCiudad.toLowerCase())
-  || ciudad.countryName.toString().toLowerCase().includes(filtrarCiudad.toLowerCase())
-  ) 
+  let buscarFiltrado = cities.filter(
+    (ciudad) =>
+      ciudad.cityName.toLowerCase().includes(filtrarCiudad.toLowerCase()) ||
+      ciudad.countryName.toLowerCase().includes(filtrarCiudad.toLowerCase())
+  );
 
-  let filtradoDos = buscarFiltrado.filter(ciudad => ciudad.cityName.toString().toLowerCase().startsWith(filtrarCiudad) || ciudad.cityName.toString().startsWith(filtrarCiudad) || ciudad.cityName.toString().toUpperCase().startsWith(filtrarCiudad) || ciudad.countryName.toString().startsWith(filtrarCiudad) || ciudad.countryName.toString().toLowerCase().startsWith(filtrarCiudad) )
+  let filtradoDos = buscarFiltrado.filter(ciudad => ciudad.cityName.toLowerCase().startsWith(filtrarCiudad) || ciudad.countryName.toLowerCase().startsWith(filtrarCiudad))
 
   return (
     <>
       <div className="flex flex-col">
         <div className="mt-5 flex items-center justify-center flex-col mb-24">
           <label
-            class="rubik block text-purple-600 text-3xl font-bold md:text-right mb-1 md:mb-0 pr-4"
-            for="inline-password"
+            className="rubik block text-purple-600 text-3xl font-bold md:text-right mb-1 md:mb-0 pr-4"
+            htmlFor="inputPlace"
           >
-            Filter by Country or City
+            Filter by Cities
           </label>
           <input
             type="text"
-            name=""
-            id=""
-            placeholder="London"
+            name="inputPlace"
+            id="x"
+            placeholder="Tokyo"
             onChange={buscarCiudad}
-            class="input rubik text-center mt-4 w-1/4 bg-white appearance-none border-2 border-purple-900 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-600"
+            className="input rubik text-center mt-4 w-1/4 bg-white appearance-none border-2 border-purple-900 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-600"
           />
         </div>
         <div className="flex items-center justify-center">

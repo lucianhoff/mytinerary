@@ -10,6 +10,7 @@ const Login = () => {
               <img
                 className="w-full h-autohidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
                 src="./assets/loginHero3.jpg"
+                alt="Hero"
               />
 
               <div className="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
@@ -20,7 +21,7 @@ const Login = () => {
                   <div className="mb-4">
                     <label
                       className="block mb-2 text-sm font-bold text-purple-500"
-                      for="username"
+                      htmlFor="username"
                     >
                       Username
                     </label>
@@ -34,7 +35,7 @@ const Login = () => {
                   <div className="mb-4">
                     <label
                       className="block mb-2 text-sm font-bold text-purple-500"
-                      for="password"
+                      htmlFor="password"
                     >
                       Password
                     </label>
@@ -77,7 +78,7 @@ const Login = () => {
                   <div className="text-center">
                     <a
                       className="inline-block text-sm text-purple-500 align-baseline hover:text-blue-800"
-                      to="./register.html"
+                      href="./register.html"
                     >
                       Create an Account!
                     </a>
@@ -85,7 +86,7 @@ const Login = () => {
                   <div className="text-center">
                     <a
                       className="inline-block text-sm text-purple-500 align-baseline hover:text-blue-800"
-                      to="./forgot-password.html"
+                      href="./forgot-password.html"
                     >
                       Forgot Password?
                     </a>
