@@ -8,10 +8,10 @@ const [filtrarCiudad, setFiltrarCiudad] = useState('')
   let buscarFiltrado = cities.filter(
     (ciudad) =>
       ciudad.cityName.toLowerCase().includes(filtrarCiudad.toLowerCase()) 
-      || ciudad.countryName.toLowerCase().includes(filtrarCiudad.toLowerCase())
+      // || ciudad.countryName.toLowerCase().includes(filtrarCiudad.toLowerCase())
   );
   let filtradoDos = buscarFiltrado.filter(ciudad => ciudad.cityName.toLowerCase().startsWith(filtrarCiudad))
-  || ciudad.countryName.toLowerCase().startsWith(filtrarCiudad)
+  // || ciudad.countryName.toLowerCase().startsWith(filtrarCiudad)
   const [place, setPlace] = useState('Citiesx')
   let checkbox = (e) => {
     if (e.target.checked){

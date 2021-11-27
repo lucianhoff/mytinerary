@@ -6,7 +6,7 @@ class City extends React.Component {
 
     constructor(props) {
         super(props)
-        console.log(props)
+        // console.log(props)
         
         this.state = {
             city: {}
@@ -15,19 +15,19 @@ class City extends React.Component {
 
     componentDidMount() {
         axios.get('http://localhost:4000/api/cities/'+this.props.params.city)
-            .then(response => this.setState(response.data.response.city))
+            .then(response => this.setState(response.data.response))
     }
 
     componentDidUpdate() {
-        console.log(this.props.params.city)
-        
+        // console.log(this.props.params.city)
     }
     
     render() { 
-        console.log(this.state.city)
+        console.log(this.state.cityName)
         
         return (
         <div className="element mt-36">
+            
             <img src={`/assets/cities/city${this.state.image}.jpg`} />
             <h1> {this.state.cityName} </h1>
 

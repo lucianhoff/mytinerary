@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../style.css";
 import "animate.css";
 import "../sass/Button.scss";
 import { Link } from "react-router-dom";
-import { regex } from './regex.js';
+// import { regex } from './regex.js';
 
 
 const CardCities = ( { citiesArray } ) => {
 
   const [cities, setCities] = useState(citiesArray)
-
-  console.log(cities)
 
   return (
     <>
@@ -38,7 +36,7 @@ const CardCities = ( { citiesArray } ) => {
                       <p className="card-main__text py-3 text-white">
                         {city.description}
                       </p>
-                      <Link to={`/cities/${city.id}`} className="custom-btn btn-14 text-center" >Ver elemento</Link>
+                      <Link to={`/cities/${city._id}`} className="custom-btn btn-14 pt-1" >See more</Link>
                     </div>
                   </div>
                 </div>
