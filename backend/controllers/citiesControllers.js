@@ -137,8 +137,8 @@ const citiesControllers = {
 
   },
   addCity: (req, res) => {
-    const {cityName, countryName, description, image } = req.body
-    new City({cityName, countryName, description, image }).save()
+    const {cityName, countryName, image, divisa, language, description} = req.body
+    new City({cityName, countryName, image, divisa, language, description}).save()
     .then((response) => res.json({response}))
   },
   getCity: async(req, res) => {
