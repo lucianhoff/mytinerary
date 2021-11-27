@@ -6,7 +6,6 @@ const {getAllCities, getCity, loadCity} = citiesControllers;
 
 Router.route('/cities')
  .get(getAllCities)
- .post(loadCity)
 
 Router.route('/cities/:id')
  .get(getCity)

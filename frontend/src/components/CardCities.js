@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../style.css";
 import "animate.css";
 import "../sass/Button.scss";
+import { Link } from "react-router-dom";
 import { regex } from './regex.js';
 
 
@@ -37,9 +38,7 @@ const CardCities = ( { citiesArray } ) => {
                       <p className="card-main__text py-3 text-white">
                         {city.description}
                       </p>
-                      <button className="custom-btn btn-14" to="/cities">
-                        See more
-                      </button>
+                      <Link to={`/cities/${city.id}`} className="custom-btn btn-14 text-center" >Ver elemento</Link>
                     </div>
                   </div>
                 </div>
