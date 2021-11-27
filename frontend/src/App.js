@@ -7,7 +7,10 @@ import Home from "./pages/Home";
 import Cities from "./pages/Cities";
 import LoginPage from "./pages/LoginPage";
 
+// import {withRouter} from './utils/withRouter'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// const Element = withRouter(elementWithoutProps)
 
 function App() {
   return (
@@ -18,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cities" element={<Cities />} />
+          {/* <Route path="/:element/:city" element={<Element />} /> */}
           <Route path="/login" element={<LoginPage />} />
         </Routes>
 

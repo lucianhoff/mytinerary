@@ -1,21 +1,22 @@
 import React from "react";
+import axios from "axios"
 import CardCities from "../components/CardCities";
 
 export default class Cities extends React.Component {
 
   constructor(props) {
     super(props)
-
     this.state = {
-      cities: []
     }
   }
 
   componentDidMount() {
-    fetch("http://localhost:4000/api/cities")
-      .then((res) => res.json())
-      .then((data) => this.setState({ cities: data.response.cities }))
-      .catch((error) => console.log(error));
+    axios.get("http://localhost:4000/api/cities")
+      .then( res => this.setState( {cities: res.data.response} ))
+  }
+
+  componentDidUpdate() {
+    console.log(this.state.cities)
   }
 
   render() {
@@ -29,9 +30,8 @@ export default class Cities extends React.Component {
         </div>
 
         <div className="flex items-center justify-center mt-12 ">
-          <CardCities />
+          {this.state.cities && <CardCities citiesArray={this.state.cities}/>}
         </div>
-
       </>
     );
   }
