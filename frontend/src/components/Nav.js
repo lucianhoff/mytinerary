@@ -22,8 +22,8 @@ function NavMain() {
                     <span className="sr-only">Workflow</span>
                     <img
                       className="h-8 w-auto font-2xl sm:h-10"
-                      src="./assets/logo.png"
-                      alt="Workflow"
+                      src="/assets/logo.png"
+                      alt="MyTinerary"
                     />
                   </Link>
                   <div className="-mr-2 flex items-center md:hidden">

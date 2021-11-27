@@ -579,3 +579,17 @@
 .input input[type="text"] {
   text-transform: lowercase;
 }
+
+/* IMG CITY */
+@import url('https://fonts.googleapis.com/css?family=Mukta:700');
+.mukta {
+  font-family: 'Mukta', sans-serif;
+ } 
+.img-city {
+  width: 40%;
+}
+
+.img-city-info {
+  width: 20%;
+  height: 20%;
+}
