@@ -46,7 +46,7 @@ class City extends React.Component {
             </div>
             <div className="flex flex-col justify-center items-center">
                 <img src="/assets/city/divisa.png" className="img-city d-flex"/>
-                <h3 className="font-bold text-3xl rubik text-purple-600">Divisa: {this.state.divisa}</h3>
+                <h3 className="font-bold text-3xl rubik text-purple-600">Currency: {this.state.currency}</h3>
             </div>
         </div>
         <div className="flex flex-col justify-center items-center"> 
