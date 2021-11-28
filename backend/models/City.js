@@ -6,7 +6,7 @@ const citySchema = new mongoose.Schema({
   image: { type: String, required: true },
   currency: { type: String, required: true },
   language: { type: String, required: true },
-  description: { type: String }
+  description: { type: String, required: true }
 });
 
 const City = mongoose.model("city", citySchema);

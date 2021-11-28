@@ -2,10 +2,10 @@ let citiesArrayyyyy = [
   {
     cityName: "Tokyo",
     countryName: "Japan",
-    description: "Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples.",
     image: "Tokyo",
     curreny: "Yen (¥, JPY)",
-    language: "Japanese"
+    language: "Japanese",
+    description: "Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples.",
   },
   {
     cityName: "Osaka",
