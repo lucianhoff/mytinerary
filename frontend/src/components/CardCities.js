@@ -1,21 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import "../style.css";
 import "animate.css";
 import "../sass/Button.scss";
 import { Link } from "react-router-dom";
-// import { regex } from './regex.js';
 
 
-const CardCities = ( { citiesArray } ) => {
+const CardCities = ( { arrayCitiesCard } ) => {
 
-  const [cities, setCities] = useState(citiesArray)
+console.log(arrayCitiesCard);
 
   return (
     <>
       <div className="flex flex-col">
         <div className="flex items-center justify-center">
           <div className="flex-col">
-            {cities && cities.map((city) => {
+            {arrayCitiesCard && (arrayCitiesCard).map((city) => {
               return (
                 <div
                   key={city.cityName}
