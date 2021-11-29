@@ -7,6 +7,11 @@ import Hero from "../components/Hero";
 import "../style.css";
 
 class Home extends React.Component {
+
+  componentDidMount() {
+    window.scrollTo(0,0)
+  }
+
   render() {
     return (
       <>

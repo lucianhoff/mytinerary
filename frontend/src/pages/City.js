@@ -13,6 +13,7 @@ class City extends React.Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0,0)
     axios
       .get("http://localhost:4000/api/cities/" + this.props.params.city)
       .then((response) => this.setState(response.data.response));

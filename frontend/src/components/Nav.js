@@ -50,7 +50,7 @@ function NavMain() {
                     to="/"
                     className="text-gray-50 text-xl font-bold hover:text-purple-900 pl-5"
                   >
-                    Sing Up
+                    Sign Up
                   </Link>
                 </div>
               </div>
@@ -96,7 +96,7 @@ function NavMain() {
                   to="/"
                   className="block w-full px-5 py-3 text-center font-medium text-white bg-purple-400 hover:bg-purple-700 hover:text-purple-900 hover:font-bold"
                 >
-                  Sing Up
+                  Sign Up
                 </Link>
               </div>
             </Popover.Panel>

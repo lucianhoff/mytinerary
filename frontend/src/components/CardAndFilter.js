@@ -1,27 +1,24 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import CardCities from "./CardCities";
 
 const CardAndFilter = ({ arrayCities }) => {
 
-
   const [cities, setCities] = useState(arrayCities);
 
+  useEffect(() => {
+    setCities(arrayCities)
+  }, [arrayCities])
+  
   const filter = useRef();
 
   const filtered = () => {
     let value = filter.current.value.toLowerCase().trim();
-
     let filteredArray = arrayCities.filter((city) =>
       city.cityName.toLowerCase().startsWith(value)
     );
-
-    console.log({ filteredArray });
-
     return setCities(filteredArray);
   };
-
   const [place, setPlace] = useState("Cities");
-
   let checkbox = (e) => {
     if (e.target.checked) {
       setPlace("Cities");
@@ -64,21 +61,22 @@ const CardAndFilter = ({ arrayCities }) => {
               <span className="cloud two"></span>
             </div>
           </label>
-          <input
-            type="text"
-            name=""
-            id=""
-            placeholder={place === "Countries" ? "Country" : "City"}
-            placeholder="City"
-            ref={filter}
-            onChange={filtered}
-            className="input rubik text-center mt-4 w-1/8 bg-white appearance-none border-2 border-purple-900 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-600"
-          />
+          <form onChange={filtered}>
+            <input
+              type="text"
+              name=""
+              id=""
+              // placeholder={place === "Countries" ? "Country" : "City"}
+              placeholder="City"
+              ref={filter}
+              className="input rubik text-center mt-4 w-1/8 bg-white appearance-none border-2 border-purple-900 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-600"
+            />
+          </form>
         </div>
       </div>
 
       <div className="flex items-center justify-center mt-12 ">
-        {<CardCities arrayCitiesCard={cities} />}
+        {cities.length === 0 ? <h1>no hay nada </h1> : <CardCities arrayCitiesCard={cities} />}
       </div>
     </>
   );
