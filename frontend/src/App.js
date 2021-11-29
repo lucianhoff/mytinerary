@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import City from "./pages/City";
 import { withRouter } from "./utils/withRouter";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Error404 from "./pages/Error404";
 const Element = withRouter(City);
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
           <Route path="/cities/:city" element={<Element />} />
 
           <Route path="/login" element={<LoginPage />} />
+
+          <Route path="*" element={<Error404/>}/>
+
         </Routes>
 
         <Footer />

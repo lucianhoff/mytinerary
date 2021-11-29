@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import CardCities from "./CardCities";
-
+import Title from "./Title";
 const CardAndFilter = ({ arrayCities }) => {
 
   const [cities, setCities] = useState(arrayCities);
@@ -18,6 +18,7 @@ const CardAndFilter = ({ arrayCities }) => {
     );
     return setCities(filteredArray);
   };
+
   const [place, setPlace] = useState("Cities");
   let checkbox = (e) => {
     if (e.target.checked) {
@@ -61,7 +62,6 @@ const CardAndFilter = ({ arrayCities }) => {
               <span className="cloud two"></span>
             </div>
           </label>
-          <form onChange={filtered}>
             <input
               type="text"
               name=""
@@ -69,14 +69,14 @@ const CardAndFilter = ({ arrayCities }) => {
               // placeholder={place === "Countries" ? "Country" : "City"}
               placeholder="City"
               ref={filter}
+              onChange={filtered}
               className="input rubik text-center mt-4 w-1/8 bg-white appearance-none border-2 border-purple-900 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-600"
             />
-          </form>
         </div>
       </div>
 
       <div className="flex items-center justify-center mt-12 ">
-        {cities.length === 0 ? <h1>no hay nada </h1> : <CardCities arrayCitiesCard={cities} />}
+        {cities.length === 0 ? <Title title="City not found =("/> : <CardCities arrayCitiesCard={cities} />}
       </div>
     </>
   );

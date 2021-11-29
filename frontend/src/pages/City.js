@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "../sass/Button2.scss";
 import "../style.css"
+
 class City extends React.Component {
   constructor(props) {
     super(props);
@@ -18,11 +19,7 @@ class City extends React.Component {
       .get("http://localhost:4000/api/cities/" + this.props.params.city)
       .then((response) => this.setState(response.data.response));
   }
-
-  componentDidUpdate() {
-    // console.log(this.props.params.city)
-  }
-
+  
   render() {
     console.log(this.state.cityName);
 
@@ -61,7 +58,7 @@ class City extends React.Component {
             <span className="circle" aria-hidden="true">
               <span className="icon arrow pr-3"></span>
             </span>
-            <span className="button-text text-md mukta"> Back to Cities</span>
+            <span className="button-text text-md mukta">Back to Cities</span>
           </Link>
         </div>
       </>
