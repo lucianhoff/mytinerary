@@ -5,9 +5,11 @@ const CardAndFilter = ({ arrayCities }) => {
 
   const [cities, setCities] = useState(arrayCities);
 
-  useEffect(() => {
-    setCities(arrayCities)
-  }, [arrayCities])
+  // useEffect(() => {
+
+  //   setCities(arrayCities)
+
+  // }, [arrayCities])
   
   const filter = useRef();
 

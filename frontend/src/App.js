@@ -8,6 +8,7 @@ import City from "./pages/City";
 import { withRouter } from "./utils/withRouter";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Error404 from "./pages/Error404";
+
 const Element = withRouter(City);
 
 function App() {

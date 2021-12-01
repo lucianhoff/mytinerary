@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "../sass/Button2.scss";
 import "../style.css"
-
+import Itenirary from "../components/Itenirary"
 class City extends React.Component {
   constructor(props) {
     super(props);
@@ -21,7 +21,6 @@ class City extends React.Component {
   }
   
   render() {
-    console.log(this.state.cityName);
 
     return (
       <>
@@ -46,6 +45,9 @@ class City extends React.Component {
                 <img src="/assets/city/divisa.png" className="img-city d-flex"/>
                 <h3 className="font-bold text-3xl rubik text-purple-600">Currency: {this.state.currency}</h3>
             </div>
+        </div>
+        <div className="flex flex-col justify-center items-center my-24">
+          <Itenirary />
         </div>
         <div className="flex flex-col justify-center items-center"> 
             <div className="flex justify-center items-center align-center w-1/4 my-5">
