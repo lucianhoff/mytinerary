@@ -1,60 +1,73 @@
 import React from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import "../sass/Button2.scss";
-import "../style.css"
-import Itenirary from "../components/Itenirary"
+import "../style.css";
+import Loader from "../components/Loader"
+import Itenirary from "../components/Itenirary";
+
+import { connect } from "react-redux";
+import citiesAction from "../redux/actions/citiesAction";
+
 class City extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      city: {},
-    };
-  }
-
   componentDidMount() {
-    window.scrollTo(0,0)
-    axios
-      .get("http://localhost:4000/api/cities/" + this.props.params.city)
-      .then((response) => this.setState(response.data.response));
+    window.scrollTo(0, 0);
+    this.props.findCity(this.props.params.city); // action
   }
-  
+
   render() {
+    console.log(this.props);
+    if (!this.props.city) {
+      return <Loader />
+    }
 
     return (
       <>
-        <div
-          className="cityHero rubik"
-          style={{
-            backgroundImage: `url(/assets/cities/city${this.state.image}.jpg)`,
-          }}
-        >
-          <h1 className="text-center">{this.state.cityName}</h1>
-        </div>
-        <div className="img-city-group flex justify-center align-center items-center">
+        <div>
+          <div
+            className="cityHero rubik"
+            style={{
+              backgroundImage: `url(/assets/cities/city${this.props.city.image}.jpg)`,
+            }}
+          >
+            <h1 className="text-center">{this.props.city.cityName}</h1>
+          </div>
+          <div className="img-city-group flex justify-center align-center items-center">
             <div className="flex flex-col justify-center items-center">
-                <img src="/assets/city/country.png" className="img-city d-flex"/>
-                <h3 className="font-bold text-3xl rubik text-purple-600">Country: {this.state.countryName}</h3>
+              <img src="/assets/city/country.png" className="img-city d-flex" />
+              <h3 className="font-bold text-3xl rubik text-purple-600">
+                Country: {this.props.city.countryName}
+              </h3>
             </div>
             <div className="flex flex-col justify-center items-center">
-                <img src="/assets/city/languages.png" className="img-city d-flex"/>
-                <h3 className="font-bold text-3xl rubik text-purple-600">Language: {this.state.language}</h3>
+              <img
+                src="/assets/city/languages.png"
+                className="img-city d-flex"
+              />
+              <h3 className="font-bold text-3xl rubik text-purple-600">
+                Language: {this.props.city.language}
+              </h3>
             </div>
             <div className="flex flex-col justify-center items-center">
-                <img src="/assets/city/divisa.png" className="img-city d-flex"/>
-                <h3 className="font-bold text-3xl rubik text-purple-600">Currency: {this.state.currency}</h3>
+              <img src="/assets/city/divisa.png" className="img-city d-flex" />
+              <h3 className="font-bold text-3xl rubik text-purple-600">
+                Currency: {this.props.city.currency}
+              </h3>
             </div>
+          </div>
         </div>
         <div className="flex flex-col justify-center items-center my-24">
           <Itenirary />
         </div>
-        <div className="flex flex-col justify-center items-center"> 
-            <div className="flex justify-center items-center align-center w-1/4 my-5">
-                <img src="/assets/city/under-construction.png"/>
-            </div>
-            <h3 className="text-3xl rubik text-purple-600 font-bold">Under Construction</h3>
+
+        <div className="flex flex-col justify-center items-center">
+          <div className="flex justify-center items-center align-center w-1/4 my-5">
+            <img src="/assets/city/under-construction.png" />
+          </div>
+          <h3 className="text-3xl rubik text-purple-600 font-bold">
+            Under Construction
+          </h3>
         </div>
+
         <div className="element mt-36 flex align-center justify-center my-5">
           <Link className="learn-more button2" to="/cities">
             <span className="circle" aria-hidden="true">
@@ -68,4 +81,14 @@ class City extends React.Component {
   }
 }
 
-export default City;
+const mapStateToProps = (state) => {
+  return {
+    city: state.citiesReducer.city,
+  };
+};
+
+const mapDispatchToProps = {
+  findCity: citiesAction.findCity,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(City);

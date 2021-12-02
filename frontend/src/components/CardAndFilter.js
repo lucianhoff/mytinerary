@@ -4,12 +4,6 @@ import Title from "./Title";
 const CardAndFilter = ({ arrayCities }) => {
 
   const [cities, setCities] = useState(arrayCities);
-
-  // useEffect(() => {
-
-  //   setCities(arrayCities)
-
-  // }, [arrayCities])
   
   const filter = useRef();
 
@@ -68,7 +62,6 @@ const CardAndFilter = ({ arrayCities }) => {
               type="text"
               name=""
               id=""
-              // placeholder={place === "Countries" ? "Country" : "City"}
               placeholder="City"
               ref={filter}
               onChange={filtered}

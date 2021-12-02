@@ -23,7 +23,10 @@ const citiesControllers = {
       req.body;
     new City({ cityName, countryName, image, currency, language, description })
       .save()
-      .then((response) => res.json({ response }));
+      .then((response) => res.json({ response }))
+      .catch((err) => {
+        console.log(err);
+      });
   },
   getCity: async (req, res) => {
     let cities;
@@ -37,7 +40,7 @@ const citiesControllers = {
 
     res.json({ response: cities, success: true });
   },
-  deteleCity: async (req, res) => {
+  deleteCity: async (req, res) => {
     const id = req.params.id;
     let cities;
     try {
