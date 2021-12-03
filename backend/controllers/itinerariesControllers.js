@@ -40,15 +40,15 @@ const itinerariesControllers = {
   },
   deleteItinerary: async (req, res) => {
     const id = req.params.id;
-    let itineraries;
+    let itinerary;
     try {
       await Itinerary.findOneAndDelete({ _id: id });
-      itineraries = await Itinerary.find();
+      itinerary = await Itinerary.find();
     } catch (err) {
       console.log(err);
     }
 
-    res.json({ response: itineraries, success: true });
+    res.json({ response: itinerary, success: true });
   },
   modifyItinerary: async (req, res) => {
     let id = req.params.id;
@@ -62,6 +62,15 @@ const itinerariesControllers = {
     }
     res.json({ success: update ? true : false });
   },
+  getItineraryByCity: async (req, res) => {
+    try {
+      const cityItinerary = await Itinerary.find({cityRelated: req.params.idCity})
+      console.log(cityItinerary);
+      res.json({ response: cityItinerary })
+    } catch (err) {
+      console.log(err);
+    }
+  }
 };
 
 module.exports = itinerariesControllers;

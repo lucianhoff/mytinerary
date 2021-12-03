@@ -50,7 +50,7 @@ const Login = () => {
                     </p>
                   </div>
                   <div className="mb-4">
-                    <label class="inline-flex items-center">
+                    <label className="inline-flex items-center">
                       <input
                         type="checkbox"
                         className="form-checkbox bg-pink-600"

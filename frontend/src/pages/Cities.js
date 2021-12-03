@@ -12,13 +12,10 @@ class Cities extends React.Component {
       left: 0,
       behavior: 'smooth'
     })
-    console.log(this.props);
-
     this.props.fetchCities()
   }
 
   render() {
-    console.log(this.props.cities);
     return (
       <>
         <div className="cities">
@@ -29,7 +26,7 @@ class Cities extends React.Component {
             <h1 className="text-center">The best cities in the world!</h1>
           </div>
             {this.props.cities.length > 0 && <CardAndFilter arrayCities={ this.props.cities } />}
-        </div>W
+        </div>
       </>
     );
   }

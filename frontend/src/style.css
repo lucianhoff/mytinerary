@@ -601,3 +601,8 @@
     flex-direction: row;
   }
 }
+
+.under-construction {
+  width: 300px;
+  height: 300px;
+}

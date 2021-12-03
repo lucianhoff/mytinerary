@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../sass/Button2.scss";
 import "../style.css";
-import Loader from "../components/Loader"
+import Loader from "../components/Loader";
 import Itenirary from "../components/Itenirary";
 
 import { connect } from "react-redux";
@@ -14,10 +14,19 @@ class City extends React.Component {
     this.props.findCity(this.props.params.city); // action
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.cities !== this.prevProps.cities) {
+      console.log(this.props.cities);
+    }
+
+    if (prevState.cities !== this.prevProps.cities) {
+      console.log(this.props.cities);
+    }
+  }
+
   render() {
-    console.log(this.props);
     if (!this.props.city) {
-      return <Loader />
+      return <Loader />;
     }
 
     return (
@@ -29,7 +38,9 @@ class City extends React.Component {
               backgroundImage: `url(/assets/cities/city${this.props.city.image}.jpg)`,
             }}
           >
-            <h1 className="text-center">{this.props.city.cityName}</h1>
+            <div className="bg-purple-600 rounded-lg py-0.5 px-1.5">
+              <h1 className="text-center">{this.props.city.cityName}</h1>
+            </div>
           </div>
           <div className="img-city-group flex justify-center align-center items-center">
             <div className="flex flex-col justify-center items-center">
@@ -58,16 +69,6 @@ class City extends React.Component {
         <div className="flex flex-col justify-center items-center my-24">
           <Itenirary />
         </div>
-
-        <div className="flex flex-col justify-center items-center">
-          <div className="flex justify-center items-center align-center w-1/4 my-5">
-            <img src="/assets/city/under-construction.png" />
-          </div>
-          <h3 className="text-3xl rubik text-purple-600 font-bold">
-            Under Construction
-          </h3>
-        </div>
-
         <div className="element mt-36 flex align-center justify-center my-5">
           <Link className="learn-more button2" to="/cities">
             <span className="circle" aria-hidden="true">

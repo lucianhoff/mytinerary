@@ -20,7 +20,7 @@ const CardAndFilter = ({ arrayCities }) => {
     if (e.target.checked) {
       setPlace("Cities");
     } else {
-      setPlace("Cities");
+      setPlace("Country");
     }
   };
 
@@ -41,7 +41,6 @@ const CardAndFilter = ({ arrayCities }) => {
               id="aircheck"
               pattern="[^\s]+"
               onChange={checkbox}
-              checked
             />
 
             <div>
@@ -62,7 +61,8 @@ const CardAndFilter = ({ arrayCities }) => {
               type="text"
               name=""
               id=""
-              placeholder="City"
+              placeholder={place ? "Filter by " + place : "Filter by City"}
+              // placeholder="City"
               ref={filter}
               onChange={filtered}
               className="input rubik text-center mt-4 w-1/8 bg-white appearance-none border-2 border-purple-900 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-600"

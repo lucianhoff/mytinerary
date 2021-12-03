@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <div className="w-full flex justify-evenly items-center py-20 px-4 sm:mt-12 sm:px-6 md:mt-16 lg:px-8">
+    <div className="w-full flex justify-evenly items-center py-20 px-4 sm:mt-12 sm:px-6 md:mt-16 lg:px-8 sm:flex-col md:flex-row">
       <div className="ml-10 flex justify-center w-1/4 items-center flex-col py-10 sm:text-center lg:text-left">
         <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
           <span className="block xl:inline">My</span>
