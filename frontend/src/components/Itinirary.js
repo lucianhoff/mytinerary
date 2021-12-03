@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import '../style.css'
 
-const Itenirary = () => {
+import { connect } from "react-redux";
+import itineraryAction from "../redux/actions/itinerariesAction";
+
+const Itenirary = ({itinerary}) => {
+
   const [display, setDisplay] = useState(false);
 
   const handleDisplay = () => {
@@ -57,7 +61,7 @@ const Itenirary = () => {
           </div>
         </div>
         {display && (
-          <div className="my-5 px-auto bg-purple-600">
+          <div className="my-5 px-auto bg-purple-600 transition-all">
 
             <div className="flex flex-col justify-center items-center">
               <div className="flex justify-center items-center align-center">
@@ -106,4 +110,8 @@ const Itenirary = () => {
   );
 };
 
-export default Itenirary;
+const mapDispatchToProps = {
+  getItineraryByCity: itineraryAction.getItineraryByCity
+};
+
+export default connect(null, mapDispatchToProps)(Itenirary);

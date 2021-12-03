@@ -3,26 +3,23 @@ import { Link } from "react-router-dom";
 import "../sass/Button2.scss";
 import "../style.css";
 import Loader from "../components/Loader";
-import Itenirary from "../components/Itenirary";
+import Itenirary from "../components/Itinirary";
 
 import { connect } from "react-redux";
 import citiesAction from "../redux/actions/citiesAction";
+import itineraryAction from "../redux/actions/itinerariesAction";
 
 class City extends React.Component {
+
   componentDidMount() {
+
     window.scrollTo(0, 0);
+
     this.props.findCity(this.props.params.city); // action
+
+    this.props.getItineraryByCity(this.props.params.id); // action
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.cities !== this.prevProps.cities) {
-      console.log(this.props.cities);
-    }
-
-    if (prevState.cities !== this.prevProps.cities) {
-      console.log(this.props.cities);
-    }
-  }
 
   render() {
     if (!this.props.city) {
@@ -67,7 +64,7 @@ class City extends React.Component {
           </div>
         </div>
         <div className="flex flex-col justify-center items-center my-24">
-          <Itenirary />
+          {/* {this.props.id ? <Itenirary itinerary={this.props.id} /> : <h1>no hay nada</h1>} */}
         </div>
         <div className="element mt-36 flex align-center justify-center my-5">
           <Link className="learn-more button2" to="/cities">
@@ -85,11 +82,13 @@ class City extends React.Component {
 const mapStateToProps = (state) => {
   return {
     city: state.citiesReducer.city,
+    itinerary: state.itineraryReducer.itineraryListByCity
   };
 };
 
 const mapDispatchToProps = {
   findCity: citiesAction.findCity,
+  getItineraryByCity: itineraryAction.getItineraryByCity
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(City);

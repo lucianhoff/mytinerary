@@ -13,8 +13,18 @@ const citiesAction = {
   findCity: (id) => {
     return (dispatch, getState) => {
       // O SEA ACA HAGO OTRO AXIOS.GET CON ALGUNA CONDICION ADENTRO DEL THEN SUPONGO
-      
-      dispatch({ type: "FIND_CITY", payload: { id } });
+     
+      // axios
+        // .get("http://localhost:4000/api/cities" + id)
+        // .then(res => {
+          // if (res.data.response > 0) {
+            dispatch({ type: "FIND_CITY", payload: { id } });
+
+          // } else {
+            
+          // }
+        // })
+
     };
   },
   filterCities: () => {
