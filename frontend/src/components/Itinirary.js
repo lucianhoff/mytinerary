@@ -1,21 +1,30 @@
 import React, { useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
-import '../style.css'
+import "../style.css";
 
 import { connect } from "react-redux";
 import itineraryAction from "../redux/actions/itinerariesAction";
 
-const Itenirary = ({itinerary}) => {
-
+const Itenirary = ({ itinerary }) => {
   const [display, setDisplay] = useState(false);
 
   const handleDisplay = () => {
     setDisplay(!display);
   };
 
+  let price = [];
+
+  for (let index = 0; index < itinerary.price; index++) {
+    price.push(
+      <div>
+        <img src="/assets/price.png" className="dollar" />
+      </div>
+    );
+  }
+
   return (
     <>
-      <div className="flex flex-col justify-center shadow-lg rounded-t-lg rounded-b-lg bg-purple-600">
+      <div className="flex flex-col justify-center shadow-lg rounded-t-lg rounded-b-lg bg-purple-600 mt-5">
         <div className="relative flex justify-center flex-col rounded-t-lg md:flex-row md:space-x-5 space-y-3 md:space-y-0   p-3 max-w-xs md:max-w-3xl mx-auto bg-purple-600 ">
           <div className="w-full md:w-1/2 bg-purple-600 grid place-items-center">
             <img
@@ -27,56 +36,60 @@ const Itenirary = ({itinerary}) => {
               <div
                 className="h-10 rounded-full bg-white w-10 bg-cover bg-center"
                 style={{
-                  backgroundImage:
-                    "url(https://images.pexels.com/photos/1543793/pexels-photo-1543793.jpeg?cs=srgb&dl=pexels-cats-coming-1543793.jpg&fm=jpg)",
+                  backgroundImage: `url(${itinerary.userImage}`,
                 }}
               >
                 {" "}
               </div>
               <p className="pl-5 text-white font-bold rubik text-xl">
                 {" "}
-                Lucianhoff{" "}
+                {itinerary.userName}{" "}
               </p>
             </div>
           </div>
           <div className="w-full md:w-2/3 bg-purple-600 flex flex-col space-y-2 p-3">
             <div className="flex justify-between item-center">
               <div className="flex">
-                <div className="mx-1 bg-purple-400 px-3 py-1 rounded-full text-xs font-medium text-white hidden md:block">
-                  #Travel
-                </div>
-                <div className="mx-1 bg-purple-400 px-3 py-1 rounded-full text-xs font-medium text-white hidden md:block">
-                  #Tokyo
-                </div>
-                <div className="mx-1 bg-purple-400 px-3 py-1 rounded-full text-xs font-medium text-white hidden md:block">
-                  #Test
-                </div>
+                {itinerary.hashtags.map((hashtag) => {
+                  return (
+                    <div className="mx-1 bg-purple-400 px-3 py-1 rounded-full text-smeee font-medium text-white hidden md:block">
+                      #{hashtag}
+                    </div>
+                  );
+                })}
               </div>
             </div>
             <h3 className="font-black rubik text-white md:text-2xl text-xl">
-              Travel to Kyoto
+              {itinerary.title}
             </h3>
-            <p className="md:text-lg text-white font-bold">Price: $$$</p>
-            <p className="md:text-lg text-white font-bold">Duration: 2 hours</p>
+            <div className="md:text-lg text-white font-bold flex align-center items-center">
+              Price:
+              {price.map((billete) => {
+                return <div className="mx-1"> {billete} </div>;
+              })}
+            </div>
+            <p className="md:text-lg text-white font-bold">
+              Duration: {itinerary.duration} hours
+            </p>
           </div>
         </div>
         {display && (
           <div className="my-5 px-auto bg-purple-600 transition-all">
-
             <div className="flex flex-col justify-center items-center">
               <div className="flex justify-center items-center align-center">
-                <img src="/assets/city/under-construction.png" className="under-construction"/>
+                <img
+                  src="/assets/city/under-construction.png"
+                  className="under-construction"
+                />
               </div>
               <h3 className="text-3xl rubik text-white font-bold">
                 Under Construction
               </h3>
             </div>
-
           </div>
         )}
         <div className="z-50 p-2 px-3 bg-purple-600 sm:m-2.5 md:m-0 flex md:flex-row aling-center items-center justify-between sm:flex-row rounded-b-lg">
           <div className="flex justify-center align-center items-center">
-            
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-8 w-8 text-white"
@@ -89,19 +102,28 @@ const Itenirary = ({itinerary}) => {
                 clipRule="evenodd"
               />
             </svg>
-            <span className="text-white font-bold text-xl">0</span>
+            <span className="text-white font-bold text-xl">
+              {" "}
+              {itinerary.likes}
+            </span>
           </div>
           <div>
             {display ? (
-              <FaAngleUp
-                onClick={handleDisplay}
-                className="text-white text-3xl"
-              />
+              <div className="flex" onClick={handleDisplay}>
+                  <span className="text-white font-bold text-xl cursor-pointer hover:text-purple-300">View Less</span>
+                <FaAngleUp
+                  
+                  className="text-white text-3xl"
+                />
+              </div>
             ) : (
+              <div className="flex" onClick={handleDisplay}>
+                <span className="text-white font-bold text-xl cursor-pointer hover:text-purple-300">View More</span>
               <FaAngleDown
-                onClick={handleDisplay}
+                
                 className="text-white text-3xl"
               />
+            </div>
             )}
           </div>
         </div>
@@ -111,7 +133,7 @@ const Itenirary = ({itinerary}) => {
 };
 
 const mapDispatchToProps = {
-  getItineraryByCity: itineraryAction.getItineraryByCity
+  getItineraryByCity: itineraryAction.getItineraryByCity,
 };
 
 export default connect(null, mapDispatchToProps)(Itenirary);

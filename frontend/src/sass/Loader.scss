@@ -16,8 +16,6 @@ $s-footer-height: 3rem;
   box-shadow: 0 0 10rem 0 #000000 inset;
 }
 
-// body { @extend %boxShadow--in; box-sizing: border-box; display: flex; align-items: center; justify-content: center; padding-bottom: $s-footer-height; background-color: $c-back; color: $c-front; font-family: $f-primary; font-size: 10px; font-weight: 100; box-shadow: 0 0 10rem 0 #000000 inset; }
-
 .svg-calLoader {
   width: 230px;
   height: 230px;
@@ -38,6 +36,7 @@ $s-footer-height: 3rem;
     transform: rotate(360deg);
   }
 }
+
 @keyframes loader-path {
   0% {
     stroke-dasharray: 0, 580, 0, 0, 0, 0, 0, 0, 0;

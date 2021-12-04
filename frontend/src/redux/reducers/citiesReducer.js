@@ -1,27 +1,49 @@
 const initialState = {
     cities: [],
-    city: {}
+    city: {},
+    filteredCities: []
 }
 
 const citiesReducer  = (state = initialState, action) => {
-    // console.log(action);
-    // console.log(state);
 
     switch (action.type) {
     
         case 'ALL_CITIES':
             return {
-                cities: action.payload
+                ...state,
+                cities: action.payload,
+                filteredCities: action.payload
             }
         
         case 'FIND_CITY':
+            
             const findOne = state.cities.find(city => city._id === action.payload.id)
             
             return{
                 ...state,
                 city: findOne
             }
+
+
+        case "FILTER": 
+            const {place, value} = action.payload
+
+            let lugar  
+    
+            place ? lugar = "cityName" : lugar = "countryName"
         
+            let filteredArray = state.cities.filter(city =>
+              city[lugar].toLowerCase().startsWith(value.toLowerCase().trim())
+            )
+
+            console.log(place);
+            console.log(value);
+            
+            return{
+                ...state,
+                filteredCities: filteredArray
+            }
+
         default:
             return state;
     }

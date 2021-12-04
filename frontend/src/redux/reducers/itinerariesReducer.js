@@ -4,6 +4,7 @@ const initialState = {
 
 const itineraryReducer = (state = initialState, action) => {
   switch (action.type) {
+    
     case "GET_ITINERARY":
       return {
         ...state,

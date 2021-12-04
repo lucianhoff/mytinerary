@@ -1,38 +1,33 @@
 import React, { useState, useRef, useEffect } from "react";
 import CardCities from "./CardCities";
 import Title from "./Title";
-const CardAndFilter = ({ arrayCities }) => {
 
-  const [cities, setCities] = useState(arrayCities);
+import { connect } from "react-redux";
+import citiesAction from "../redux/actions/citiesAction";
+
+const CardAndFilter = (props) => {
   
   const filter = useRef();
 
-  const filtered = () => {
-    let value = filter.current.value.toLowerCase().trim();
-    let filteredArray = arrayCities.filter((city) =>
-      city.cityName.toLowerCase().startsWith(value)
-    );
-    return setCities(filteredArray);
-  };
+  const filtered = () => props.filter(place, filter.current.value)
 
-  const [place, setPlace] = useState("Cities");
-  let checkbox = (e) => {
-    if (e.target.checked) {
-      setPlace("Cities");
-    } else {
-      setPlace("Country");
-    }
-  };
+  const [place, setPlace] = useState(true);
+
+  let checkbox = () => {
+    setPlace(!place)
+    filter.current.value = "";
+    filtered()
+  }
 
   return (
     <>
-      <div className="filter">
+       <div className="filter">
         <div className="mt-5 flex items-center justify-center flex-col mb-24">
           <label
             className="rubik block text-purple-600 text-3xl font-bold md:text-right mb-3 md:mb-0 pr-4"
             htmlFor="inline-password"
           >
-            Filter by {place}
+            Filter by {place ? "City" : "Country"}
           </label>
 
           <label className="plane-switch">
@@ -41,9 +36,7 @@ const CardAndFilter = ({ arrayCities }) => {
               id="aircheck"
               pattern="[^\s]+"
               onChange={checkbox}
-              checked   
             />
-
             <div>
               <div>
                 <svg viewBox="0 0 13 13">
@@ -62,8 +55,7 @@ const CardAndFilter = ({ arrayCities }) => {
               type="text"
               name=""
               id=""
-              // placeholder={place ? "Filter by " + place : "Filter by City"}
-              placeholder="City"
+              placeholder={`Filter by ${place ? "City" : "Country"}`}
               ref={filter}
               onChange={filtered}
               className="input rubik text-center mt-4 w-1/8 bg-white appearance-none border-2 border-purple-900 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-600"
@@ -72,10 +64,21 @@ const CardAndFilter = ({ arrayCities }) => {
       </div>
 
       <div className="flex items-center justify-center mt-12 ">
-        {cities.length === 0 ? <Title title="City not found =("/> : <CardCities arrayCitiesCard={cities} />}
-      </div>
+        {props.cities === 0 ? <Title title="City not found =("/> : <CardCities arrayCitiesCard={props.cities} />}
+      </div> 
     </>
   );
 };
 
-export default CardAndFilter;
+const mapDispatchToProps = {
+  fetchCities: citiesAction.fetchCities,
+  filter: citiesAction.filter,
+}
+
+const mapStateToProps = (state) => {
+  return {
+    cities: state.citiesReducer.filteredCities
+  }
+}
+
+export default connect( mapStateToProps, mapDispatchToProps)(CardAndFilter)

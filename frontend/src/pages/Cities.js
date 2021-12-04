@@ -33,7 +33,7 @@ class Cities extends React.Component {
 }
 
 const mapDispatchToProps = {
-  fetchCities: citiesAction.fetchCities,
+  fetchCities: citiesAction.fetchCities
   
 }
 
