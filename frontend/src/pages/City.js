@@ -18,13 +18,15 @@ class City extends React.Component {
     this.props.cities > 0
       ? this.props.findCity(this.props.params.city)
       : this.props.fetchCities();
+
+    console.log(this.props.params);
   }
 
   state = {
     itinerary: [],
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (prevProps.itinerary !== this.props.itinerary) {
       this.setState({ itinerary: this.props.itinerary });
     }
@@ -34,10 +36,6 @@ class City extends React.Component {
   }
 
   render() {
-    if (!this.props.city) {
-      return <Loader />;
-    }
-
     return (
       <>
         {this.props.city ? (

@@ -27,6 +27,3 @@ Router.route('/itinerarycity/:idCity')
   .get(getItineraryByCity)
 
  module.exports = Router
-
-//  61a6d6b290c900c778d2fd0d
-//  61a6d68d90c900c778d2fd0b
