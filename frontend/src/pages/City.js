@@ -10,6 +10,7 @@ import citiesAction from "../redux/actions/citiesAction";
 import itineraryAction from "../redux/actions/itinerariesAction";
 
 class City extends React.Component {
+  
   componentDidMount() {
     window.scrollTo(0, 0);
 

@@ -27,7 +27,7 @@ const CardAndFilter = (props) => {
             className="rubik block text-purple-600 text-3xl font-bold md:text-right mb-3 md:mb-0 pr-4"
             htmlFor="inline-password"
           >
-            Filter by {place ? "City" : "Country"}
+            Filter by {place ? "Cities" : "Countries"}
           </label>
 
           <label className="plane-switch">

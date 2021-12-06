@@ -12,10 +12,7 @@ const citiesAction = {
   },
   findCity: (id) => {
     return (dispatch, getState) => {
-      // O SEA ACA HAGO OTRO AXIOS.GET CON ALGUNA CONDICION ADENTRO DEL THEN SUPONGO
-      
       dispatch({ type: "FIND_CITY", payload: { id } })
-
     };
   },
   filter: (place, value) => {
