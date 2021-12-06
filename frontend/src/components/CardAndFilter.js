@@ -62,7 +62,7 @@ const CardAndFilter = (props) => {
       </div>
 
       <div className="flex items-center justify-center mt-12 ">
-        {props.cities === 0 ? <Title title="City not found =("/> : <CardCities arrayCitiesCard={props.cities} />}
+        {props.cities.length === 0 ? <Title title="City not found =("/> : <CardCities arrayCitiesCard={props.cities} />}
       </div> 
     </>
   );

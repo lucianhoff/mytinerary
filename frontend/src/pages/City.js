@@ -87,7 +87,7 @@ class City extends React.Component {
               ) : (
                 <div className="flex justify-center align-center items-center flex-col">
                   <img src="/assets/city/no-itinerary.png" className="w-1/4"/>
-                  <h2>There are no itineraries for this city</h2>
+                  <h2 className="text-3xl text-purple-600 font-bold" >We still do not have guides in this city, we are looking for!</h2>
                 </div>
               )}
             </div>
