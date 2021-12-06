@@ -8,9 +8,7 @@ import citiesAction from "../redux/actions/citiesAction";
 const CardAndFilter = (props) => {
   
   const filter = useRef();
-
   const filtered = () => props.filter(place, filter.current.value)
-
   const [place, setPlace] = useState(true);
 
   let checkbox = () => {

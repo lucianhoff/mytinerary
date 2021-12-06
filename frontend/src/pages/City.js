@@ -13,13 +13,10 @@ class City extends React.Component {
   
   componentDidMount() {
     window.scrollTo(0, 0);
-
     this.props.getItineraryByCity(this.props.params.city);
-
     this.props.cities > 0
       ? this.props.findCity(this.props.params.city)
       : this.props.fetchCities();
-
     console.log(this.props.params);
   }
 
@@ -88,7 +85,10 @@ class City extends React.Component {
                   return <Itenirary itinerary={itinerary} key={itinerary.userName} />;
                 })
               ) : (
-                <Title title="No hay itinerarios para esta ciudad" />
+                <div className="flex justify-center align-center items-center flex-col">
+                  <img src="/assets/city/no-itinerary.png" className="w-1/4"/>
+                  <h2>There are no itineraries for this city</h2>
+                </div>
               )}
             </div>
           </>

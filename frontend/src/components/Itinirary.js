@@ -28,7 +28,7 @@ const Itenirary = ({ itinerary }) => {
         <div className="relative flex justify-center flex-col rounded-t-lg md:flex-row md:space-x-5 space-y-3 md:space-y-0   p-3 max-w-xs md:max-w-3xl mx-auto bg-purple-600 ">
           <div className="w-full md:w-1/2 bg-purple-600 grid place-items-center">
             <img
-              src="https://images.pexels.com/photos/5197157/pexels-photo-5197157.jpeg?cs=srgb&dl=pexels-christiano-sinisterra-5197157.jpg&fm=jpg"
+              src={itinerary.coverpage}
               alt="pic"
               className="rounded-xl"
             />
