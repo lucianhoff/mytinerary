@@ -41,13 +41,13 @@ function NavMain() {
                 </div>
                 <div className="inline ">
                   <Link
-                    to="/login"
+                    to="/singin"
                     className="text-gray-50 text-xl font-bold hover:text-purple-900 pl-5"
                   >
-                    Log In
+                    Sign In
                   </Link>
                   <Link
-                    to="/"
+                    to="/singup"
                     className="text-gray-50 text-xl font-bold hover:text-purple-900 pl-5"
                   >
                     Sign Up
@@ -87,13 +87,13 @@ function NavMain() {
                   <Link to="/cities" className="text-gray-50 text-xl font-bold hover:text-purple-900 pl-5">Cities</Link>
                 </div>
                 <Link
-                  to="/login"
+                  to="/singin"
                   className="block w-full px-5 py-3 text-center font-medium text-white bg-purple-400  hover:text-purple-900 hover:bg-purple-700 hover:font-bold"
                 >
-                  Log In
+                  Sign In
                 </Link>
                 <Link
-                  to="/"
+                  to="/singup"
                   className="block w-full px-5 py-3 text-center font-medium text-white bg-purple-400 hover:bg-purple-700 hover:text-purple-900 hover:font-bold"
                 >
                   Sign Up

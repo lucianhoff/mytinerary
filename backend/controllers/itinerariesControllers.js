@@ -26,7 +26,7 @@ const itinerariesControllers = {
       .then((response) => res.json({ response }))
       .catch((err) => { console.log(err) })
   },
-  getItinerary: async (req, res) => {eeeeeeeeeeeeeeeeeeeeeeeeeeeee
+  getItinerary: async (req, res) => {
     let itineraries;
     const id = req.params.id;
 
