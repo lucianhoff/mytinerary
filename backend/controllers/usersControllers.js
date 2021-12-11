@@ -1,11 +1,12 @@
 const User = require('../models/User')
 const bcryptjs = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 const usersControllers = {
 
     newUser: async(req, res) => {
         
-        const  { firstName, lastName, email, password, photoURL, country } = req.body
+        const  { firstName, lastName, email, password, photoURL, country, googleUser } = req.body
         
         try {
             const emailExists = await User.findOne({email})
@@ -20,7 +21,8 @@ const usersControllers = {
                     email,
                     password: encryptedPassword,
                     photoURL,
-                    country
+                    country,
+                    googleUser
                 })
 
                 await newUser.save()
@@ -39,12 +41,12 @@ const usersControllers = {
 
             if(!userExists) {
                 res.json( { success: true, error: "Email or Password is incorrect" } )
-
             } else {
                 let passwordMatch = bcryptjs.compareSync(password, userExists.password)
 
                 if (passwordMatch) {
-                    res.json({success:true, response: { email } ,error:null})
+                    const token = jwt.sign({...userExists}, process.env.SECRET_KEY)
+                    res.json({success:true, response: { token, userExists }, error:null })
                 } else {
                     res.json({success: true, error: "Email or Password is incorrect" })
                 }

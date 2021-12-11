@@ -18,8 +18,10 @@ const authActions = {
                 const user = await axios.post('http://localhost:4000/api/user/singin', { email, password })
 
                 if(user.data.success && !user.data.error) {
+                    localStorage.setItem('token', user.data.response.token)
+                    
                     dispatch( { type: 'user', payload: { email: user.data.response } } )
-                    console.log('XDDDDDDDDDDDD')
+                    console.log('Iniciaste sesion')
                 } else {
                     console.log('esta mal wachin')
                 }

@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 body {
   margin-top: 1rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -10,6 +9,26 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #c4b5fd;
+}
+
+.form__container {
+  @apply px-8 pt-6 pb-8 bg-purple-600 rounded
+}
+
+.form__label {
+  @apply block mb-2 text-sm font-black text-white
+}
+
+.form__input {
+  @apply w-11/12 px-3 py-2 text-sm leading-tight font-black text-purple-600 border rounded appearance-none focus:outline-none
+}
+
+.createButton {
+  @apply w-full py-2 px-4 font-bold text-white bg-purple-500 rounded-full
+}
+
+.createGoogle {
+  @apply w-full mt-2 px-4 py-2 font-bold text-white bg-purple-500 rounded-full 
 }
 
 code {

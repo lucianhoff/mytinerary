@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import "../style.css";
-
 import { connect } from "react-redux";
 import itineraryAction from "../redux/actions/itinerariesAction";
 

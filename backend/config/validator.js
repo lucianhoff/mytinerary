@@ -15,9 +15,10 @@ const validator = (req, res, next) => {
             'string.min': 'The password must have more than three letters',
             'string.max': 'The password must have less than twenty letters'
         }),
-        email: joi.required(),
+        email: joi.string().email().required(),
         photoURL: joi.required(),
-        country: joi.required()
+        country: joi.required(),
+        googleUser: joi.boolean()
     })
 
     const validate = schema.validate(req.body, { abortEarly: false })
