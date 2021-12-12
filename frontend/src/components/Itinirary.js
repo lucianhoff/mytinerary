@@ -16,7 +16,7 @@ const Itenirary = ({ itinerary }) => {
   for (let index = 0; index < itinerary.price; index++) {
     price.push(
       <div>
-        <img src="/assets/price.png" className="dollar" />
+        <img src="/assets/price.png" className="dollar" alt="dollar" />
       </div>
     );
   }
@@ -79,6 +79,7 @@ const Itenirary = ({ itinerary }) => {
                 <img
                   src="/assets/city/under-construction.png"
                   className="under-construction"
+                  alt="under construction"
                 />
               </div>
               <h3 className="text-3xl rubik text-white font-bold">

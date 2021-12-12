@@ -33,13 +33,17 @@ const usersControllers = {
         }
     },
     accessAccount: async(req, res) => {
-        const { email, password } = req.body
+        const { email, password, googleUser } = req.body
 
         try {
             
             const userExists = await User.findOne( { email } )
 
-            if(!userExists) {
+            if (userExists.googleUser && !googleUser) {
+                res.json({success: false, error: "Tu cuenta esta mal wachin", response: null})
+            }
+
+            if(!userExists ) {
                 res.json( { success: true, error: "Email or Password is incorrect" } )
             } else {
                 let passwordMatch = bcryptjs.compareSync(password, userExists.password)
@@ -51,9 +55,13 @@ const usersControllers = {
                     res.json({success: true, error: "Email or Password is incorrect" })
                 }
             }
+
         } catch(error) {
             res.json({success: false, response: null, error: error})
         }
+    },
+    startWithToke: async(req, res) => {
+        res.json({success: true, response: {email: req.user.email, photoURL: req.user.photoURL}})
     }
 }
 

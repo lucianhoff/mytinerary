@@ -15,13 +15,24 @@ class SingInPage extends React.Component {
     
     console.log(this.props)
 
-    const handleSubmit = async (email, password) => {
-      this.props.accessAccount(email, password)
+    const handleSubmit = async (values) => {
+      this.props.accessAccount(values)
     }
 
+    const responseGoogle = (res) => {
+      console.log(res)
+      let google = {
+        email: res.profileObj.email,
+        password: res.profileObj.googleId,
+        googleUser: true
+      };
+      
+      handleSubmit(google)  
+    
+    }
     return (
       <>
-          <SingIn accessAccount={handleSubmit} />
+          <SingIn accessAccount={handleSubmit} responseGoogle={responseGoogle} />
       </>
     );
   }

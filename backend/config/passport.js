@@ -11,4 +11,6 @@ module.exports = passport.use(new jwtStrategy({
     secretOrKey: process.env.SECRET_KEY
 }, (jwt_payload, done) => {
     
+    
+
 }))

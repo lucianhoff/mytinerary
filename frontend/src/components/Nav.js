@@ -4,7 +4,7 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import "animate.css";
 import "../style.css";
 import {Link} from "react-router-dom";
-
+import Example from "./Drop"
 function NavMain() {
   return (
     <header className="fixed z-50 w-full top-0 left-0">
@@ -98,9 +98,11 @@ function NavMain() {
                 >
                   Sign Up
                 </Link>
+                
               </div>
             </Popover.Panel>
           </Transition>
+          <Example />
         </Popover>
       </div>
     </div>

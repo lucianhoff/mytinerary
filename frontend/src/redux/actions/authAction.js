@@ -2,28 +2,29 @@ const axios = require('axios')
 
 const authActions = {
 
-    newUser: (firstName, lastName, email, password, photoURL, country) => {
+    newUser: (values) => {
         return async(dispatch, getState) => {
             try {
-                const user = await axios.post('http://localhost:4000/api/user/singup', {firstName, lastName, email, password, photoURL, country})
+                const user = await axios.post('http://localhost:4000/api/user/singup', {...values})
+                console.log(user)
                 dispatch( { type: 'user', payload: {user} } )
             } catch (error) {
                 console.log(error)
             }
         }
     },
-    accessAccount: (email, password) => {
+    accessAccount: (values) => {
         return async (dispatch, getState) => {
             try {
-                const user = await axios.post('http://localhost:4000/api/user/singin', { email, password })
-
+                const user = await axios.post('http://localhost:4000/api/user/singin', { ...values })
+                console.log(user)
                 if(user.data.success && !user.data.error) {
                     localStorage.setItem('token', user.data.response.token)
                     
-                    dispatch( { type: 'user', payload: { email: user.data.response } } )
+                    dispatch( { type: 'user', payload: { data: user.data.response } } )
                     console.log('Iniciaste sesion')
                 } else {
-                    console.log('esta mal wachin')
+                    console.log('Error, no iniciaste sesion')
                 }
 
             } catch(error) {

@@ -4,7 +4,6 @@ import "../sass/Button2.scss";
 import "../style.css";
 import Loader from "../components/Loader";
 import Itenirary from "../components/Itinirary";
-import Title from "../components/Title";
 import { connect } from "react-redux";
 import citiesAction from "../redux/actions/citiesAction";
 import itineraryAction from "../redux/actions/itinerariesAction";
@@ -54,6 +53,7 @@ class City extends React.Component {
                   <img
                     src="/assets/city/country.png"
                     className="img-city d-flex"
+                    alt="country"
                   />
                   <h3 className="font-bold text-3xl rubik text-purple-600">
                     Country: {this.props.city.countryName}
@@ -63,6 +63,7 @@ class City extends React.Component {
                   <img
                     src="/assets/city/languages.png"
                     className="img-city d-flex"
+                    alt="languages"
                   />
                   <h3 className="font-bold text-3xl rubik text-purple-600">
                     Language: {this.props.city.language}
@@ -72,6 +73,7 @@ class City extends React.Component {
                   <img
                     src="/assets/city/divisa.png"
                     className="img-city d-flex"
+                    alt="currency"
                   />
                   <h3 className="font-bold text-3xl rubik text-purple-600">
                     Currency: {this.props.city.currency}
@@ -86,7 +88,7 @@ class City extends React.Component {
                 })
               ) : (
                 <div className="flex justify-center align-center items-center flex-col">
-                  <img src="/assets/city/no-itinerary.png" className="w-1/4"/>
+                  <img src="/assets/city/no-itinerary.png" className="w-1/4" alt="No itinerary"/>
                   <h2 className="text-3xl text-purple-600 font-bold" >We still do not have guides in this city, we are looking for!</h2>
                 </div>
               )}
