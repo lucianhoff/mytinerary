@@ -24,6 +24,7 @@ class SignInPage extends React.Component {
       handleSubmit(google)  
     
     }
+    
     return (
       <>
           <SingIn accessAccount={handleSubmit} responseGoogle={responseGoogle} />

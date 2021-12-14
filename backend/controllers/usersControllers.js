@@ -42,7 +42,7 @@ const usersControllers = {
             if (userExists.googleUser && !googleUser) {
                 res.json({success: false, error: "Tu cuenta esta mal wachin", response: null})
             }
-
+            // console.log(userExists)
             if(!userExists ) {
                 res.json( { success: true, error: "Email or Password is incorrect" } )
             } else {
@@ -50,7 +50,8 @@ const usersControllers = {
 
                 if (passwordMatch) {
                     const token = jwt.sign({...userExists}, process.env.SECRET_KEY)
-                    res.json({success:true, response: { token, userExists }, error:null })
+                    console.log({ token, ...userExists })
+                    res.json({success:true, response: { token, ...userExists._doc }, error:null })
                 } else {
                     res.json({success: true, error: "Email or Password is incorrect" })
                 }

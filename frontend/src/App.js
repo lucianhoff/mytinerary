@@ -32,7 +32,7 @@ function App(props) {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          {!props.User.data ? (
+          {!props.user.lastName ? (
             <>
               <Route path="/signin" element={<SingInPage />} />
               <Route path="/signup" element={<SingUpPage />} />
@@ -56,7 +56,7 @@ function App(props) {
 
 const mapStateToProps = (state) => {
   return {
-    User: state.authReducer.user,
+    user: state.authReducer.user,
   };
 };
 

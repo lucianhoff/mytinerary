@@ -41,8 +41,8 @@ const authActions = {
         });
         if (user.data.success && !user.data.error) {
           localStorage.setItem("token", user.data.response.token);
-
-          dispatch({ type: "user", payload: { data: user.data.response } });
+          
+          dispatch({ type: "user", payload: user.data.response });
 
           Swal.fire({
             icon: "success",
@@ -78,7 +78,7 @@ const authActions = {
           }
         );
         user.data.response &&
-          dispatch({ type: "user", payload: { data: user.data.response } });
+          dispatch({ type: "user", payload: user.data.response });
         return { response: user.data.response };
       } catch (error) {
         return { error: "Unauthorized user, try login again" };
@@ -88,7 +88,7 @@ const authActions = {
   SignOut: () => {
     return (dispatch, getState) => {
       localStorage.clear();
-      dispatch({ type: "user", payload: { data: "" } });
+      dispatch({ type: "user", payload: {} });
     };
   },
 };

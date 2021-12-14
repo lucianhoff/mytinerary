@@ -10,7 +10,7 @@ import authAction from "../redux/actions/authAction";
 import Swal from "sweetalert2";
 
 function NavMain(props) {
-  if (props.User.data) {
+  if (props.user.photoURL) {
     const Toast = Swal.mixin({
       toast: true,
       position: "bottom-right",
@@ -28,7 +28,7 @@ function NavMain(props) {
 
     Toast.fire({
       icon: "success",
-      title: `<span style="color:#FFF"> Welcome, ${props.User.data.firstName}! :)<span>`,
+      title: `<span style="color:#FFF"> Welcome, ${props.user.firstName}! :)<span>`,
     })
   }
 
@@ -125,7 +125,7 @@ function NavMain(props) {
                       Cities
                     </Link>
                   </div>
-                  {!props.User.data ? (
+                  {!props.user.photoURL ? (
                     <>
                       <Link
                         to="/signin"
@@ -170,7 +170,7 @@ function NavMain(props) {
 
 const mapStateToProps = (state) => {
   return {
-    User: state.authReducer.user,
+    user: state.authReducer.user,
   };
 };
 

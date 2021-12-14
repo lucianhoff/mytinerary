@@ -11,7 +11,7 @@ function DropMenu(props) {
       <Menu as="div" className="text-left">
         <div>
           <Menu.Button className="flex text-sm font-medium text-white bg-purple-400 rounded-full bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-            {!props.User.data ? (
+            {!props.user.photoURL ? (
               <UserIcon
                 className="w-10 h-10 text-violet-200 hover:text-violet-100"
                 aria-hidden="true"
@@ -21,7 +21,7 @@ function DropMenu(props) {
                 <div
                   className="w-10 h-10 rounded-full"
                   style={{
-                    backgroundImage: `url(${props.User.data.photoURL})`,
+                    backgroundImage: `url(${props.user.photoURL})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
@@ -41,7 +41,7 @@ function DropMenu(props) {
         >
           <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-purple-400 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
-              {props.User.data ? (
+              {props.user.photoURL ? (
                 <>
                   <Menu.Item>
                     {({ active }) => (
@@ -301,7 +301,7 @@ function SignOutActiveIcon() {
 
 const mapStateToProps = (state) => {
   return {
-    User: state.authReducer.user,
+    user: state.authReducer.user,
   };
 };
 
