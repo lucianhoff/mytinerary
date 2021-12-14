@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 
@@ -16,8 +16,6 @@ const SignIn = (props) => {
 
   console.log(props.responseGoogle);
   console.log(localStorage);
-  const navigate = useNavigate();
-  localStorage.getItem("token") && navigate("/", { replace: true });
 
   return (
     <>
