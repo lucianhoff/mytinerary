@@ -60,8 +60,16 @@ const usersControllers = {
             res.json({success: false, response: null, error: error})
         }
     },
-    startWithToke: async(req, res) => {
-        res.json({success: true, response: {email: req.user.email, photoURL: req.user.photoURL}})
+    accessWithToken: async(req, res) => {
+        try {
+            const userAuth = req.user
+            console.log('try de userController')
+            res.json({success: true, response: userAuth, error: null})
+        } catch(error) {
+            console.log(error)
+            console.log('catch de userController')
+            res.json({success: false, response: null, error: error})
+        }
     }
 }
 

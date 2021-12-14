@@ -8,7 +8,7 @@ import * as yup from "yup";
 
 import GoogleLogin from "react-google-login";
 
-const SingIn = (props) => {
+const SignIn = (props) => {
   const SignInSchema = yup.object().shape({
     email: yup.string().email().required("this field is required"),
     password: yup.string().required("this field is required"),
@@ -19,17 +19,11 @@ const SingIn = (props) => {
 
   return (
     <>
-      <div className="rubik mt-32">
-        <div className="container mx-auto">
+      <div className="rubik mt-24 flex flex-col justify-center">
+        <div className="container">
           <div className="flex justify-center px-6 my-12">
-            <div className="w-full xl:w-3/4 lg:w-11/12 flex">
-              {/* <img
-                className="w-full h-autohidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
-                src="./assets/loginHero3.jpg"
-                alt="heroLogin"
-              /> */}
-
-              <div className="w-full lg:w-1/2  bg-purple-600 p-5 rounded-lg lg:rounded-l-none">
+           
+              <div className="lg:w-4/12 md:w-8/12 sm:12/12 bg-purple-600 p-5 rounded-lg">
                 <h3 className="pt-4 text-3xl text-center text-white font-black rubik">
                   Welcome Back!
                 </h3>
@@ -108,18 +102,25 @@ const SingIn = (props) => {
 
                           <GoogleLogin
                             clientId="36260654393-jruugt14707a8pcdlf33skgor98eth8c.apps.googleusercontent.com"
-                            buttonText="Create account with Google"
+                            render={(renderProps) => (
+                              <button
+                                onClick={renderProps.onClick}
+                                disabled={renderProps.disabled}
+                                className="createButton focus:shadow-outline hover:bg-purple-700 mt-2"
+                              >
+                                Sign In with Google
+                              </button>
+                            )}
                             onSuccess={props.responseGoogle}
                             onFailure={props.responseGoogle}
                             cookiePolicy={"single_host_origin"}
-                            className="rounded-full w-full mt-2 px-4 rubik black text-purple-900 bg-purple-500 hover:bg-purple-700 focus:outline-none focus:shadow-outline"
                           />
                         </div>
                         <hr className="mb-6 border-t bg-white" />
                         <div className="text-center">
                           <Link
                             className="inline-block text-sm text-white align-baseline hover:text-blue-800"
-                            to="/singup"
+                            to="/signup"
                           >
                             Create an Account!
                           </Link>
@@ -131,10 +132,9 @@ const SingIn = (props) => {
               </div>
             </div>
           </div>
-        </div>
       </div>
     </>
   );
 };
 
-export default SingIn;
+export default SignIn;

@@ -1,6 +1,8 @@
 const Router = require("express").Router();
 const validator = require("../config/validator");
 
+const passport = require("../config/passport");
+
 const citiesControllers = require("../controllers/citiesControllers");
 const itinerariesControllers = require("../controllers/itinerariesControllers");
 const usersControllers = require("../controllers/usersControllers");
@@ -15,7 +17,7 @@ const {
   modifyItinerary,
   getItineraryByCity,
 } = itinerariesControllers;
-const { newUser, accessAccount } = usersControllers;
+const { newUser, accessAccount, accessWithToken } = usersControllers;
 
 Router.route("/cities").get(getAllCities).post(addCity);
 
@@ -30,8 +32,10 @@ Router.route("/itineraries/:id")
 
 Router.route("/itinerarycity/:idCity").get(getItineraryByCity);
 
-Router.route("/user/singup").post(validator, newUser);
+Router.route("/user/signup").post(validator, newUser);
 
-Router.route("/user/singin").post(accessAccount);
+Router.route("/user/signin").post(accessAccount);
+
+Router.route("/user/signin/token").post(passport.authenticate("jwt", {session: false}), accessWithToken);
 
 module.exports = Router;

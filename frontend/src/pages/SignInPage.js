@@ -1,11 +1,9 @@
 import React from "react";
-
-import SingIn from "../components/SingIn";
-
+import SingIn from "../components/SignIn";
 import { connect } from "react-redux"
 import authActions from "../redux/actions/authAction";
 
-class SingInPage extends React.Component {
+class SignInPage extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0,0)
@@ -49,4 +47,4 @@ const mapDispatchToProps = {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(SingInPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SignInPage);
