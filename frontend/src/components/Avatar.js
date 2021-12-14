@@ -5,7 +5,7 @@ export default function Avatar() {
 
   let [isOpen, setIsOpen] = useState(false);
 
-  const [avatar, setAvatar] = useState("");
+  // const [avatar, setAvatar] = useState("");
   function closeModal() {
     setIsOpen(false);
   }

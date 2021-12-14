@@ -49,9 +49,9 @@ const Itenirary = ({ itinerary }) => {
           <div className="w-full md:w-2/3 bg-purple-600 flex flex-col space-y-2 p-3">
             <div className="flex justify-between item-center">
               <div className="flex">
-                {itinerary.hashtags.map((hashtag) => {
+                {itinerary.hashtags.map((hashtag, index) => {
                   return (
-                    <div className="mx-1 bg-purple-400 px-3 py-1 rounded-full text-smeee font-medium text-white hidden md:block">
+                    <div key={index} className="mx-1 bg-purple-400 px-3 py-1 rounded-full text-smeee font-medium text-white hidden md:block">
                       #{hashtag}
                     </div>
                   );

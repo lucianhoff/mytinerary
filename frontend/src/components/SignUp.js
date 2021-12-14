@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
-
 import { Formik, Field } from "formik";
 import * as yup from "yup";
-
 import GoogleLogin from "react-google-login";
 
-import Avatar from "./Avatar";
+import { Link } from "react-router-dom";
 
 const SignUp = ({ submit, responseGoogle }) => {
   const [countries, setCountries] = useState(["Choose your country"]);
@@ -32,11 +29,11 @@ const SignUp = ({ submit, responseGoogle }) => {
     email: yup
       .string()
       .email("Invalid email")
-      .matches(/(\W|^)[\w.-]@(yahoo|hotmail|gmail|outlook).com(\W|$)/, "Incorrect email")
+      .matches(/(\W|^)[\w.-]/, "Incorrect email")
       .required("The email is required"),
     password: yup
       .string()
-      .min(8, "The Password is very short, minimum 8 characters")
+      .min(8, "Too short, minimum 8 characters")
       .required("The Password is required"),
     photoURL: yup
       .string()
@@ -65,7 +62,6 @@ const SignUp = ({ submit, responseGoogle }) => {
           {({ handleSubmit, handleChange, values, errors, touched }) => (
             <div className="flex justify-center items-center lg:w-4/12 md:w-8/12 sm:12/12">
               <form className="form__container" onSubmit={handleSubmit}>
-
                 <div className="flex flex-col">
                   <label className="form__label">First Name</label>
                   <div className="flex items-center">
@@ -238,6 +234,15 @@ const SignUp = ({ submit, responseGoogle }) => {
                       cookiePolicy={"single_host_origin"}
                     />
                   </div>
+                </div>
+                <hr className="my-3 border-t bg-white" />
+                <div className="text-center mt-3">
+                  <Link
+                    className="inline-block rubik fw-bold text-lg text-white align-baseline hover:text-blue-800"
+                    to="/signup"
+                  >
+                    You have account? Sign in
+                  </Link>
                 </div>
               </form>
             </div>

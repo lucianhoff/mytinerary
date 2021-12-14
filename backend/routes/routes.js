@@ -36,6 +36,9 @@ Router.route("/user/signup").post(validator, newUser);
 
 Router.route("/user/signin").post(accessAccount);
 
-Router.route("/user/signin/token").post(passport.authenticate("jwt", {session: false}), accessWithToken);
+Router.route("/user/signin/token").post(
+  passport.authenticate("jwt", { session: false }),
+  accessWithToken
+);
 
 module.exports = Router;

@@ -8,7 +8,7 @@ import SingUpPage from "./pages/SignUpPage";
 import City from "./pages/City";
 import { withRouter } from "./utils/withRouter";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Error404 from "./pages/Error404";
+// import Error404 from "./pages/Error404";
 import Settings from "./pages/Settings";
 import { connect } from "react-redux";
 import authAction from "./redux/actions/authAction";
@@ -16,19 +16,14 @@ import authAction from "./redux/actions/authAction";
 const Element = withRouter(City);
 
 function App(props) {
-
   useEffect(() => {
     async function fetchData() {
-      const user = await props.accessWithToken()
-      console.log(user)
-      
+      // const user = await props.accessWithToken();
       // user.response && props.accessAccount(user.response.email, user.response.password, user.response.googleUser)
     }
+    localStorage.getItem("token") && fetchData();
+  }, []);
 
-    localStorage.getItem('token') && fetchData()
-  }, [])
-
-  console.log(props);
   return (
     <>
       <BrowserRouter>
@@ -36,23 +31,20 @@ function App(props) {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          {!props.User.data 
-            ? 
-              <>
-                <Route path="/signin" element={<SingInPage />} />
-                <Route path="/signup" element={<SingUpPage />} />
-              </> 
-            : <Route path="settings" element={<Settings />} />
-          }
+          {!props.User.data ? (
+            <>
+              <Route path="/signin" element={<SingInPage />} />
+              <Route path="/signup" element={<SingUpPage />} />
+            </>
+          ) : (
+            <Route path="settings" element={<Settings />} />
+          )}
 
           <Route path="/cities" element={<Cities />} />
           <Route path="/cities/:city" element={<Element />} />
 
-          
-
           {/* <Route path="*" element={<Error404/>}/> */}
-          <Route path="*" element={<Home/>}/>
-
+          <Route path="*" element={<Home />} />
         </Routes>
 
         <Footer />
@@ -64,12 +56,12 @@ function App(props) {
 const mapStateToProps = (state) => {
   return {
     User: state.authReducer.user,
-  }
-}
+  };
+};
 
 const mapDispatchToProps = {
   accessWithToken: authAction.accessWithToken,
   accessAccount: authAction.accessAccount,
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

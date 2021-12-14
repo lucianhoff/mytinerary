@@ -6,30 +6,28 @@ import { connect } from "react-redux";
 import authAction from "../redux/actions/authAction";
 
 function DropMenu(props) {
-
   return (
     <div className="text-right fixed">
       <Menu as="div" className="text-left">
         <div>
           <Menu.Button className="flex text-sm font-medium text-white bg-purple-400 rounded-full bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-          {!props.User.data ? 
-          
-          <UserIcon
-            className="w-10 h-10 text-violet-200 hover:text-violet-100"
-            aria-hidden="true"
-          />
-            :
-            <>
-            <div className="w-10 h-10 rounded-full"
-            style={{
-              backgroundImage: `url(${props.User.data.photoURL})`,
-              backgroundSize: "cover",
-                backgroundPosition: "center",
-            }}
-            >
-            </div>
-            </>
-        }
+            {!props.User.data ? (
+              <UserIcon
+                className="w-10 h-10 text-violet-200 hover:text-violet-100"
+                aria-hidden="true"
+              />
+            ) : (
+              <>
+                <div
+                  className="w-10 h-10 rounded-full"
+                  style={{
+                    backgroundImage: `url(${props.User.data.photoURL})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                ></div>
+              </>
+            )}
           </Menu.Button>
         </div>
         <Transition
@@ -75,7 +73,6 @@ function DropMenu(props) {
                             ? "bg-violet-500 text-white bg-purple-700 "
                             : "text-white"
                         } group flex rounded-md items-center w-full px-2 py-2 text-sm rubik fw-bold`}
-
                         onClick={() => props.SignOut()}
                       >
                         {active ? (
@@ -305,13 +302,13 @@ function SignOutActiveIcon() {
 const mapStateToProps = (state) => {
   return {
     User: state.authReducer.user,
-  }
-}
+  };
+};
 
 const mapDispatchToProps = {
   accessWithToken: authAction.accessWithToken,
   accessAccount: authAction.accessAccount,
   SignOut: authAction.SignOut,
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(DropMenu);

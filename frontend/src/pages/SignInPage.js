@@ -10,15 +10,11 @@ class SignInPage extends React.Component {
   }
 
   render() {
-    
-    console.log(this.props)
-
     const handleSubmit = async (values) => {
       this.props.accessAccount(values)
     }
 
     const responseGoogle = (res) => {
-      console.log(res)
       let google = {
         email: res.profileObj.email,
         password: res.profileObj.googleId,

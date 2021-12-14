@@ -7,14 +7,13 @@ import { Link } from "react-router-dom";
 import DropMenu from "./DropMenu";
 import { connect } from "react-redux";
 import authAction from "../redux/actions/authAction";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 function NavMain(props) {
-  console.log(props.User);
-  if(props.User.data) {
+  if (props.User.data) {
     const Toast = Swal.mixin({
       toast: true,
-      position: 'bottom-right',
+      position: "bottom-right",
       showConfirmButton: false,
       timer: 3000,
       confirmButtonColor: "#9333ea",
@@ -22,19 +21,16 @@ function NavMain(props) {
       iconColor: "#e9d5ff",
       timerProgressBar: true,
       didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
     })
 
     Toast.fire({
-      icon: 'success',
-      title: `<span style="color:#FFF"> Welcome, ${
-        props.User.data.firstName
-      }! :)<span>`
+      icon: "success",
+      title: `<span style="color:#FFF"> Welcome, ${props.User.data.firstName}! :)<span>`,
     })
   }
-  
 
   return (
     <header className="fixed z-50 w-full top-0 left-0">
@@ -130,40 +126,38 @@ function NavMain(props) {
                     </Link>
                   </div>
                   {!props.User.data ? (
-                  <>
-                  <Link
-                    to="/signin"
-                    className="block w-full px-5 py-3 text-center font-medium text-white bg-purple-400  hover:text-purple-900 hover:bg-purple-700 hover:font-bold"
-                  >
-                    Sign In
-                  </Link>
-                  <Link
-                    to="/signup"
-                    className="block w-full px-5 py-3 text-center font-medium text-white bg-purple-400 hover:bg-purple-700 hover:text-purple-900 hover:font-bold"
-                  >
-                    Sign Up
-                  </Link>
-                  </>
-                  
-
+                    <>
+                      <Link
+                        to="/signin"
+                        className="block w-full px-5 py-3 text-center font-medium text-white bg-purple-400  hover:text-purple-900 hover:bg-purple-700 hover:font-bold"
+                      >
+                        Sign In
+                      </Link>
+                      <Link
+                        to="/signup"
+                        className="block w-full px-5 py-3 text-center font-medium text-white bg-purple-400 hover:bg-purple-700 hover:text-purple-900 hover:font-bold"
+                      >
+                        Sign Up
+                      </Link>
+                    </>
                   ) : (
                     <>
-                  <Link
-                    to="/signin"
-                    className="block w-full px-5 py-3 text-center font-medium text-white bg-purple-400  hover:text-purple-900 hover:bg-purple-700 hover:font-bold"
-                  >
-                    Settings
-                  </Link>
-                  <Link
-                    to="/signup"
-                    className="block w-full px-5 py-3 text-center font-medium text-white bg-purple-400 hover:bg-purple-700 hover:text-purple-900 hover:font-bold"
-                  >
-                    Sign Out
-                  </Link>
-                  </>
-
-                  )
-                    }
+                      <Link
+                        to="/signin"
+                        className="block w-full px-5 py-3 text-center font-medium text-white bg-purple-400  hover:text-purple-900 hover:bg-purple-700 hover:font-bold"
+                        
+                      >
+                        Settings
+                      </Link>
+                      <Link
+                        to="/signup"
+                        className="block w-full px-5 py-3 text-center font-medium text-white bg-purple-400 hover:bg-purple-700 hover:text-purple-900 hover:font-bold"
+                        onClick={() => props.SignOut()}
+                      >
+                        Sign Out
+                      </Link>
+                    </>
+                  )}
                 </div>
               </Popover.Panel>
             </Transition>
@@ -183,6 +177,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   accessWithToken: authAction.accessWithToken,
   accessAccount: authAction.accessAccount,
+  SignOut: authAction.SignOut,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavMain);
