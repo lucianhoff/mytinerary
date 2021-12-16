@@ -13,5 +13,3 @@ app.use(passport.initialize())
 app.use('/api', Router)
 
 app.listen(4000 ,()=> console.log('Server listening on port 4000'))
-
-// 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

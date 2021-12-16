@@ -34,14 +34,16 @@ code {
 
 /* SCROLL BAR */
 
-body::-webkit-scrollbar {
+body::-webkit-scrollbar, .scrollbarcomments::-webkit-scrollbar {
   width: 7px;
 }
 
-body::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb, .scrollbarcomments::-webkit-scrollbar-thumb {
   background-color: #7c3aed;
   border-radius: 5px;
 }
+
+
 
 .footer {
   position: relative;
@@ -51,4 +53,8 @@ body::-webkit-scrollbar-thumb {
 
 button .GoogleButton {
   background-color: blue !important;
+}
+
+.rotate-send {
+  transform: rotate(90deg)
 }

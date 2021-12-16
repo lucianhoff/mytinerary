@@ -36,22 +36,14 @@ const authActions = {
   accessAccount: (values) => {
     return async (dispatch, getState) => {
       try {
-        const user = await axios.post("http://localhost:4000/api/user/signin", {
-          ...values,
-        });
+        const user = await axios.post("http://localhost:4000/api/user/signin", {...values })
+
         if (user.data.success && !user.data.error) {
           localStorage.setItem("token", user.data.response.token);
           
           dispatch({ type: "user", payload: user.data.response });
-
-          Swal.fire({
-            icon: "success",
-            title: `<span style="color:#FFF">You started session!</span>`,
-            background: "#9333ea",
-            iconColor: "#e9d5ff",
-            confirmButtonColor: "#9333ea",
-          });
         }
+        
         if (!user.data.success && user.data.error) {
           Swal.fire({
             icon: "error",

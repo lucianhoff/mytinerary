@@ -24,12 +24,12 @@ function NavMain(props) {
         toast.addEventListener("mouseenter", Swal.stopTimer);
         toast.addEventListener("mouseleave", Swal.resumeTimer);
       },
-    })
+    });
 
     Toast.fire({
       icon: "success",
       title: `<span style="color:#FFF"> Welcome, ${props.user.firstName}! :)<span>`,
-    })
+    });
   }
 
   return (
@@ -145,7 +145,6 @@ function NavMain(props) {
                       <Link
                         to="/signin"
                         className="block w-full px-5 py-3 text-center font-medium text-white bg-purple-400  hover:text-purple-900 hover:bg-purple-700 hover:font-bold"
-                        
                       >
                         Settings
                       </Link>

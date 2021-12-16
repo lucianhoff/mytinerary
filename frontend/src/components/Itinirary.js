@@ -3,6 +3,7 @@ import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import "../style.css";
 import { connect } from "react-redux";
 import itineraryAction from "../redux/actions/itinerariesAction";
+import Comments from "./Comments";
 
 const Itenirary = ({ itinerary }) => {
   const [display, setDisplay] = useState(false);
@@ -23,8 +24,8 @@ const Itenirary = ({ itinerary }) => {
 
   return (
     <>
-      <div className="flex flex-col justify-center shadow-lg rounded-t-lg rounded-b-lg bg-purple-600 mt-5">
-        <div className="relative flex justify-center flex-col rounded-t-lg md:flex-row md:space-x-5 space-y-3 md:space-y-0   p-3 max-w-xs md:max-w-3xl mx-auto bg-purple-600 ">
+      <div className="flex flex-col justify-center shadow-lg rounded-t-lg rounded-b-lg bg-purple-600 p-5 mt-5">
+        <div className="relative flex justify-center flex-col rounded-t-lg md:flex-row md:space-x-5 space-y-3 md:space-y-0  p-3 max-w-xs md:max-w-3xl mx-auto bg-purple-600 ">
           <div className="w-full md:w-1/2 bg-purple-600 grid place-items-center">
             <img
               src={itinerary.coverpage}
@@ -72,7 +73,7 @@ const Itenirary = ({ itinerary }) => {
             </p>
           </div>
         </div>
-        {display && (
+        {display && ( !itinerary.title ? (
           <div className="my-5 px-auto bg-purple-600 transition-all">
             <div className="flex flex-col justify-center items-center">
               <div className="flex justify-center items-center align-center">
@@ -86,9 +87,13 @@ const Itenirary = ({ itinerary }) => {
                 Under Construction
               </h3>
             </div>
-          </div>
+          </div>) : (
+            <div className="flex justify-center">
+              <Comments />
+            </div>
+          )
         )}
-        <div className="z-50 p-2 px-3 bg-purple-600 sm:m-2.5 md:m-0 flex md:flex-row aling-center items-center justify-between sm:flex-row rounded-b-lg">
+        <div className="z-50 p-2 px-3 bg-purple-600 sm:m-2.5 md:m-0 flex md:flex-row aling-center items-center justify-between sm:flex-row rounded-b-lg mt-3">
           <div className="flex justify-center align-center items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"

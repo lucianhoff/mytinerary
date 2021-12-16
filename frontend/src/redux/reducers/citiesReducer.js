@@ -35,9 +35,6 @@ const citiesReducer  = (state = initialState, action) => {
             let filteredArray = state.cities.filter(city =>
               city[lugar].toLowerCase().startsWith(value.toLowerCase().trim())
             )
-
-            console.log(place);
-            console.log(value);
             
             return{
                 ...state,

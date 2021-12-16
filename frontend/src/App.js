@@ -19,8 +19,6 @@ function App(props) {
   useEffect(() => {
     async function fetchData() {
       const user = await props.accessWithToken();
-      console.log(user)
-      // user.response && props.accessAccount(user.response.email, user.response.password, user.response.googleUser)
     }
     localStorage.getItem("token") && fetchData();
   }, []);
