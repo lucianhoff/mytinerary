@@ -6,10 +6,11 @@ const passport = require("../config/passport");
 const citiesControllers = require("../controllers/citiesControllers");
 const itinerariesControllers = require("../controllers/itinerariesControllers");
 const usersControllers = require("../controllers/usersControllers");
-const commentsController = require("../controllers/commentsController");
+const commentsControllers = require("../controllers/commentsControllers");
+const activitiesControllers = require("../controllers/activitiesControllers");
 
-const { getAllCities, getCity, addCity, deleteCity, modifyCity } =
-  citiesControllers;
+const { getAllCities, getCity, addCity, deleteCity, modifyCity } = citiesControllers;
+
 const {
   getAllItineraries,
   getItinerary,
@@ -17,13 +18,22 @@ const {
   deleteItinerary,
   modifyItinerary,
   getItineraryByCity,
-  addLike,
-  removeLike
+  LikeAndDislike,
 } = itinerariesControllers;
 
 const { newUser, accessAccount, accessWithToken } = usersControllers;
 
-const { addComment, getComments, updateComment, deleteComment } = commentsController;
+const { addComment, getComments, updateComment, deleteComment } =
+  commentsControllers;
+
+const {
+  getActivities,
+  addActivities,
+  getActivity,
+  updateActivity,
+  deleteActivity,
+  getActivityTheCity,
+} = activitiesControllers;
 
 Router.route("/cities").get(getAllCities).post(addCity);
 
@@ -45,23 +55,34 @@ Router.route("/user/signin").post(accessAccount);
 Router.route("/user/signin/token").post(
   passport.authenticate("jwt", { session: false }),
   accessWithToken
-)
+);
 
-// comentarios 
+// comentarios
 Router.route("/itineraries/comments/:id")
   .post(addComment)
   .get(getComments)
-  .put(updateComment)
-  
-Router.route("/itineraries/comments/:idItinerary/:idComment") 
-  .delete(deleteComment)
+  .put(updateComment);
 
-// likes 
+Router.route("/itineraries/comments/:idItinerary/:idComment").delete(
+  deleteComment
+);
 
-Router.route("/itinerary/like")
-  .put(addLike)
+// likes
 
-Router.route("/itinerary/dislike")
-  .put(removeLike)
+Router.route("/itinerary/likes").put(LikeAndDislike);
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Activities
+Router.route("/itinerary/activities").get(getActivities).post(addActivities);
+
+//Individual
+Router.route("/activity/:id")
+  .get(getActivity)
+  .put(updateActivity)
+  .delete(deleteActivity);
+
+//Activity de un itinerario especifico
+Router.route("/:idItinerary/activities").get(getActivityTheCity);
 
 module.exports = Router;

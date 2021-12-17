@@ -1,6 +1,6 @@
 const Itinerary = require("../models/Itinerary");
 
-const commentsController = {
+const commentsControllers = {
   getComments: async (req, res) => {
     const { id } = req.params;
 
@@ -71,9 +71,9 @@ const commentsController = {
       res.json({ success: false, response: error.message });
     }
   },
-};
+}
 
-module.exports = commentsController;
+module.exports = commentsControllers;
 
 // .$. operador posicional que limita el contenido del array con la condicion de la matriz
 // entonces va a buscar el primer elemento que cumpla la condicion, o sea que buscara en 

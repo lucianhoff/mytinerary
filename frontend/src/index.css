@@ -20,7 +20,7 @@ body {
 }
 
 .form__input {
-  @apply w-10/12 px-3 py-2 text-sm leading-tight font-black text-purple-600 border rounded appearance-none focus:outline-none;
+  @apply w-full px-3 py-2 text-sm leading-tight font-black text-purple-600 border rounded appearance-none focus:outline-none;
 }
 
 .createButton {

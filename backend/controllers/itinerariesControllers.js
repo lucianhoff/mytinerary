@@ -97,30 +97,19 @@ const itinerariesControllers = {
       console.log(err);
     }
   },
-  addLike: async (req, res) => {
+  LikeAndDislike: async (req, res) => {
+    const { itineraryId, userId, bool } = req.body;
     try {
-      const { itineraryId, userId } = req.body
       const itinerary = await Itinerary.findOneAndUpdate(
         { _id: itineraryId },
-        { $addToSet: { likes: userId } },
+        bool 
+        ? { $addToSet: { likes: userId } } 
+        : { $pull: { likes: userId } },
         { new: true }
-      )
-      res.json({ success: true, response: itinerary, error: null })
+      );
+      res.json({ success: true, response: itinerary, error: null });
     } catch (e) {
-      res.json({ success: false, response: null, error: e.message })
-    }
-  },
-  removeLike: async (req, res) => {
-    try {
-      const { itineraryId, userId } = req.body
-      const itinerary = await Itinerary.findOneAndUpdate(
-        { _id: itineraryId },
-        { $pull: { likes: userId } },
-        { new: true }
-      )
-      res.json({ success: true, response: itinerary, error: null })
-    } catch (e) {
-      res.json({ success: false, response: null, error: e.message })
+      res.json({ success: false, response: null, error: e.message });
     }
   },
 };
