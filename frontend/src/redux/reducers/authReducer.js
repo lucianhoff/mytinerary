@@ -1,5 +1,6 @@
 const initialState = {
   user: {},
+  users: {}
 };
 
 const authReducer = (state = initialState, action) => {
@@ -9,7 +10,11 @@ const authReducer = (state = initialState, action) => {
         ...state,
         user: action.payload,
       };
-
+    case "users": 
+    return {
+      ...state,
+      users: action.payload,
+    }
     default:
       return state;
   }

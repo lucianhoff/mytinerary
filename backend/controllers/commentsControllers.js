@@ -17,7 +17,7 @@ const commentsControllers = {
   addComment: async (req, res) => {
     try {
       const newComment = await Itinerary.findOneAndUpdate(
-        req.params.id,
+        { _id: req.params.id},
         {
           $push: {
             comments: req.body,

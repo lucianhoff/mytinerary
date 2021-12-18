@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import itineraryAction from "../redux/actions/itinerariesAction";
 import Comments from "./Comments";
 
-const Itenirary = ({ itinerary }) => {
+const Itenirary = ({ itinerary, users, fetch, idCity }) => {
   const [display, setDisplay] = useState(false);
 
   const handleDisplay = () => {
@@ -22,16 +22,14 @@ const Itenirary = ({ itinerary }) => {
     );
   }
 
+  console.log(itinerary);
+
   return (
     <>
       <div className="flex flex-col justify-center shadow-lg rounded-t-lg rounded-b-lg bg-purple-600 p-5 mt-5">
         <div className="relative flex justify-center flex-col rounded-t-lg md:flex-row md:space-x-5 space-y-3 md:space-y-0  p-3 max-w-xs md:max-w-3xl mx-auto bg-purple-600 ">
           <div className="w-full md:w-1/2 bg-purple-600 grid place-items-center">
-            <img
-              src={itinerary.coverpage}
-              alt="pic"
-              className="rounded-xl"
-            />
+            <img src={itinerary.coverpage} alt="pic" className="rounded-xl" />
             <div className="flex justify-center aling-center items-center my-3">
               <div
                 className="h-10 rounded-full bg-white w-10 bg-cover bg-center"
@@ -52,7 +50,10 @@ const Itenirary = ({ itinerary }) => {
               <div className="flex">
                 {itinerary.hashtags.map((hashtag, index) => {
                   return (
-                    <div key={index} className="mx-1 bg-purple-400 px-3 py-1 rounded-full text-smeee font-medium text-white hidden md:block">
+                    <div
+                      key={index}
+                      className="mx-1 bg-purple-400 px-3 py-1 rounded-full text-smeee font-medium text-white hidden md:block"
+                    >
                       #{hashtag}
                     </div>
                   );
@@ -64,8 +65,13 @@ const Itenirary = ({ itinerary }) => {
             </h3>
             <div className="md:text-lg text-white font-bold flex align-center items-center">
               Price:
-              {price.map((billete) => {
-                return <div className="mx-1"> {billete} </div>;
+              {price.map((billete, index) => {
+                return (
+                  <div key={index} className="mx-1">
+                    {" "}
+                    {billete}{" "}
+                  </div>
+                );
               })}
             </div>
             <p className="md:text-lg text-white font-bold">
@@ -73,26 +79,27 @@ const Itenirary = ({ itinerary }) => {
             </p>
           </div>
         </div>
-        {display && ( !itinerary.title ? (
-          <div className="my-5 px-auto bg-purple-600 transition-all">
-            <div className="flex flex-col justify-center items-center">
-              <div className="flex justify-center items-center align-center">
-                <img
-                  src="/assets/city/under-construction.png"
-                  className="under-construction"
-                  alt="under construction"
-                />
+        {display &&
+          (!itinerary.title ? (
+            <div className="my-5 px-auto bg-purple-600 transition-all">
+              <div className="flex flex-col justify-center items-center">
+                <div className="flex justify-center items-center align-center">
+                  <img
+                    src="/assets/city/under-construction.png"
+                    className="under-construction"
+                    alt="under construction"
+                  />
+                </div>
+                <h3 className="text-3xl rubik text-white font-bold">
+                  Under Construction
+                </h3>
               </div>
-              <h3 className="text-3xl rubik text-white font-bold">
-                Under Construction
-              </h3>
             </div>
-          </div>) : (
+          ) : (
             <div className="flex justify-center">
-              <Comments />
+              <Comments comment={itinerary.comments} users={users} id={itinerary._id} fetch={fetch} idCity={idCity} />
             </div>
-          )
-        )}
+          ))}
         <div className="z-50 p-2 px-3 bg-purple-600 sm:m-2.5 md:m-0 flex md:flex-row aling-center items-center justify-between sm:flex-row rounded-b-lg mt-3">
           <div className="flex justify-center align-center items-center">
             <svg
@@ -115,20 +122,18 @@ const Itenirary = ({ itinerary }) => {
           <div>
             {display ? (
               <div className="flex" onClick={handleDisplay}>
-                  <span className="text-white font-bold text-xl cursor-pointer hover:text-purple-300">View Less</span>
-                <FaAngleUp
-                  
-                  className="text-white text-3xl"
-                />
+                <span className="text-white font-bold text-xl cursor-pointer hover:text-purple-300">
+                  View Less
+                </span>
+                <FaAngleUp className="text-white text-3xl" />
               </div>
             ) : (
               <div className="flex" onClick={handleDisplay}>
-                <span className="text-white font-bold text-xl cursor-pointer hover:text-purple-300">View More</span>
-              <FaAngleDown
-                
-                className="text-white text-3xl"
-              />
-            </div>
+                <span className="text-white font-bold text-xl cursor-pointer hover:text-purple-300">
+                  View More
+                </span>
+                <FaAngleDown className="text-white text-3xl" />
+              </div>
             )}
           </div>
         </div>

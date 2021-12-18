@@ -6,12 +6,14 @@ import Loader from "../components/Loader";
 import Itenirary from "../components/Itinirary";
 import { connect } from "react-redux";
 import citiesAction from "../redux/actions/citiesAction";
+import authActions from "../redux/actions/authAction";
 import itineraryAction from "../redux/actions/itinerariesAction";
 
 class City extends React.Component {
   
   componentDidMount() {
     window.scrollTo(0, 0);
+    this.props.getAllUsers();
     this.props.getItineraryByCity(this.props.params.city);
     this.props.cities > 0
       ? this.props.findCity(this.props.params.city)
@@ -83,8 +85,15 @@ class City extends React.Component {
             </div>
             <div className="flex flex-col justify-center items-center my-24">
               {this.state.itinerary.length > 0 ? (
-                this.state.itinerary.map((itinerary) => {
-                  return <Itenirary itinerary={itinerary} key={itinerary.userName} />;
+                this.state.itinerary.map((itinerary, index) => {
+                  // this.props.getItineraryByCity(this.props.params.city)
+                  return <Itenirary 
+                  itinerary={itinerary} 
+                  key={index} 
+                  users={this.props.users} 
+                  fetch={this.props.getItineraryByCity}
+                  idCity={this.props.params.city}
+                  />;
                 })
               ) : (
                 <div className="flex justify-center align-center items-center flex-col">
@@ -115,6 +124,7 @@ const mapStateToProps = (state) => {
     city: state.citiesReducer.city,
     itinerary: state.itinerariesReducer.itineraryListByCity,
     cities: state.citiesReducer.cities,
+    users: state.authReducer.users,
   };
 };
 
@@ -122,6 +132,7 @@ const mapDispatchToProps = {
   fetchCities: citiesAction.fetchCities,
   findCity: citiesAction.findCity,
   getItineraryByCity: itineraryAction.getItineraryByCity,
+  getAllUsers: authActions.getAllUsers,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(City);

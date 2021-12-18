@@ -9,7 +9,8 @@ const usersControllers = require("../controllers/usersControllers");
 const commentsControllers = require("../controllers/commentsControllers");
 const activitiesControllers = require("../controllers/activitiesControllers");
 
-const { getAllCities, getCity, addCity, deleteCity, modifyCity } = citiesControllers;
+const { getAllCities, getCity, addCity, deleteCity, modifyCity } =
+  citiesControllers;
 
 const {
   getAllItineraries,
@@ -21,7 +22,8 @@ const {
   LikeAndDislike,
 } = itinerariesControllers;
 
-const { newUser, accessAccount, accessWithToken } = usersControllers;
+const { newUser, accessAccount, accessWithToken, getAllUsers } =
+  usersControllers;
 
 const { addComment, getComments, updateComment, deleteComment } =
   commentsControllers;
@@ -56,6 +58,8 @@ Router.route("/user/signin/token").post(
   passport.authenticate("jwt", { session: false }),
   accessWithToken
 );
+
+Router.route("/users").get(getAllUsers);
 
 // comentarios
 Router.route("/itineraries/comments/:id")

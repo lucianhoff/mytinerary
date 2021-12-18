@@ -10,6 +10,7 @@ const itineraryAction = {
 
             dispatch({type: "GET_ITINERARY", payload: res.data.response})
         }
-    }
+    },
+   
 }
 export default itineraryAction

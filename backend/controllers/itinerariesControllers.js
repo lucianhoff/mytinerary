@@ -7,6 +7,7 @@ const itinerariesControllers = {
 
     try {
       itineraries = await Itinerary.find().populate("cityRelated");
+      
     } catch (err) {
       error = err;
       console.log(error);
@@ -81,7 +82,6 @@ const itinerariesControllers = {
       update = await Itinerary.findOneAndUpdate({ _id: id }, itineraries, {
         new: true,
       });
-      // console.log(update);
     } catch (err) {
       console.log(err);
     }

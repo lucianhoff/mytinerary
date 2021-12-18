@@ -83,6 +83,16 @@ const authActions = {
       dispatch({ type: "user", payload: {} });
     };
   },
+  getAllUsers: () => {
+    return async (dispatch, getState) => {
+      try {
+        const users = await axios.get("http://localhost:4000/api/users");
+        dispatch({ type: "users", payload: users.data.response });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  }
 };
 
 export default authActions;

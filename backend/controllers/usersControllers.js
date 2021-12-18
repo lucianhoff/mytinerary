@@ -12,7 +12,7 @@ const usersControllers = {
       photoURL,
       country,
       googleUser,
-    } = req.body
+    } = req.body;
 
     try {
       const emailExists = await User.findOne({ email });
@@ -32,7 +32,7 @@ const usersControllers = {
           password: encryptedPassword,
           photoURL,
           country,
-          googleUser
+          googleUser,
         });
 
         await newUser.save();
@@ -83,6 +83,30 @@ const usersControllers = {
       res.json({ success: true, response: userAuth, error: null });
     } catch (error) {
       console.log(error);
+      res.json({ success: false, response: null, error: error });
+    }
+  },
+  getAllUsers: async (req, res) => {
+    try {
+      const users = await User.find();
+
+      let userArray = [];
+
+      users.map((user) => {
+        userArray.push({
+          photoURL: user.photoURL,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          id: user._id,
+        });
+      });
+
+      res.json({
+        success: true,
+        response: userArray,
+        error: null,
+      });
+    } catch (error) {
       res.json({ success: false, response: null, error: error });
     }
   },
