@@ -37,14 +37,14 @@ const commentsControllers = {
   deleteComment: async (req, res) => {
     try {
       const deletedComment = await Itinerary.findOneAndUpdate(
-        req.params.id,
+        { _id: req.params.idItinerary},
         {
           $pull: {
             comments: { _id: req.params.idComment },
           },
         },
         { new: true }
-      );
+      )
       console.log("comentario borrado");
       res.json({ success: true, response: deletedComment, error: null });
     } catch (e) {
@@ -56,6 +56,7 @@ const commentsControllers = {
     }
   },
   updateComment: async (req, res) => {
+
     try {
       let updatedComment = await Itinerary.findOneAndUpdate(
         { "comments._id": req.params.id },
@@ -65,11 +66,12 @@ const commentsControllers = {
       if (updatedComment) {
         res.json({ success: true, response: updatedComment.comments });
       } else {
-        console.log("no se encontro el comentario");
+        console.log("no se encontro el comentario")
       }
     } catch (error) {
       res.json({ success: false, response: error.message });
     }
+    
   },
 }
 

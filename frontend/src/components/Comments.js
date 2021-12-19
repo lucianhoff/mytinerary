@@ -4,7 +4,7 @@ import authAction from "../redux/actions/authAction";
 import Comment from "./Comment";
 import commentAction from "../redux/actions/commentAction";
 
-const Comments = ( { comment, users, user, addComment, id, fetch, idCity } ) => {
+const Comments = ( { comment, users, user, addComment, id, fetch, idCity, deleteComment, updateComment } ) => {
 
   const input = useRef()
   
@@ -17,16 +17,21 @@ const Comments = ( { comment, users, user, addComment, id, fetch, idCity } ) => 
     input.current.value = ""
   }
 
-  
-  
-  console.log(fetch, idCity)
-
   return (
     <>
       <div className="bg-purple-700 p-5 rounded-lg flex flex-col justify-center items-center ">
         <div className="overflow-y-scroll h-80 p-2 scrollbarcomments">
         {comment.map((comment, index) => {
-                return <Comment key={index} comment={comment} users={users}/>;
+                return <Comment
+                updateComment={updateComment}
+                key={index} 
+                comment={comment}
+                fetch={fetch} 
+                idCity={idCity} 
+                users={users} 
+                id={id} 
+                deleteComment={deleteComment}
+                />
               })}
         </div>
 
@@ -63,7 +68,7 @@ const Comments = ( { comment, users, user, addComment, id, fetch, idCity } ) => 
             
               setTimeout(() => {
                 fetch(idCity)
-              }, 0.1)
+              }, 300)
 
             }}
             className="flex rotate-send items-center leading-normal border-0 px-3 whitespace-no-wrap text-gray-600">
@@ -94,7 +99,9 @@ const mapDispatchToProps = {
   accessWithToken: authAction.accessWithToken,
   accessAccount: authAction.accessAccount,
   SignOut: authAction.SignOut,
-  addComment: commentAction.addComment
+  addComment: commentAction.addComment,
+  deleteComment: commentAction.deleteComment,
+  updateComment: commentAction.updateComment,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comments)

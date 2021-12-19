@@ -125,14 +125,14 @@ const Itenirary = ({ itinerary, users, fetch, idCity }) => {
                 <span className="text-white font-bold text-xl cursor-pointer hover:text-purple-300">
                   View Less
                 </span>
-                <FaAngleUp className="text-white text-3xl" />
+                <FaAngleUp className="text-white text-3xl  cursor-pointer" />
               </div>
             ) : (
               <div className="flex" onClick={handleDisplay}>
                 <span className="text-white font-bold text-xl cursor-pointer hover:text-purple-300">
                   View More
                 </span>
-                <FaAngleDown className="text-white text-3xl" />
+                <FaAngleDown className="text-white text-3xl  cursor-pointer" />
               </div>
             )}
           </div>

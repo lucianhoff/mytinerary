@@ -65,11 +65,10 @@ Router.route("/users").get(getAllUsers);
 Router.route("/itineraries/comments/:id")
   .post(addComment)
   .get(getComments)
-  .put(updateComment);
-
-Router.route("/itineraries/comments/:idItinerary/:idComment").delete(
-  deleteComment
-);
+  .put(updateComment)
+  
+Router.route("/itineraries/comments/:idItinerary/:idComment")
+  .delete(deleteComment)
 
 // likes
 
