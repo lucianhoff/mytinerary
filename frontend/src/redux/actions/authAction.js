@@ -41,6 +41,26 @@ const authActions = {
         if (user.data.success && !user.data.error) {
           localStorage.setItem("token", user.data.response.token);
           
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "bottom-right",
+            showConfirmButton: false,
+            timer: 3000,
+            confirmButtonColor: "#9333ea",
+            background: "#9333ea",
+            iconColor: "#e9d5ff",
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+      
+          Toast.fire({
+            icon: "success",
+            title: `<span style="color:#FFF"> Welcome, ${values.firstName}! :)<span>`,
+          });
+
           dispatch({ type: "user", payload: user.data.response });
         }
         

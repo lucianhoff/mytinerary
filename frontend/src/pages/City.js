@@ -18,7 +18,6 @@ class City extends React.Component {
     this.props.cities > 0
       ? this.props.findCity(this.props.params.city)
       : this.props.fetchCities();
-    console.log(this.props.params);
   }
 
   state = {
@@ -86,13 +85,13 @@ class City extends React.Component {
             <div className="flex flex-col justify-center items-center my-24">
               {this.state.itinerary.length > 0 ? (
                 this.state.itinerary.map((itinerary, index) => {
-                  // this.props.getItineraryByCity(this.props.params.city)
                   return <Itenirary 
                   itinerary={itinerary} 
                   key={index} 
                   users={this.props.users} 
                   fetch={this.props.getItineraryByCity}
                   idCity={this.props.params.city}
+                  likes={this.props.LikeAndDislike}
                   />;
                 })
               ) : (
@@ -133,6 +132,7 @@ const mapDispatchToProps = {
   findCity: citiesAction.findCity,
   getItineraryByCity: itineraryAction.getItineraryByCity,
   getAllUsers: authActions.getAllUsers,
+  LikeAndDislike: itineraryAction.LikeAndDislike,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(City);

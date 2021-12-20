@@ -15,12 +15,18 @@ const commentsControllers = {
     }
   },
   addComment: async (req, res) => {
+
+
     try {
+      console.log(req.body)
       const newComment = await Itinerary.findOneAndUpdate(
         { _id: req.params.id},
         {
           $push: {
-            comments: req.body,
+            comments: {
+              userId: req.user._id,
+              commentary: req.body.commentary,
+            },
           },
         },
         { new: true }
@@ -29,8 +35,8 @@ const commentsControllers = {
     } catch (e) {
       res.json({
         success: false,
-        response: newComment,
-        e: error,
+        response: null,
+        e: e,
       });
     }
   },

@@ -69,6 +69,8 @@ const usersControllers = {
             response: { token, ...userExists._doc },
             error: null,
           });
+
+          
         } else {
           res.json({ success: true, error: "Email or Password is incorrect" });
         }

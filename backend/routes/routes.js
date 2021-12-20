@@ -63,12 +63,12 @@ Router.route("/users").get(getAllUsers);
 
 // comentarios
 Router.route("/itineraries/comments/:id")
-  .post(addComment)
+  .post(passport.authenticate("jwt", { session: false }),addComment)
+  .put(passport.authenticate("jwt", { session: false }),updateComment)
   .get(getComments)
-  .put(updateComment)
-  
+
 Router.route("/itineraries/comments/:idItinerary/:idComment")
-  .delete(deleteComment)
+.delete(passport.authenticate("jwt", { session: false }), deleteComment);
 
 // likes
 

@@ -1,38 +1,85 @@
 import { connect } from "react-redux";
-import { useRef } from "react"
+import { useRef } from "react";
 import authAction from "../redux/actions/authAction";
 import Comment from "./Comment";
 import commentAction from "../redux/actions/commentAction";
+import Swal from "sweetalert2";
+const Comments = ({
+  comment,
+  users,
+  user,
+  addComment,
+  id,
+  fetch,
+  idCity,
+  deleteComment,
+  updateComment,
+}) => {
+  const input = useRef();
 
-const Comments = ( { comment, users, user, addComment, id, fetch, idCity, deleteComment, updateComment } ) => {
+   const handleComment = async () => {
+    
+     let commentObj = {
+       commentary: input.current.value
+     };
+     const addComentAwait = await addComment(id, commentObj);
+     input.current.value = "";
+     console.log(addComentAwait);
 
-  const input = useRef()
-  
-  const handleComment = () => {
-    let commentObj = {
-      userId: user._id,
-      commentary: input.current.value,
-    }
-    addComment(id, commentObj)
-    input.current.value = ""
-  }
+      if (addComentAwait.success) {
+        
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "bottom-end",
+          showConfirmButton: false,
+          timer: 3000,
+          confirmButtonColor: "#9333ea",
+          background: "#9333ea",
+          iconColor: "#e9d5ff",
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+    
+        Toast.fire({
+          icon: "success",
+          title: `<span style="color:#FFF"> Comment added successfully!<span>`,
+        });
+
+        fetch(idCity);
+      }
+     }
 
   return (
     <>
       <div className="bg-purple-700 p-5 rounded-lg flex flex-col justify-center items-center ">
         <div className="overflow-y-scroll h-80 p-2 scrollbarcomments">
-        {comment.map((comment, index) => {
-                return <Comment
-                updateComment={updateComment}
-                key={index} 
-                comment={comment}
-                fetch={fetch} 
-                idCity={idCity} 
-                users={users} 
-                id={id} 
-                deleteComment={deleteComment}
+          {comment.length >= 1 ? (
+            comment.map((comment, index) => {
+              return (
+                <Comment
+                  updateComment={updateComment}
+                  key={index}
+                  comment={comment}
+                  fetch={fetch}
+                  idCity={idCity}
+                  users={users}
+                  id={id}
+                  deleteComment={deleteComment}
                 />
-              })}
+              );
+            })
+          ) : (
+            <>
+              <div className="bg-purple-300 py-2 rounded-lg rounded-r-lg px-32">
+                <div name="comentarios" className="">
+                <p className="text-purple-600 py-3 pl-5 fw-bold">There are no comments on this itinerary, be the first!</p>
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         {/* INPUT */}
@@ -63,16 +110,13 @@ const Comments = ( { comment, users, user, addComment, id, fetch, idCity, delete
             ref={input}
           />
           <div className="flex -mr-px bg-purple-300  rounded-r-lg">
-            <span 
-            onClick={() => {handleComment(); 
-            
-              setTimeout(() => {
-                fetch(idCity)
-              }, 300)
+            <span
+              onClick={() => {
+                handleComment();
 
-            }}
-            className="flex rotate-send items-center leading-normal border-0 px-3 whitespace-no-wrap text-gray-600">
-              
+              }}
+              className="flex rotate-send items-center leading-normal border-0 px-3 whitespace-no-wrap text-gray-600"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 cursor-pointer"
@@ -104,4 +148,4 @@ const mapDispatchToProps = {
   updateComment: commentAction.updateComment,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Comments)
+export default connect(mapStateToProps, mapDispatchToProps)(Comments);

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import itineraryAction from "../redux/actions/itinerariesAction";
 import Comments from "./Comments";
 
-const Itenirary = ({ itinerary, users, fetch, idCity }) => {
+const Itenirary = ({ itinerary, users, fetch, idCity, likes, user }) => {
   const [display, setDisplay] = useState(false);
 
   const handleDisplay = () => {
@@ -21,6 +21,33 @@ const Itenirary = ({ itinerary, users, fetch, idCity }) => {
       </div>
     );
   }
+  console.log(likes);
+
+  // 118
+  const likesAndDislikes =  async () => {
+    let like;
+
+    {
+      itinerary.likes.some(like => like === user._id)
+        ? (like = {
+            itineraryId: itinerary._id,
+            userId: user._id,
+            bool: false,
+          })
+        : (like = {
+            itineraryId: itinerary._id,
+            userId: user._id,
+            bool: true,
+          });
+    }
+
+    const likeFunction = await likes(like);
+
+    if(likeFunction.success) {
+      fetch(idCity);
+    }
+    console.log(itinerary);
+  };
 
   console.log(itinerary);
 
@@ -97,26 +124,34 @@ const Itenirary = ({ itinerary, users, fetch, idCity }) => {
             </div>
           ) : (
             <div className="flex justify-center">
-              <Comments comment={itinerary.comments} users={users} id={itinerary._id} fetch={fetch} idCity={idCity} />
+              <Comments
+                comment={itinerary.comments}
+                users={users}
+                id={itinerary._id}
+                fetch={fetch}
+                idCity={idCity}
+              />
             </div>
           ))}
         <div className="z-50 p-2 px-3 bg-purple-600 sm:m-2.5 md:m-0 flex md:flex-row aling-center items-center justify-between sm:flex-row rounded-b-lg mt-3">
           <div className="flex justify-center align-center items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8 text-white"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                clipRule="evenodd"
-              />
-            </svg>
+            <span onClick={() => likesAndDislikes()}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className={`h-8 w-8 ${itinerary.likes.some(like => like === user._id) ? "text-red-500" : "text-white" }` }
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </span>
             <span className="text-white font-bold text-xl">
               {" "}
-              {itinerary.likes}
+              {itinerary.likes.length}
             </span>
           </div>
           <div>
@@ -141,9 +176,14 @@ const Itenirary = ({ itinerary, users, fetch, idCity }) => {
     </>
   );
 };
+const mapStateToProps = (state) => {
+  return {
+    user: state.authReducer.user,
+  };
+};
 
 const mapDispatchToProps = {
   getItineraryByCity: itineraryAction.getItineraryByCity,
 };
 
-export default connect(null, mapDispatchToProps)(Itenirary);
+export default connect(mapStateToProps, mapDispatchToProps)(Itenirary);

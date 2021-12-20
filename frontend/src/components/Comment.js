@@ -89,26 +89,27 @@ const Comment = (props) => {
                             background: "#9333ea",
                             iconColor: "#e9d5ff",
                             confirmButtonColor: "#a78bfa",
-                            icon: 'success',
+                            icon: "success",
                             title: `<span style="color:#FFF">Deleted!<span>`,
                             html: `<span style="color:#FFF">Our commentary has been deleted.<span>`,
-                            
-                          })
+                          });
 
                           props.deleteComment(props.id, props.comment._id);
 
                           setTimeout(() => {
                             props.fetch(props.idCity);
                           }, 300);
-                        }  else if (result.dismiss === Swal.DismissReason.cancel) {
+                        } else if (
+                          result.dismiss === Swal.DismissReason.cancel
+                        ) {
                           Swal.fire({
                             background: "#9333ea",
                             iconColor: "#e9d5ff",
                             confirmButtonColor: "#a78bfa",
-                            icon: 'error',
+                            icon: "error",
                             title: `<span style="color:#FFF">Cancelled!<span>`,
                             html: `<span style="color:#FFF">Your commentary is safe.<span>`,
-                          })
+                          });
                         }
                       });
                     }}
@@ -151,28 +152,18 @@ const Comment = (props) => {
                       className="inline-flex bg-purple-600 text-white rounded-full h-6 px-3 justify-center items-center py-3"
                       onClick={() => {
                         if (input.current.value !== "") {
-                          
-                          const Toast = Swal.mixin({
-                            toast: true,
+                          Swal.fire({
                             position: "bottom-center",
-                            showConfirmButton: false,
-                            timer: 3000,
-                            confirmButtonColor: "#9333ea",
-                            background: "#9333ea",
-                            iconColor: "#e9d5ff",
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                              toast.addEventListener("mouseenter", Swal.stopTimer);
-                              toast.addEventListener("mouseleave", Swal.resumeTimer);
-                            },
-                          });
-                      
-                          Toast.fire({
                             icon: "success",
-                            title: `<span style="color:#FFF"> Commentary edited! <span>`,
-                          });
+                            showConfirmButton: false,
+                            timer: 1500,
+                            iconColor: "#e9d5ff",
+                            background: "#9333ea",
+                            title: `<span style="color:#FFF"> The comment was edited successfully <span>`,
+                          })
 
-                          handleEditComment()}
+                          handleEditComment();
+                        }
                       }}
                     >
                       <svg
@@ -195,6 +186,17 @@ const Comment = (props) => {
                     <button
                       className="inline-flex bg-purple-600 text-white rounded-full h-6 px-3 justify-center items-center ml-3 py-3"
                       onClick={() => {
+
+                        Swal.fire({
+                          position: "bottom-center",
+                          icon: "error",
+                          showConfirmButton: false,
+                          timer: 1500,
+                          iconColor: "#e9d5ff",
+                          background: "#9333ea",
+                          title: `<span style="color:#FFF"> The comment was not edited <span>`,
+                        })
+
                         setEditMode(!editMode);
                       }}
                     >

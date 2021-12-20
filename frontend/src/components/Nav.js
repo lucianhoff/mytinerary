@@ -10,28 +10,6 @@ import authAction from "../redux/actions/authAction";
 import Swal from "sweetalert2";
 
 function NavMain(props) {
-  if (props.user.photoURL) {
-    const Toast = Swal.mixin({
-      toast: true,
-      position: "bottom-right",
-      showConfirmButton: false,
-      timer: 3000,
-      confirmButtonColor: "#9333ea",
-      background: "#9333ea",
-      iconColor: "#e9d5ff",
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener("mouseenter", Swal.stopTimer);
-        toast.addEventListener("mouseleave", Swal.resumeTimer);
-      },
-    });
-
-    Toast.fire({
-      icon: "success",
-      title: `<span style="color:#FFF"> Welcome, ${props.user.firstName}! :)<span>`,
-    });
-  }
-
   return (
     <header className="fixed z-50 w-full top-0 left-0">
       <div className="w-full overflow-hidden">
