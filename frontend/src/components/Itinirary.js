@@ -24,11 +24,11 @@ const Itenirary = ({ itinerary, users, fetch, idCity, likes, user }) => {
   console.log(likes);
 
   // 118
-  const likesAndDislikes =  async () => {
+  const likesAndDislikes = async () => {
     let like;
 
     {
-      itinerary.likes.some(like => like === user._id)
+      itinerary.likes.some((like) => like === user._id)
         ? (like = {
             itineraryId: itinerary._id,
             userId: user._id,
@@ -43,7 +43,7 @@ const Itenirary = ({ itinerary, users, fetch, idCity, likes, user }) => {
 
     const likeFunction = await likes(like);
 
-    if(likeFunction.success) {
+    if (likeFunction.success) {
       fetch(idCity);
     }
     console.log(itinerary);
@@ -53,7 +53,7 @@ const Itenirary = ({ itinerary, users, fetch, idCity, likes, user }) => {
 
   return (
     <>
-      <div className="flex flex-col justify-center shadow-lg rounded-t-lg rounded-b-lg bg-purple-600 p-5 mt-5">
+      <div className="flex flex-col justify-center shadow-lg rounded-t-lg rounded-b-lg bg-purple-600 max-w-50 py-5 px-9 mt-5">
         <div className="relative flex justify-center flex-col rounded-t-lg md:flex-row md:space-x-5 space-y-3 md:space-y-0  p-3 max-w-xs md:max-w-3xl mx-auto bg-purple-600 ">
           <div className="w-full md:w-1/2 bg-purple-600 grid place-items-center">
             <img src={itinerary.coverpage} alt="pic" className="rounded-xl" />
@@ -106,6 +106,7 @@ const Itenirary = ({ itinerary, users, fetch, idCity, likes, user }) => {
             </p>
           </div>
         </div>
+
         {display &&
           (!itinerary.title ? (
             <div className="my-5 px-auto bg-purple-600 transition-all">
@@ -123,22 +124,73 @@ const Itenirary = ({ itinerary, users, fetch, idCity, likes, user }) => {
               </div>
             </div>
           ) : (
-            <div className="flex justify-center">
-              <Comments
-                comment={itinerary.comments}
-                users={users}
-                id={itinerary._id}
-                fetch={fetch}
-                idCity={idCity}
-              />
-            </div>
+            <>
+              <div className="grid grid-cols-3 gap-1 justify-evenly mb-4">
+                <div>
+                  <div
+                    className="bg-purple-700 w-26 h-52"
+                    style={{
+                      backgroundImage:
+                        "url(https://lh4.googleusercontent.com/B5-BHFE7RDpa_guksqON0nxoYtNAMwp4xIUX2Cvf1XYfrx_2i3NTyoD1m7Dp_tn-rgcJTOUbGy_qY24g1yg2=w1920-h887-rw)",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  ></div>
+                  <h3 className="text-center fw-bold text-2xl py-2 my-2 bg-purple-300 rounded text-purple-600">
+                    Titulo
+                  </h3>
+                </div>
+                <div>
+                  <div
+                    className="bg-purple-700 w-26 h-52"
+                    style={{
+                      backgroundImage:
+                        "url(https://fondosmil.com/fondo/80566.jpg)",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  ></div>
+                  <h3 className="text-center fw-bold text-2xl py-2 my-2 bg-purple-300 rounded text-purple-600">
+                    Titulo
+                  </h3>
+                </div>
+
+                <div>
+                  <div
+                    className="bg-purple-700 w-26 h-52"
+                    style={{
+                      backgroundImage:
+                        "url(https://fondosmil.com/fondo/80566.jpg)",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  ></div>
+                  <h3 className="text-center fw-bold text-2xl py-2 my-2 bg-purple-300 rounded text-purple-600">
+                    Titulo
+                  </h3>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <Comments
+                  comment={itinerary.comments}
+                  users={users}
+                  id={itinerary._id}
+                  fetch={fetch}
+                  idCity={idCity}
+                />
+              </div>
+            </>
           ))}
         <div className="z-50 p-2 px-3 bg-purple-600 sm:m-2.5 md:m-0 flex md:flex-row aling-center items-center justify-between sm:flex-row rounded-b-lg mt-3">
           <div className="flex justify-center align-center items-center">
             <span onClick={() => likesAndDislikes()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className={`h-8 w-8 ${itinerary.likes.some(like => like === user._id) ? "text-red-500" : "text-white" }` }
+                className={`h-8 w-8 ${
+                  itinerary.likes.some((like) => like === user._id)
+                    ? "text-red-500"
+                    : "text-white"
+                }`}
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >

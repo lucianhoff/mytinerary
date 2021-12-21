@@ -52,8 +52,8 @@ const Comments = ({
 
   return (
     <>
-      <div className="bg-purple-700 p-5 rounded-lg flex flex-col justify-center items-center ">
-        <div className="overflow-y-scroll h-80 p-2 scrollbarcomments">
+      <div className="bg-purple-700 p-2 rounded-lg flex flex-col justify-center items-center ">
+        <div className="overflow-y-scroll h-80 scrollbarcomments">
           {comment.length >= 1 ? (
             comment.map((comment, index) => {
               return (
@@ -120,7 +120,7 @@ const Comments = ({
           />
           <div className="flex -mr-px bg-purple-300  rounded-r-lg">
             <span
-              onClick={() => {
+              onClick={(e) => {
                 if(input.current.value !== "") {
                   if (e.key === "Enter" || e.key === "EnterNumpad") {
                     handleComment();

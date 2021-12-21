@@ -10,13 +10,16 @@ const activityControllers = {
     }
   },
   addActivities: async (req, res) => {
-    const { title, img, itinerary } = req.body;
-    new Activity({ title, img, itinerary }).save();
+
+    let newActivity = new Activity({ ...req.body})
+
     try {
-      res.json({ response });
+      await newActivity.save()
+      res.json( { success: true, activity: newActivity} )
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
+
   },
   getActivity: async (req, res) => {
     let activity;
