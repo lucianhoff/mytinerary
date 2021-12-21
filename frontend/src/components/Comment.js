@@ -143,7 +143,19 @@ const Comment = (props) => {
                     ref={input}
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === "EnterNumpad") {
-                        handleEditComment();
+                        if (input.current.value !== "") {
+                          Swal.fire({
+                            position: "bottom-center",
+                            icon: "success",
+                            showConfirmButton: false,
+                            timer: 1500,
+                            iconColor: "#e9d5ff",
+                            background: "#9333ea",
+                            title: `<span style="color:#FFF"> The comment was edited successfully <span>`,
+                          })
+
+                          handleEditComment();
+                        }
                       }
                     }}
                   />

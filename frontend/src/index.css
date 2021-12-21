@@ -34,16 +34,16 @@ code {
 
 /* SCROLL BAR */
 
-body::-webkit-scrollbar, .scrollbarcomments::-webkit-scrollbar {
+body::-webkit-scrollbar,
+.scrollbarcomments::-webkit-scrollbar {
   width: 7px;
 }
 
-body::-webkit-scrollbar-thumb, .scrollbarcomments::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb,
+.scrollbarcomments::-webkit-scrollbar-thumb {
   background-color: #7c3aed;
   border-radius: 5px;
 }
-
-
 
 .footer {
   position: relative;
@@ -56,5 +56,17 @@ button .GoogleButton {
 }
 
 .rotate-send {
-  transform: rotate(90deg)
+  transform: rotate(90deg);
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
+
+.select {
+  top: auto;
+  bottom: 100%;
 }

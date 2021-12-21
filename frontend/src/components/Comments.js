@@ -17,40 +17,38 @@ const Comments = ({
 }) => {
   const input = useRef();
 
-   const handleComment = async () => {
-    
-     let commentObj = {
-       commentary: input.current.value
-     };
-     const addComentAwait = await addComment(id, commentObj);
-     input.current.value = "";
-     console.log(addComentAwait);
+  const handleComment = async () => {
+    let commentObj = {
+      commentary: input.current.value,
+    };
+    const addComentAwait = await addComment(id, commentObj);
+    input.current.value = "";
+    console.log(addComentAwait);
 
-      if (addComentAwait.success) {
-        
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "bottom-end",
-          showConfirmButton: false,
-          timer: 3000,
-          confirmButtonColor: "#9333ea",
-          background: "#9333ea",
-          iconColor: "#e9d5ff",
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
-    
-        Toast.fire({
-          icon: "success",
-          title: `<span style="color:#FFF"> Comment added successfully!<span>`,
-        });
+    if (addComentAwait.success) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        timer: 3000,
+        confirmButtonColor: "#9333ea",
+        background: "#9333ea",
+        iconColor: "#e9d5ff",
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
 
-        fetch(idCity);
-      }
-     }
+      Toast.fire({
+        icon: "success",
+        title: `<span style="color:#FFF"> Comment added successfully!<span>`,
+      });
+
+      fetch(idCity);
+    }
+  };
 
   return (
     <>
@@ -75,7 +73,9 @@ const Comments = ({
             <>
               <div className="bg-purple-300 py-2 rounded-lg rounded-r-lg px-32">
                 <div name="comentarios" className="">
-                <p className="text-purple-600 py-3 pl-5 fw-bold">There are no comments on this itinerary, be the first!</p>
+                  <p className="text-purple-600 py-3 pl-5 fw-bold">
+                    There are no comments on this itinerary, be the first!
+                  </p>
                 </div>
               </div>
             </>
@@ -108,13 +108,48 @@ const Comments = ({
             htmlFor="comment"
             placeholder="Enter your comment"
             ref={input}
+            onKeyDown={(e) => {
+              if(input.current.value !== "") {
+                if (e.key === "Enter" || e.key === "EnterNumpad") {
+                  handleComment();
+                }
+              } else {
+
+              }
+            }}
           />
           <div className="flex -mr-px bg-purple-300  rounded-r-lg">
             <span
               onClick={() => {
-                handleComment();
-
+                if(input.current.value !== "") {
+                  if (e.key === "Enter" || e.key === "EnterNumpad") {
+                    handleComment();
+                  }
+                } else {
+                  const Toast = Swal.mixin({
+                    toast: true,
+                    position: "bottom-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    confirmButtonColor: "#9333ea",
+                    background: "#9333ea",
+                    iconColor: "#e9d5ff",
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                      toast.addEventListener("mouseenter", Swal.stopTimer);
+                      toast.addEventListener("mouseleave", Swal.resumeTimer);
+                    },
+                  });
+            
+                  Toast.fire({
+                    icon: "error",
+                    title: `<span style="color:#FFF"> Error!<span>`,
+                  });
+                }
+                
+                
               }}
+              
               className="flex rotate-send items-center leading-normal border-0 px-3 whitespace-no-wrap text-gray-600"
             >
               <svg
