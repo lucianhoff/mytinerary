@@ -4,6 +4,7 @@ import authAction from "../redux/actions/authAction";
 import Comment from "./Comment";
 import commentAction from "../redux/actions/commentAction";
 import Swal from "sweetalert2";
+
 const Comments = ({
   comment,
   users,
@@ -23,7 +24,6 @@ const Comments = ({
     };
     const addComentAwait = await addComment(id, commentObj);
     input.current.value = "";
-    console.log(addComentAwait);
 
     if (addComentAwait.success) {
       const Toast = Swal.mixin({
@@ -113,8 +113,6 @@ const Comments = ({
                 if (e.key === "Enter" || e.key === "EnterNumpad") {
                   handleComment();
                 }
-              } else {
-
               }
             }}
           />

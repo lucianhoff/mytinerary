@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import "../style.css";
 import { connect } from "react-redux";
 import itineraryAction from "../redux/actions/itinerariesAction";
 import Comments from "./Comments";
 
-const Itenirary = ({ itinerary, users, fetch, idCity, likes, user }) => {
+const Itenirary = ({
+  itinerary,
+  users,
+  fetch,
+  idCity,
+  likes,
+  user,
+  activityOfItinerary,
+}) => {
   const [display, setDisplay] = useState(false);
+
+  const [activities, setActivities] = useState([]);
 
   const handleDisplay = () => {
     setDisplay(!display);
@@ -21,12 +31,10 @@ const Itenirary = ({ itinerary, users, fetch, idCity, likes, user }) => {
       </div>
     );
   }
-  console.log(likes);
 
-  // 118
   const likesAndDislikes = async () => {
+    /* eslint-enable no-alert, no-console */
     let like;
-
     {
       itinerary.likes.some((like) => like === user._id)
         ? (like = {
@@ -46,10 +54,13 @@ const Itenirary = ({ itinerary, users, fetch, idCity, likes, user }) => {
     if (likeFunction.success) {
       fetch(idCity);
     }
-    console.log(itinerary);
   };
 
-  console.log(itinerary);
+  useEffect(() => {
+    activityOfItinerary(itinerary._id).then((res) => {
+      setActivities(res.response);
+    });
+  }, []);
 
   return (
     <>
@@ -126,49 +137,25 @@ const Itenirary = ({ itinerary, users, fetch, idCity, likes, user }) => {
           ) : (
             <>
               <div className="grid grid-cols-3 gap-1 justify-evenly mb-4">
-                <div>
-                  <div
-                    className="bg-purple-700 w-26 h-52"
-                    style={{
-                      backgroundImage:
-                        "url(https://lh4.googleusercontent.com/B5-BHFE7RDpa_guksqON0nxoYtNAMwp4xIUX2Cvf1XYfrx_2i3NTyoD1m7Dp_tn-rgcJTOUbGy_qY24g1yg2=w1920-h887-rw)",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  ></div>
-                  <h3 className="text-center fw-bold text-2xl py-2 my-2 bg-purple-300 rounded text-purple-600">
-                    Titulo
-                  </h3>
-                </div>
-                <div>
-                  <div
-                    className="bg-purple-700 w-26 h-52"
-                    style={{
-                      backgroundImage:
-                        "url(https://fondosmil.com/fondo/80566.jpg)",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  ></div>
-                  <h3 className="text-center fw-bold text-2xl py-2 my-2 bg-purple-300 rounded text-purple-600">
-                    Titulo
-                  </h3>
-                </div>
-
-                <div>
-                  <div
-                    className="bg-purple-700 w-26 h-52"
-                    style={{
-                      backgroundImage:
-                        "url(https://fondosmil.com/fondo/80566.jpg)",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  ></div>
-                  <h3 className="text-center fw-bold text-2xl py-2 my-2 bg-purple-300 rounded text-purple-600">
-                    Titulo
-                  </h3>
-                </div>
+                {activities.length > 0 &&
+                  activities.map((activity, index) => {
+                    return (
+                      <div key={index}>
+                        <div
+                          className="bg-purple-700 w-26 h-52"
+                          style={{
+                            backgroundImage: `url(https://by3301files.storage.live.com/y4me7LAmY5KzLeu104cz75Xa9yEYvSFbZu4GtCfH0MURN8uYj74kr6ZkLvR-RQF8tlzkzN6I-Ok7LD9Elr4jYS2V9cnC3LgiWeZfl--nXIac4uMvKJ_MUb43diOZLiCwrF1Gn5AnFssF9ljxqh3kHZtzszo3cPVhT9JjBCxBmS8uaoIzud28R_1DZiwOLS2Dw2v?width=1000&height=667&cropmode=none)`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                          }}
+                        ></div>
+                        <h3 className="text-center fw-bold text-2xl py-2 my-2 bg-purple-300 rounded text-purple-600">
+                          {activity.title}
+                        </h3>
+                      </div>
+                    );
+                  })}
+                  
               </div>
               <div className="flex justify-center">
                 <Comments

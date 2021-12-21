@@ -7,7 +7,7 @@ const citiesControllers = require("../controllers/citiesControllers");
 const itinerariesControllers = require("../controllers/itinerariesControllers");
 const usersControllers = require("../controllers/usersControllers");
 const commentsControllers = require("../controllers/commentsControllers");
-const activitiesControllers = require("../controllers/activitiesControllers");
+const activitiesControllers = require("../controllers/activityControllers");
 
 const { getAllCities, getCity, addCity, deleteCity, modifyCity } =
   citiesControllers;
@@ -29,12 +29,7 @@ const { addComment, getComments, updateComment, deleteComment } =
   commentsControllers;
 
 const {
-  getActivities,
-  addActivities,
-  getActivity,
-  updateActivity,
-  deleteActivity,
-  getActivityTheCity,
+  addActivity, activityOfItinerary
 } = activitiesControllers;
 
 Router.route("/cities").get(getAllCities).post(addCity);
@@ -74,18 +69,16 @@ Router.route("/itineraries/comments/:idItinerary/:idComment")
 
 Router.route("/itinerary/likes").put(LikeAndDislike);
 
-///////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
 
 // Activities
-Router.route("/itinerary/activities").get(getActivities).post(addActivities);
+Router.route("/activities")
+  .post(addActivity)
 
 //Individual
-Router.route("/activity/:id")
-  .get(getActivity)
-  .put(updateActivity)
-  .delete(deleteActivity);
+Router.route('/activities/:itineraryId')
+.get(activityOfItinerary)
 
 //Activity de un itinerario especifico
-Router.route("/:idItinerary/activities").get(getActivityTheCity);
 
 module.exports = Router;

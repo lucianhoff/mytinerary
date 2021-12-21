@@ -5,9 +5,7 @@ const commentsControllers = {
     const { id } = req.params;
 
     try {
-      const comments = await Itinerary.findById(id).populate(
-        "comments.userId"
-      );
+      const comments = await Itinerary.findById(id).populate("comments.userId");
 
       res.json({ success: true, response: comments, error: null });
     } catch (error) {
@@ -15,12 +13,10 @@ const commentsControllers = {
     }
   },
   addComment: async (req, res) => {
-
-
     try {
-      console.log(req.body)
+      console.log(req.body);
       const newComment = await Itinerary.findOneAndUpdate(
-        { _id: req.params.id},
+        { _id: req.params.id },
         {
           $push: {
             comments: {
@@ -43,7 +39,7 @@ const commentsControllers = {
   deleteComment: async (req, res) => {
     try {
       const deletedComment = await Itinerary.findOneAndUpdate(
-        { _id: req.params.idItinerary},
+        { _id: req.params.idItinerary },
         {
           $pull: {
             comments: { _id: req.params.idComment },
@@ -51,7 +47,6 @@ const commentsControllers = {
         },
         { new: true }
       )
-      console.log("comentario borrado");
       res.json({ success: true, response: deletedComment, error: null });
     } catch (e) {
       res.json({
@@ -62,27 +57,25 @@ const commentsControllers = {
     }
   },
   updateComment: async (req, res) => {
-
     try {
       let updatedComment = await Itinerary.findOneAndUpdate(
         { "comments._id": req.params.id },
-        { $set: { "comments.$.commentary": req.body.commentary } },  
+        { $set: { "comments.$.commentary": req.body.commentary } },
         { new: true }
       );
       if (updatedComment) {
         res.json({ success: true, response: updatedComment.comments });
       } else {
-        console.log("no se encontro el comentario")
+        console.log("no se encontro el comentario");
       }
     } catch (error) {
       res.json({ success: false, response: error.message });
     }
-    
   },
-}
+};
 
 module.exports = commentsControllers;
 
 // .$. operador posicional que limita el contenido del array con la condicion de la matriz
-// entonces va a buscar el primer elemento que cumpla la condicion, o sea que buscara en 
+// entonces va a buscar el primer elemento que cumpla la condicion, o sea que buscara en
 //comments el primer elemento que tenga el id que coincida con el id que le pasamos en la url

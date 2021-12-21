@@ -8,6 +8,8 @@ import { connect } from "react-redux";
 import citiesAction from "../redux/actions/citiesAction";
 import authActions from "../redux/actions/authAction";
 import itineraryAction from "../redux/actions/itinerariesAction";
+import activitiesAction from "../redux/actions/activitiesAction";
+
 
 class City extends React.Component {
   
@@ -92,6 +94,7 @@ class City extends React.Component {
                   fetch={this.props.getItineraryByCity}
                   idCity={this.props.params.city}
                   likes={this.props.LikeAndDislike}
+                  activityOfItinerary={this.props.activityOfItinerary}
                   />;
                 })
               ) : (
@@ -133,6 +136,7 @@ const mapDispatchToProps = {
   getItineraryByCity: itineraryAction.getItineraryByCity,
   getAllUsers: authActions.getAllUsers,
   LikeAndDislike: itineraryAction.LikeAndDislike,
+  activityOfItinerary: activitiesAction.activityOfItinerary
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(City);

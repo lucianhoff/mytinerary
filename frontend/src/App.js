@@ -18,7 +18,7 @@ const Element = withRouter(City);
 function App(props) {
   useEffect(() => {
     async function fetchData() {
-      const user = await props.accessWithToken();
+      // const user = await props.accessWithToken();
     }
     localStorage.getItem("token") && fetchData();
   }, []);

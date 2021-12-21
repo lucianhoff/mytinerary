@@ -64,7 +64,6 @@ const SignIn = (props) => {
                         </span>
                       </div>
                       <input
-                        type="text"
                         className="flex-shrink flex-grow text-purple-600 rubik leading-normal w-px  border-0 h-10 border-grey-light rounded rounded-l-none px-3 self-center relative  font-roboto text-base outline-none"
                         name="email"
                         type="email"

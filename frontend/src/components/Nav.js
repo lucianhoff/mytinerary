@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import DropMenu from "./DropMenu";
 import { connect } from "react-redux";
 import authAction from "../redux/actions/authAction";
-import Swal from "sweetalert2";
 
 function NavMain(props) {
   return (

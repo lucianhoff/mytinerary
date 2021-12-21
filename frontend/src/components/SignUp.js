@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { Formik, Field } from "formik";
 import * as yup from "yup";
 import GoogleLogin from "react-google-login";

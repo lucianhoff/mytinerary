@@ -10,37 +10,8 @@ const authActions = {
         });
 
         if (user.data.success) {
-          Swal.fire({
-            icon: "success",
-            title: `<span style="color:#FFF">Thank you for registering, log in!</span>`,
-            background: "#9333ea",
-            iconColor: "#e9d5ff",
-            confirmButtonColor: "#9333ea",
-          });
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: `<span style="color:#FFF">Email alredy in use</span>`,
-            background: "#9333ea",
-            iconColor: "#e9d5ff",
-            confirmButtonColor: "#9333ea",
-          });
-        }
+          dispatch({ type: "user", payload: user.data.response });
 
-        dispatch({ type: "user", payload: { user } });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-  },
-  accessAccount: (values) => {
-    return async (dispatch, getState) => {
-      try {
-        const user = await axios.post("http://localhost:4000/api/user/signin", {...values })
-
-        if (user.data.success && !user.data.error) {
-          localStorage.setItem("token", user.data.response.token);
-          
           const Toast = Swal.mixin({
             toast: true,
             position: "bottom-right",
@@ -55,7 +26,50 @@ const authActions = {
               toast.addEventListener("mouseleave", Swal.resumeTimer);
             },
           });
-      
+
+          Toast.fire({
+            icon: "success",
+            title: `<span style="color:#FFF" className="rubik"> Welcome, ${user.data.response.firstName}! :)<span>`,
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: `<span style="color:#FFF">Email alredy in use</span>`,
+            background: "#9333ea",
+            iconColor: "#e9d5ff",
+            confirmButtonColor: "#9333ea",
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  },
+  accessAccount: (values) => {
+    return async (dispatch, getState) => {
+      try {
+        const user = await axios.post("http://localhost:4000/api/user/signin", {
+          ...values,
+        });
+
+        if (user.data.success && !user.data.error) {
+          localStorage.setItem("token", user.data.response.token);
+
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "bottom-right",
+            showConfirmButton: false,
+            timer: 3000,
+            confirmButtonColor: "#9333ea",
+            background: "#9333ea",
+            iconColor: "#e9d5ff",
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+
           Toast.fire({
             icon: "success",
             title: `<span style="color:#FFF" className="rubik"> Welcome, ${user.data.response.firstName}! :)<span>`,
@@ -63,7 +77,7 @@ const authActions = {
 
           dispatch({ type: "user", payload: user.data.response });
         }
-        
+
         if (!user.data.success && user.data.error) {
           Swal.fire({
             icon: "error",
@@ -112,7 +126,7 @@ const authActions = {
         console.log(error);
       }
     };
-  }
+  },
 };
 
 export default authActions;

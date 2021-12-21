@@ -24,7 +24,7 @@ const usersControllers = {
         });
       } else {
         const encryptedPassword = bcryptjs.hashSync(password, 10);
-
+        
         const newUser = new User({
           firstName,
           lastName,
@@ -35,8 +35,10 @@ const usersControllers = {
           googleUser,
         });
 
+        const token = jwt.sign({ ...newUser }, process.env.SECRET_KEY);
+        
         await newUser.save();
-        res.json({ success: true, response: newUser, error: null });
+        res.json({ success: true, response: {token, ...newUser._doc}, error: null });
       }
     } catch (error) {
       res.json({ success: false, response: null });
@@ -55,7 +57,7 @@ const usersControllers = {
           response: null,
         });
       }
-      // console.log(userExists)
+
       if (!userExists) {
         res.json({ success: true, error: "Email or Password is incorrect" });
       } else {
@@ -63,7 +65,6 @@ const usersControllers = {
 
         if (passwordMatch) {
           const token = jwt.sign({ ...userExists }, process.env.SECRET_KEY);
-          // console.log({ token, ...userExists });
           res.json({
             success: true,
             response: { token, ...userExists._doc },

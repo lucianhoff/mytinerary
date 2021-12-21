@@ -12,12 +12,9 @@ class SignInPage extends React.Component {
   render() {
     const handleSubmit = async (values) => {
       const error = await this.props.newUser(values);
-      console.log(error);
     };
 
     const responseGoogle = (res) => {
-      console.log(res);
-
       let google = {
         firstName: res.profileObj.givenName,
         lastName: res.profileObj.familyName,
