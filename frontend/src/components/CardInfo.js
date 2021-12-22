@@ -19,11 +19,11 @@ const CardInfo = () => {
       cityName: "Osaka",
       countryName: "Japan",
       image:
-        ".https://by3301files.storage.live.com/y4m1HhGItMtZFUP4iDzeSmXbnk7TWRr-XA4Kmk94nG4RczVCmYh2CWS3PhQh4ox8KiKlLnROxcc13SAYAxKBK4HsVVQlyfASOry2l7vKWQtcZnTlyC5b0Or0mSi1JoJOCMhPFhiEDjU4Pzq4kaTCBqjgV_wOzkRdY_Ur06B5I9f8P8FXTp5uTT9zvhV8NAOD8g-?width=1920&height=1200&cropmode=none",
+        "https://by3301files.storage.live.com/y4m1HhGItMtZFUP4iDzeSmXbnk7TWRr-XA4Kmk94nG4RczVCmYh2CWS3PhQh4ox8KiKlLnROxcc13SAYAxKBK4HsVVQlyfASOry2l7vKWQtcZnTlyC5b0Or0mSi1JoJOCMhPFhiEDjU4Pzq4kaTCBqjgV_wOzkRdY_Ur06B5I9f8P8FXTp5uTT9zvhV8NAOD8g-?width=1920&height=1200&cropmode=none",
       description:
         "Osaka is a large port city and commercial center on the Japanese island of Honshu. It's known for its modern architecture, nightlife and hearty street food.",
       link: "/cities/61a438eef933d146336e4f5c",
-    },
+    }
   ];
 
   return (
