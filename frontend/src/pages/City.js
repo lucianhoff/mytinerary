@@ -10,9 +10,7 @@ import authActions from "../redux/actions/authAction";
 import itineraryAction from "../redux/actions/itinerariesAction";
 import activitiesAction from "../redux/actions/activitiesAction";
 
-
 class City extends React.Component {
-  
   componentDidMount() {
     window.scrollTo(0, 0);
     this.props.getAllUsers();
@@ -51,14 +49,14 @@ class City extends React.Component {
                   <h1 className="text-center">{this.props.city.cityName}</h1>
                 </div>
               </div>
-              <div className="img-city-group flex justify-center align-center items-center">
+              <div className="img-city-group flex flex-col md:flex-row justify-center align-center items-center">
                 <div className="flex flex-col justify-center items-center">
                   <img
                     src="/assets/city/country.png"
                     className="img-city d-flex"
                     alt="country"
                   />
-                  <h3 className="font-bold text-3xl rubik text-purple-600">
+                  <h3 className="font-bold text-2xl md:text-3xl rubik text-purple-600">
                     Country: {this.props.city.countryName}
                   </h3>
                 </div>
@@ -68,7 +66,7 @@ class City extends React.Component {
                     className="img-city d-flex"
                     alt="languages"
                   />
-                  <h3 className="font-bold text-3xl rubik text-purple-600">
+                  <h3 className="font-bold text-2xl rubik  md:text-3xl  text-purple-600">
                     Language: {this.props.city.language}
                   </h3>
                 </div>
@@ -78,29 +76,38 @@ class City extends React.Component {
                     className="img-city d-flex"
                     alt="currency"
                   />
-                  <h3 className="font-bold text-3xl rubik text-purple-600">
+                  <h3 className="font-bold text-2xl rubik  md:text-3xl  text-purple-600">
                     Currency: {this.props.city.currency}
                   </h3>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col justify-center items-center my-24">
+            <div className="flex flex-col justify-center items-center my-24 ">
               {this.state.itinerary.length > 0 ? (
                 this.state.itinerary.map((itinerary, index) => {
-                  return <Itenirary 
-                  itinerary={itinerary} 
-                  key={index} 
-                  users={this.props.users} 
-                  fetch={this.props.getItineraryByCity}
-                  idCity={this.props.params.city}
-                  likes={this.props.LikeAndDislike}
-                  activityOfItinerary={this.props.activityOfItinerary}
-                  />;
+                  return (
+                    <Itenirary
+                      itinerary={itinerary}
+                      key={index}
+                      users={this.props.users}
+                      fetch={this.props.getItineraryByCity}
+                      idCity={this.props.params.city}
+                      likes={this.props.LikeAndDislike}
+                      activityOfItinerary={this.props.activityOfItinerary}
+                    />
+                  );
                 })
               ) : (
                 <div className="flex justify-center align-center items-center flex-col">
-                  <img src="/assets/city/no-itinerary.png" className="w-1/4" alt="No itinerary"/>
-                  <h2 className="text-3xl text-purple-600 font-bold" >We still do not have guides in this city, we are looking for!</h2>
+                  <img
+                    src="/assets/city/no-itinerary.png"
+                    className="w-1/4"
+                    alt="No itinerary"
+                  />
+                  <h2 className="text-3xl text-purple-600 font-bold">
+                    We still do not have guides in this city, we are looking
+                    for!
+                  </h2>
                 </div>
               )}
             </div>
@@ -136,7 +143,7 @@ const mapDispatchToProps = {
   getItineraryByCity: itineraryAction.getItineraryByCity,
   getAllUsers: authActions.getAllUsers,
   LikeAndDislike: itineraryAction.LikeAndDislike,
-  activityOfItinerary: activitiesAction.activityOfItinerary
+  activityOfItinerary: activitiesAction.activityOfItinerary,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(City);

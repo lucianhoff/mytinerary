@@ -17,36 +17,38 @@ const Comments = ({
   updateComment,
 }) => {
   const input = useRef();
-
+  console.log(user)
   const handleComment = async () => {
-    let commentObj = {
-      commentary: input.current.value,
-    };
-    const addComentAwait = await addComment(id, commentObj);
-    input.current.value = "";
+    if (user._id) {
+      let commentObj = {
+        commentary: input.current.value,
+      };
+      const addComentAwait = await addComment(id, commentObj);
+      input.current.value = "";
 
-    if (addComentAwait.success) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "bottom-end",
-        showConfirmButton: false,
-        timer: 3000,
-        confirmButtonColor: "#9333ea",
-        background: "#9333ea",
-        iconColor: "#e9d5ff",
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
+      if (addComentAwait.success) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "bottom-end",
+          showConfirmButton: false,
+          timer: 3000,
+          confirmButtonColor: "#9333ea",
+          background: "#9333ea",
+          iconColor: "#e9d5ff",
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
 
-      Toast.fire({
-        icon: "success",
-        title: `<span style="color:#FFF"> Comment added successfully!<span>`,
-      });
+        Toast.fire({
+          icon: "success",
+          title: `<span style="color:#FFF"> Comment added successfully!<span>`,
+        });
 
-      fetch(idCity);
+        fetch(idCity);
+      }
     }
   };
 
@@ -83,7 +85,9 @@ const Comments = ({
         </div>
 
         {/* INPUT */}
-        <div className="flex flex-wrap items-stretch w-full relative h-15 bg-purple-300 rounded-lg mb-4 mt-3">
+       {user._id ? <div 
+        
+        className="flex flex-wrap items-stretch w-full relative h-15 bg-purple-300 rounded-lg mb-4 mt-3">
           <label className="flex -mr-px justify-center w-15 p-2" name="comment">
             <span className="flex items-center leading-normal  rounded rounded-r-none text-xl whitespace-no-wrap text-gray-600">
               <svg
@@ -104,55 +108,55 @@ const Comments = ({
           </label>
           <input
             type="text"
-            className="flex-shrink flex-grow text-purple-600 bg-purple-300 rubik leading-normal w-px  border-0 h-10 border-grey-light px-3 self-center relative  font-roboto text-base outline-none placeholder-purple-600"
+            disabled={user._id ? false : true}
+            className={`flex-shrink flex-grow bg-purple-300 rubik leading-normal w-px  border-0 h-10 border-grey-light px-3 self-center relative  font-roboto text-base outline-none placeholder-purple-600 ${user._id ? "cursor-text text-purple-600" : "cursor-not-allowed text-zinc-600"}`}
             htmlFor="comment"
             placeholder="Enter your comment"
             ref={input}
             onKeyDown={(e) => {
-              if(input.current.value !== "") {
+              if (input.current.value !== "" && user._id) {
                 if (e.key === "Enter" || e.key === "EnterNumpad") {
                   handleComment();
                 }
               }
             }}
           />
-          <div className="flex -mr-px bg-purple-300  rounded-r-lg">
+          <div className="flex -mr-px bg-purple-300 rounded-r-lg">
             <span
-              onClick={(e) => {
-                if(input.current.value !== "") {
-                  if (e.key === "Enter" || e.key === "EnterNumpad") {
+            disabled={user._id ? false : true}
+              onClick={() => {
+                if (user._id) {
+                  if (input.current.value !== "") {
                     handleComment();
+                  } else {
+                    const Toast = Swal.mixin({
+                      toast: true,
+                      position: "bottom-end",
+                      showConfirmButton: false,
+                      timer: 3000,
+                      confirmButtonColor: "#9333ea",
+                      background: "#9333ea",
+                      iconColor: "#e9d5ff",
+                      timerProgressBar: true,
+                      didOpen: (toast) => {
+                        toast.addEventListener("mouseenter", Swal.stopTimer);
+                        toast.addEventListener("mouseleave", Swal.resumeTimer);
+                      },
+                    });
+
+                    Toast.fire({
+                      icon: "error",
+                      title: `<span style="color:#FFF"> Error!<span>`,
+                    });
                   }
-                } else {
-                  const Toast = Swal.mixin({
-                    toast: true,
-                    position: "bottom-end",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    confirmButtonColor: "#9333ea",
-                    background: "#9333ea",
-                    iconColor: "#e9d5ff",
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                      toast.addEventListener("mouseenter", Swal.stopTimer);
-                      toast.addEventListener("mouseleave", Swal.resumeTimer);
-                    },
-                  });
-            
-                  Toast.fire({
-                    icon: "error",
-                    title: `<span style="color:#FFF"> Error!<span>`,
-                  });
                 }
-                
-                
               }}
-              
               className="flex rotate-send items-center leading-normal border-0 px-3 whitespace-no-wrap text-gray-600"
             >
               <svg
+                
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 cursor-pointer"
+                className={`h-5 w-5 ${user._id ? "cursor-pointer" : "cursor-not-allowed"}`}
                 viewBox="0 0 20 20"
                 fill="#7c3aed"
               >
@@ -160,7 +164,7 @@ const Comments = ({
               </svg>
             </span>
           </div>
-        </div>
+        </div> : null}
       </div>
     </>
   );

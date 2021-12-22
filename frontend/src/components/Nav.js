@@ -22,7 +22,7 @@ function NavMain(props) {
                 <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                   <div className="flex items-center justify-between w-full md:w-auto">
                     <Link to="/">
-                      <span className="sr-only">Workflow</span>
+                      <span className="sr-only">lucianhoff</span>
                       <img
                         className="h-8 w-auto font-2xl sm:h-10"
                         src="/assets/logo.png"
@@ -88,34 +88,36 @@ function NavMain(props) {
                       </Popover.Button>
                     </div>
                   </div>
-                  <div className="px-2 pt-2 pb-3 space-y-1 flex items-center flex-col ">
+                  <div className="px-2 pt-2 pb-3 space-y-1 flex items-center justify-center flex-col ">
                     <Link
                       to="/"
-                      className="text-gray-50 text-xl font-bold hover:text-purple-900 pl-5"
+                      className="text-gray-50 text-xl text-center font-bold hover:text-purple-900"
                     >
                       Home
                     </Link>
                     <Link
                       to="/cities"
-                      className="text-gray-50 text-xl font-bold hover:text-purple-900 pl-5"
+                      className="text-gray-50 text-xl font-bold hover:text-purple-900"
                     >
                       Cities
                     </Link>
                   </div>
                   {!props.user.photoURL ? (
                     <>
-                      <Link
-                        to="/signin"
-                        className="block w-full px-5 py-3 text-center font-medium text-white bg-purple-400  hover:text-purple-900 hover:bg-purple-700 hover:font-bold"
-                      >
-                        Sign In
-                      </Link>
-                      <Link
-                        to="/signup"
-                        className="block w-full px-5 py-3 text-center font-medium text-white bg-purple-400 hover:bg-purple-700 hover:text-purple-900 hover:font-bold"
-                      >
-                        Sign Up
-                      </Link>
+                      <div className="flex flex-col justify-center items-center text-center">
+                        <Link
+                          to="/signin"
+                          className="block w-full py-3 text-center font-medium text-white bg-purple-400  hover:text-purple-900 hover:bg-purple-700 hover:font-bold"
+                        >
+                          Sign In
+                        </Link>
+                        <Link
+                          to="/signup"
+                          className="block w-full py-3 text-center font-medium text-white bg-purple-400 hover:bg-purple-700 hover:text-purple-900 hover:font-bold"
+                        >
+                          Sign Up
+                        </Link>
+                      </div>
                     </>
                   ) : (
                     <>

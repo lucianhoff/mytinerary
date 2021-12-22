@@ -2,6 +2,8 @@ import React from "react";
 import "../style.css";
 import "animate.css";
 
+import { Link } from "react-router-dom";
+
 const CardInfo = () => {
   const usersPrefer = [
     {
@@ -10,6 +12,7 @@ const CardInfo = () => {
       image: "./assets/japan-tokyo.jpg",
       description:
         "Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples.",
+      link: "/cities/61a431196f9a28f36be26af1"
     },
     {
       cityName: "Osaka",
@@ -17,7 +20,8 @@ const CardInfo = () => {
       image: "./assets/japan-osaka.jpg",
       description:
         "Osaka is a large port city and commercial center on the Japanese island of Honshu. It's known for its modern architecture, nightlife and hearty street food.",
-    },
+      link: "/cities/61a438eef933d146336e4f5c"
+      },
   ];
 
   return (
@@ -42,9 +46,9 @@ const CardInfo = () => {
                     <p className="card-main__text py-3 text-white">
                       {city.description}
                     </p>
-                    <button className="custom-btn btn-14" to="/cities">
+                    <Link className="custom-btn btn-14 pt-1" to={ `${city.link}` }>
                       See more
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

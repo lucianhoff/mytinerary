@@ -5,12 +5,12 @@ const commentAction = {
     return async (dispatch, getState) => {
       try {
         const token = localStorage.getItem("token");
-        await axios.post(
+        const hola = await axios.post(
           `http://localhost:4000/api/itineraries/comments/${id}`,
           { ...comment },
           { headers: { Authorization: "Bearer " + token } }
         );
-
+        console.log(hola);
         return { success: true };
       } catch (error) {
         console.log(error);

@@ -52,7 +52,7 @@ const Comment = (props) => {
                 ) : null
               )}
             </div>
-            <div className="flex pl-96">
+            <div className="flex pl-3 md:pl-96 flex-col  md:flex-row">
               {props.comment.userId === props.user._id ? (
                 <>
                   <span onClick={() => setEditMode(!editMode)}>

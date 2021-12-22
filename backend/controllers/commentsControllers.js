@@ -14,7 +14,6 @@ const commentsControllers = {
   },
   addComment: async (req, res) => {
     try {
-      console.log(req.body);
       const newComment = await Itinerary.findOneAndUpdate(
         { _id: req.params.id },
         {
@@ -66,7 +65,7 @@ const commentsControllers = {
       if (updatedComment) {
         res.json({ success: true, response: updatedComment.comments });
       } else {
-        console.log("no se encontro el comentario");
+        console.log("Commentary not found!");
       }
     } catch (error) {
       res.json({ success: false, response: error.message });

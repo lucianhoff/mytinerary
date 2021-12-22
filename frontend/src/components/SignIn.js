@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -8,6 +8,7 @@ import GoogleLogin from "react-google-login";
 
 const SignIn = (props) => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate()
 
   const handlePassword = () => {
     setShowPassword(!showPassword);
@@ -152,6 +153,7 @@ const SignIn = (props) => {
                       Sign In
                     </button>
                     <GoogleLogin
+                      
                       clientId="36260654393-jruugt14707a8pcdlf33skgor98eth8c.apps.googleusercontent.com"
                       render={(renderProps) => (
                         <button

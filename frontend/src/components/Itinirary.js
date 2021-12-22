@@ -14,6 +14,7 @@ const Itenirary = ({
   user,
   activityOfItinerary,
 }) => {
+
   const [display, setDisplay] = useState(false);
 
   const [activities, setActivities] = useState([]);
@@ -33,7 +34,6 @@ const Itenirary = ({
   }
 
   const likesAndDislikes = async () => {
-    /* eslint-enable no-alert, no-console */
     let like;
     {
       itinerary.likes.some((like) => like === user._id)
@@ -59,13 +59,13 @@ const Itenirary = ({
   useEffect(() => {
     activityOfItinerary(itinerary._id).then((res) => {
       setActivities(res.response);
-    });
-  }, []);
+    })
+  }, [])
 
   return (
     <>
-      <div className="flex flex-col justify-center shadow-lg rounded-t-lg rounded-b-lg bg-purple-600 max-w-50 py-5 px-9 mt-5">
-        <div className="relative flex justify-center flex-col rounded-t-lg md:flex-row md:space-x-5 space-y-3 md:space-y-0  p-3 max-w-xs md:max-w-3xl mx-auto bg-purple-600 ">
+      <div className="flex flex-col md:max-w-50 justify-center shadow-lg rounded-t-lg rounded-b-lg bg-purple-600 py-5 px-9 mt-5">
+        <div className="relative  flex justify-center flex-col rounded-t-lg md:flex-row md:space-x-5 space-y-3 md:space-y-0  p-3 max-w-xs md:max-w-3xl mx-auto bg-purple-600 ">
           <div className="w-full md:w-1/2 bg-purple-600 grid place-items-center">
             <img src={itinerary.coverpage} alt="pic" className="rounded-xl" />
             <div className="flex justify-center aling-center items-center my-3">
@@ -136,7 +136,7 @@ const Itenirary = ({
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-3 gap-1 justify-evenly mb-4">
+              <div className="md:gap-1 justify-evenly mb-4 md:grid flex md:grid-cols-3 flex-col">
                 {activities.length > 0 &&
                   activities.map((activity, index) => {
                     return (
@@ -144,7 +144,7 @@ const Itenirary = ({
                         <div
                           className="bg-purple-700 w-26 h-52"
                           style={{
-                            backgroundImage: `url(https://by3301files.storage.live.com/y4me7LAmY5KzLeu104cz75Xa9yEYvSFbZu4GtCfH0MURN8uYj74kr6ZkLvR-RQF8tlzkzN6I-Ok7LD9Elr4jYS2V9cnC3LgiWeZfl--nXIac4uMvKJ_MUb43diOZLiCwrF1Gn5AnFssF9ljxqh3kHZtzszo3cPVhT9JjBCxBmS8uaoIzud28R_1DZiwOLS2Dw2v?width=1000&height=667&cropmode=none)`,
+                            backgroundImage: `url(${activity.img})`,
                             backgroundSize: "cover",
                             backgroundPosition: "center",
                           }}
