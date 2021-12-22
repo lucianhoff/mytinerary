@@ -44,7 +44,7 @@ class City extends React.Component {
               <div
                 className="cityHero rubik"
                 style={{
-                  backgroundImage: `url(/assets/cities/city${this.props.city.image}.jpg)`,
+                  backgroundImage: `url(${this.props.city.image})`,
                 }}
               >
                 <div className="bg-purple-600 rounded-lg py-0.5 px-1.5">
