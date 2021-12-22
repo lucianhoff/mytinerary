@@ -19,15 +19,15 @@ const Footer = () => {
             </Link>
           </div>
           <div className="flex items-center justify-evenly text-2xl py-10">
-            <Link to="" className="hover:text-purple-300">
+            <a href="https://twitter.com/home" target="_blank" className="hover:text-purple-300">
             <FaTwitter />
-            </Link>
-            <Link to="" className="hover:text-purple-300">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" className="hover:text-purple-300">
             <FaInstagram />
-            </Link>
-            <Link to="" className="hover:text-purple-300">
+            </a>
+            <a href="https://github.com/lucianhoff" target="_blank" className="hover:text-purple-300">
             <FaGithub />
-            </Link>
+            </a>
           </div>
           <div className="flex items-center justify-evenly">
             <p className="text-center">
