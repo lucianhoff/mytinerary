@@ -14,7 +14,7 @@ const itinerarySchema = new mongoose.Schema({
       commentary: { type: String, required: true },
     },
   ],
-  coverpage: { type: String, required: true },
+  coverpage: { type: String },
   cityRelated: { type: mongoose.Types.ObjectId, ref: "city" },
 });
 

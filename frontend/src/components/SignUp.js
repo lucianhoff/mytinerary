@@ -52,7 +52,7 @@ const SignUp = ({ submit, responseGoogle }) => {
     <>
       <div
         className="flex mt-32 mx-5 mb-8 bg-purple-600"
-        style={{ backgroundImage: "url(../assets/signin-travel.png)" }}
+        style={{ backgroundImage: "url(https://by3301files.storage.live.com/y4mXdiAGEBWDcB0VpOjyuPl1OG--G3peoTdXmtLj6g4zJO872_i8V7JMu4I1JHaOD0UV7uP8vv74FGO_bqoTNVMOvZkLc7oPSnwojyrm6sguLP9Kxoi10WHwu1dT0C55_iVwWUlNXzipS0AF14Qb6X_zeVrxRdF3G--m0lUzWW29a9tC8RPQKx4Sgiy4zBb2KhG?width=1056&height=679&cropmode=none)" }}
       >
         <div className="flex items-center justify-center h-100 w-100  md:w-100 sm:w-100">
           <div className="flex-col flex ml-auto mr-auto items-center w-full">
@@ -311,37 +311,20 @@ const SignUp = ({ submit, responseGoogle }) => {
                         <div className="flex flex-wrap items-stretch w-full relative h-15 bg-white rounded">
                           <div className="flex -mr-px justify-center w-15 p-2">
                             <span className="flex items-center leading-normal bg-white rounded rounded-r-none text-xl whitespace-no-wrap text-gray-600">
-                              {errors.password ? (
-                                <svg
-                                  className="w-5 h-5"
-                                  fill="none"
-                                  stroke="#7c3aed"
-                                  viewBox="0 0 24 24"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                                  ></path>
-                                </svg>
-                              ) : (
-                                <svg
-                                  className="w-6 h-6"
-                                  fill="none"
-                                  stroke="#7c3aed"
-                                  viewBox="0 0 24 24"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                                  />
-                                </svg>
-                              )}
+                              <svg
+                                className="w-5 h-5"
+                                fill="none"
+                                stroke="#7c3aed"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                                ></path>
+                              </svg>
                             </span>
                           </div>
                           <Field

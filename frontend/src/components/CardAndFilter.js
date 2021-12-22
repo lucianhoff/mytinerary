@@ -29,7 +29,6 @@ const CardAndFilter = (props) => {
           >
             Filter by {place ? "Cities" : "Countries"}
           </label>
-
           <label className="plane-switch">
             <input
               type="checkbox"

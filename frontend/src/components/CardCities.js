@@ -20,7 +20,7 @@ const CardCities = ( { arrayCitiesCard } ) => {
                   <div className="card-main bg-purple-500 flex items-center rounded-lg justify-evenly-col sm:justify-center lg:flex-row">
                     <div className="card-main__img">
                       <img
-                        src={`./assets/cities/city${city.image}.jpg`}
+                        src={city.image}
                         alt={city.cityName}
                       />
                     </div>

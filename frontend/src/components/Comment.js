@@ -8,19 +8,29 @@ const Comment = (props) => {
 
   const input = useRef();
 
-  const handleEditComment = () => {
+  const handleEditComment = async () => {
+
     let commentEdited = {
       commentary: input.current.value,
     };
 
-    props.updateComment(props.comment._id, commentEdited);
+    const updateCommentAwait = await props.updateComment(props.comment._id, commentEdited);
 
-    setEditMode(!editMode);
-
-    setTimeout(() => {
+    setEditMode(!editMode); 
+    
+    if (updateCommentAwait.success) {
       props.fetch(props.idCity);
-    }, 300);
+    }
+    
   };
+
+  const handleDeleteComment = async () => {
+    const deleteCommentAwait = await props.deleteComment(props.id, props.comment._id)
+    
+    if (deleteCommentAwait.success) {
+      props.fetch(props.idCity);
+    }
+  }
 
   return (
     <>
@@ -94,11 +104,8 @@ const Comment = (props) => {
                             html: `<span style="color:#FFF">Our commentary has been deleted.<span>`,
                           });
 
-                          props.deleteComment(props.id, props.comment._id);
+                          handleDeleteComment()
 
-                          setTimeout(() => {
-                            props.fetch(props.idCity);
-                          }, 300);
                         } else if (
                           result.dismiss === Swal.DismissReason.cancel
                         ) {

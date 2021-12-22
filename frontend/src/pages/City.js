@@ -10,7 +10,9 @@ import authActions from "../redux/actions/authAction";
 import itineraryAction from "../redux/actions/itinerariesAction";
 import activitiesAction from "../redux/actions/activitiesAction";
 
+
 class City extends React.Component {
+  
   componentDidMount() {
     window.scrollTo(0, 0);
     this.props.getAllUsers();
@@ -52,31 +54,31 @@ class City extends React.Component {
               <div className="img-city-group flex flex-col md:flex-row justify-center align-center items-center">
                 <div className="flex flex-col justify-center items-center">
                   <img
-                    src="/assets/city/country.png"
+                    src="https://by3301files.storage.live.com/y4mlbXKSD8za4raoDAgQvnSHjA8uvdfIfz1LO9GcnSDETxZASHaMqIVw-KLtZAOnjzIy5-pjL9J0r-3Z6ihxxHYEAVhpMFVYI8y0TrcmFnXrsaFQp3ahhN8mhJmxrSHyw7PixJfhNzEpdHd39Aiq9fE-oNKh8ClQz-CjGzo04rb-chpoXptIQn3eUKyeuz76hwZ?width=2000&height=2000&cropmode=none"
                     className="img-city d-flex"
                     alt="country"
                   />
-                  <h3 className="font-bold text-2xl md:text-3xl rubik text-purple-600">
+                  <h3 className="font-bold text-2xl md:text-3xl xlrubik text-purple-600">
                     Country: {this.props.city.countryName}
                   </h3>
                 </div>
                 <div className="flex flex-col justify-center items-center">
                   <img
-                    src="/assets/city/languages.png"
+                    src="https://by3301files.storage.live.com/y4m5E23f0DCLa2Wp86vAoFAieA_4Nf6-AUXmGUzfN6Db2tKiTk-Myh2sHMhD0b2CgYp2lBwWmLHVFGBQBhfu5AlGa1x8qTxHSROwZ3COFyq4uqdd7433mANgeOELVne7KPVHQFYp9hsZNYk5Rdjwl2ZSuh-njTEhxBwTmMDTOU7HPuu2_IcQmH6MHeCTZNp2VB-?width=2000&height=2000&cropmode=none"
                     className="img-city d-flex"
                     alt="languages"
                   />
-                  <h3 className="font-bold text-2xl rubik  md:text-3xl  text-purple-600">
+                  <h3 className="font-bold text-2xl rubik md:text-3xl text-purple-600">
                     Language: {this.props.city.language}
                   </h3>
                 </div>
                 <div className="flex flex-col justify-center items-center">
                   <img
-                    src="/assets/city/divisa.png"
+                    src="https://by3301files.storage.live.com/y4mRZv6SRqh1rKpiMGsvFhoCA-eR1qk0XgJCnArJOUUsQoSzEtmw4rsbu4fSqvzY3QmEWm__Qxix1vT7RHZWa-m6771qKAbT3SY7cFeNkcoiOAXsRZN2B7eVOFbccajBCHwoF_HOtZo7uRqieI5yeD1gCa1mwuhW6_YLEshvqU1kOVWN_vDE-jSpnAc736LNT8C?width=2000&height=2000&cropmode=none"
                     className="img-city d-flex"
                     alt="currency"
                   />
-                  <h3 className="font-bold text-2xl rubik  md:text-3xl  text-purple-600">
+                  <h3 className="font-bold text-2xl rubik md:text-3xl text-purple-600">
                     Currency: {this.props.city.currency}
                   </h3>
                 </div>
@@ -85,29 +87,20 @@ class City extends React.Component {
             <div className="flex flex-col justify-center items-center my-24 ">
               {this.state.itinerary.length > 0 ? (
                 this.state.itinerary.map((itinerary, index) => {
-                  return (
-                    <Itenirary
-                      itinerary={itinerary}
-                      key={index}
-                      users={this.props.users}
-                      fetch={this.props.getItineraryByCity}
-                      idCity={this.props.params.city}
-                      likes={this.props.LikeAndDislike}
-                      activityOfItinerary={this.props.activityOfItinerary}
-                    />
-                  );
+                  return <Itenirary 
+                  itinerary={itinerary} 
+                  key={index} 
+                  users={this.props.users} 
+                  fetch={this.props.getItineraryByCity}
+                  idCity={this.props.params.city}
+                  likes={this.props.LikeAndDislike}
+                  activityOfItinerary={this.props.activityOfItinerary}
+                  />;
                 })
               ) : (
                 <div className="flex justify-center align-center items-center flex-col">
-                  <img
-                    src="/assets/city/no-itinerary.png"
-                    className="w-1/4"
-                    alt="No itinerary"
-                  />
-                  <h2 className="text-3xl text-purple-600 font-bold">
-                    We still do not have guides in this city, we are looking
-                    for!
-                  </h2>
+                  <img src="https://by3301files.storage.live.com/y4mPJwm5tL4PgNxTFmJis0vJQaPxSPxeXrsoh28ewAqfZUNIFCZn23fAOUqz3bMjxw3TsHDZxE-RFJb_vMebvDPPMn5DOQutIWKmmJE1aCbgdsgURprC3Pn6YFexCDhI2BX_IQ_cDqkd9hkpaZbmBpcDm5a2i8ZqNgx3qosMLa6xHtQfJ1DHauhH_UHdm4ZRZZc?width=2000&height=2000&cropmode=none" className="w-1/4" alt="No itinerary"/>
+                  <h2 className="text-2xl text-center px-3 md:text-3xl md:px-0 text-purple-600 font-bold" >We still do not have guides in this city, we are looking for!</h2>
                 </div>
               )}
             </div>
@@ -143,7 +136,7 @@ const mapDispatchToProps = {
   getItineraryByCity: itineraryAction.getItineraryByCity,
   getAllUsers: authActions.getAllUsers,
   LikeAndDislike: itineraryAction.LikeAndDislike,
-  activityOfItinerary: activitiesAction.activityOfItinerary,
+  activityOfItinerary: activitiesAction.activityOfItinerary
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(City);

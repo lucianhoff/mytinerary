@@ -14,7 +14,6 @@ const Itenirary = ({
   user,
   activityOfItinerary,
 }) => {
-
   const [display, setDisplay] = useState(false);
 
   const [activities, setActivities] = useState([]);
@@ -28,7 +27,7 @@ const Itenirary = ({
   for (let index = 0; index < itinerary.price; index++) {
     price.push(
       <div>
-        <img src="/assets/price.png" className="dollar" alt="dollar" />
+        <img src="https://by3301files.storage.live.com/y4mamYl39DgaJnlH-IXlaWvVuJaptt6wNqyEnsrkPJfIMSZ7N_6aOCRb_bnYqXR1kHHhqfJQNSuhN4E5ogZZNn2bWaU3TG4Ihq2IAGoAi8icxPcrf6rw08rCtVKgSoClv0CFwDdPcoNWFGoglscirftYcPNsemk6KOX99-dssGTe1DBfFoT7kSdeMBLXhbdxa-F?width=531&height=249&cropmode=none" className="dollar" alt="dollar" />
       </div>
     );
   }
@@ -59,8 +58,8 @@ const Itenirary = ({
   useEffect(() => {
     activityOfItinerary(itinerary._id).then((res) => {
       setActivities(res.response);
-    })
-  }, [])
+    });
+  }, []);
 
   return (
     <>
@@ -124,7 +123,7 @@ const Itenirary = ({
               <div className="flex flex-col justify-center items-center">
                 <div className="flex justify-center items-center align-center">
                   <img
-                    src="/assets/city/under-construction.png"
+                    src="https://by3301files.storage.live.com/y4m_4Wi48iRpFSYO1K5GqmJK59rwI1feKNWN2XuFM2QhHKvsA02aRemwYCR2SCq41G4glaxRaK7KLb2ztnPWuWxX3FRwOxMZ1DQsrToqReBsvHmw3bznPEBhogXgvoSSuiyNjb-g55Ye7g40gBcaGWBJvHWcgJR9tcWHsbx5HuWN0zpgpxN9CoB1lda6TLruW5-?width=2000&height=2000&cropmode=none"
                     className="under-construction"
                     alt="under construction"
                   />
@@ -155,7 +154,6 @@ const Itenirary = ({
                       </div>
                     );
                   })}
-                  
               </div>
               <div className="flex justify-center">
                 <Comments

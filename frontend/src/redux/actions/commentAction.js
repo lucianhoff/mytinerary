@@ -5,12 +5,11 @@ const commentAction = {
     return async (dispatch, getState) => {
       try {
         const token = localStorage.getItem("token");
-        const hola = await axios.post(
+        await axios.post(
           `http://localhost:4000/api/itineraries/comments/${id}`,
           { ...comment },
           { headers: { Authorization: "Bearer " + token } }
         );
-        console.log(hola);
         return { success: true };
       } catch (error) {
         console.log(error);
@@ -25,6 +24,7 @@ const commentAction = {
           `http://localhost:4000/api/itineraries/comments/${idItinerary}/${idComment}`,
           { headers: { Authorization: "Bearer " + token } }
         );
+        return { success: true };
       } catch (error) {
         console.log(error);
       }
@@ -41,6 +41,7 @@ const commentAction = {
           },
           { headers: { Authorization: "Bearer " + token } }
         );
+        return { success: true };
       } catch (error) {
         console.log(error);
       }

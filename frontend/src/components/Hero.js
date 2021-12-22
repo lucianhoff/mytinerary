@@ -25,7 +25,7 @@ const Hero = () => {
         </div>
       </div>
       <div className="flex justify-center items-center">
-        <img className="h-80" src="./assets/airplane-only-w.png" alt="airplane"/>
+        <img className="h-80" src="https://by3301files.storage.live.com/y4mROWNTeEIMxevQHkHXl8pTVBVQvN6_l5t_SZC-wOJYidSN9Ty6FwP5yVAallGTBpsaqhSv6umJMvt8kfooEFyhk-91A6ZiRvSo3SLxOSsz0rIabSLf8fOLGK15cur_-6G0Zm3tskZDVyJKMNSQTDP_mGYuZgo3E76SxJBUlz-Tu0s2yHoIq81klPFZ6oiKRIW?width=1596&height=1900&cropmode=none" alt="airplane"/>
       </div>
     </div>
   );

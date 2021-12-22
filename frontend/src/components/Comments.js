@@ -17,7 +17,6 @@ const Comments = ({
   updateComment,
 }) => {
   const input = useRef();
-  console.log(user)
   const handleComment = async () => {
     if (user._id) {
       let commentObj = {

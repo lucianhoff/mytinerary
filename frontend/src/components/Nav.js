@@ -25,7 +25,7 @@ function NavMain(props) {
                       <span className="sr-only">lucianhoff</span>
                       <img
                         className="h-8 w-auto font-2xl sm:h-10"
-                        src="/assets/logo.png"
+                        src="https://by3301files.storage.live.com/y4mlkOQqxA69O6Kz2lLub3fWdsEG3Wz8kcUOLx3Qrr-d8Cdr5zYSz84F79rd06iCsOK6YHlnWwY1JMwNM3DKXcdN04nZuguPSCM5l0iuNiPNMTAkAqFwG6FMkAtKSM6qaxjEo_mvM4-iUDb7FL_kI5UPnX5tU2XajoQeOETK9oQV6h1TEOdGJKrCEzs0LudW4NK?width=525&height=592&cropmode=none"
                         alt="MyTinerary"
                       />
                     </Link>
@@ -77,7 +77,7 @@ function NavMain(props) {
                     <div className="">
                       <img
                         className="h-8"
-                        src="/assets/logo-sm.png"
+                        src="https://by3301files.storage.live.com/y4mE00DuvfkLrv39coLyQ17J78uSSjDp1-TN_bkqhDRE_GMH1MWIQix6UHJkMEcjZ6RRbSV7ginnzVPZe5aBduwkG2Hz13X0_FZVgJP_QGg1KT0Ap1KBWKtzqoUMAkqylOmo0YcGmvuJamWkntHu8qxWAC9uzhuM2J8FBKEY5DfR2hc9gbvgiaqfwOodV2-Bmgx?width=525&height=592&cropmode=none"
                         alt="MyTinerary"
                       />
                     </div>
