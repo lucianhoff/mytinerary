@@ -61,7 +61,7 @@ const Itenirary = ({
     activityOfItinerary(itinerary._id).then((res) => {
       setActivities(res.response);
     });
-  });
+  }, []);
 
   return (
     <>
