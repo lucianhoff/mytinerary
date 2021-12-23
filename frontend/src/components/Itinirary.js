@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import "../style.css";
 import { connect } from "react-redux";
@@ -27,26 +27,29 @@ const Itenirary = ({
   for (let index = 0; index < itinerary.price; index++) {
     price.push(
       <div>
-        <img src="https://by3301files.storage.live.com/y4mamYl39DgaJnlH-IXlaWvVuJaptt6wNqyEnsrkPJfIMSZ7N_6aOCRb_bnYqXR1kHHhqfJQNSuhN4E5ogZZNn2bWaU3TG4Ihq2IAGoAi8icxPcrf6rw08rCtVKgSoClv0CFwDdPcoNWFGoglscirftYcPNsemk6KOX99-dssGTe1DBfFoT7kSdeMBLXhbdxa-F?width=531&height=249&cropmode=none" className="dollar" alt="dollar" />
+        <img
+          src="https://by3301files.storage.live.com/y4mamYl39DgaJnlH-IXlaWvVuJaptt6wNqyEnsrkPJfIMSZ7N_6aOCRb_bnYqXR1kHHhqfJQNSuhN4E5ogZZNn2bWaU3TG4Ihq2IAGoAi8icxPcrf6rw08rCtVKgSoClv0CFwDdPcoNWFGoglscirftYcPNsemk6KOX99-dssGTe1DBfFoT7kSdeMBLXhbdxa-F?width=531&height=249&cropmode=none"
+          className="dollar"
+          alt="dollar"
+        />
       </div>
     );
   }
 
   const likesAndDislikes = async () => {
     let like;
-    {
-      itinerary.likes.some((like) => like === user._id)
-        ? (like = {
-            itineraryId: itinerary._id,
-            userId: user._id,
-            bool: false,
-          })
-        : (like = {
-            itineraryId: itinerary._id,
-            userId: user._id,
-            bool: true,
-          });
-    }
+
+    itinerary.likes.some((like) => like === user._id)
+      ? (like = {
+          itineraryId: itinerary._id,
+          userId: user._id,
+          bool: false,
+        })
+      : (like = {
+          itineraryId: itinerary._id,
+          userId: user._id,
+          bool: true,
+        });
 
     const likeFunction = await likes(like);
 
@@ -168,21 +171,21 @@ const Itenirary = ({
           ))}
         <div className="z-50 p-2 px-3 bg-purple-600 sm:m-2.5 md:m-0 flex md:flex-row aling-center items-center justify-between sm:flex-row rounded-b-lg mt-3">
           <div className="flex justify-center align-center items-center cursor-pointer">
-            <span onClick={() => {
-              if(user._id){
-                likesAndDislikes()
-              } else {
-                Swal.fire({
-                  icon: "error",
-                  title: `<span style="color:#FFF">Sign in!</span>`,
-                  background: "#9333ea",
-                  iconColor: "#e9d5ff",
-                  confirmButtonColor: "#9333ea",
-                });
-              }
-              
-              
-              }}>
+            <span
+              onClick={() => {
+                if (user._id) {
+                  likesAndDislikes();
+                } else {
+                  Swal.fire({
+                    icon: "error",
+                    title: `<span style="color:#FFF">Sign in!</span>`,
+                    background: "#9333ea",
+                    iconColor: "#e9d5ff",
+                    confirmButtonColor: "#9333ea",
+                  });
+                }
+              }}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className={`h-8 w-8 ${

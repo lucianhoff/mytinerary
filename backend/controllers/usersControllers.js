@@ -53,7 +53,7 @@ const usersControllers = {
       if (userExists.googleUser && !googleUser) {
         res.json({
           success: false,
-          error: "Tu cuenta esta mal wachin",
+          error: "Error with your account, please try again.",
           response: null,
         });
       }

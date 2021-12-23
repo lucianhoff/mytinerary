@@ -53,7 +53,9 @@ const Comments = ({
 
   return (
     <>
-      <div className="bg-purple-700 p-2 rounded-lg flex flex-col justify-center items-center ">
+      <div className="bg-purple-700 p-2 rounded-lg flex flex-col justify-center items-center "
+      style={{ backgroundImage: "url(https://by3301files.storage.live.com/y4mXdiAGEBWDcB0VpOjyuPl1OG--G3peoTdXmtLj6g4zJO872_i8V7JMu4I1JHaOD0UV7uP8vv74FGO_bqoTNVMOvZkLc7oPSnwojyrm6sguLP9Kxoi10WHwu1dT0C55_iVwWUlNXzipS0AF14Qb6X_zeVrxRdF3G--m0lUzWW29a9tC8RPQKx4Sgiy4zBb2KhG?width=1056&height=679&cropmode=none)" }}
+      >
         <div className="overflow-y-scroll h-80 scrollbarcomments">
           {comment.length >= 1 ? (
             comment.map((comment, index) => {

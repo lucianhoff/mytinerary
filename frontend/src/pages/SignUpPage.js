@@ -11,7 +11,7 @@ class SignInPage extends React.Component {
 
   render() {
     const handleSubmit = async (values) => {
-      const error = await this.props.newUser(values);
+      const error = await this.props.newUser(values)
     };
 
     const responseGoogle = (res) => {
