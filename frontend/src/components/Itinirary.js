@@ -4,7 +4,7 @@ import "../style.css";
 import { connect } from "react-redux";
 import itineraryAction from "../redux/actions/itinerariesAction";
 import Comments from "./Comments";
-
+import Swal from "sweetalert2";
 const Itenirary = ({
   itinerary,
   users,
@@ -167,8 +167,22 @@ const Itenirary = ({
             </>
           ))}
         <div className="z-50 p-2 px-3 bg-purple-600 sm:m-2.5 md:m-0 flex md:flex-row aling-center items-center justify-between sm:flex-row rounded-b-lg mt-3">
-          <div className="flex justify-center align-center items-center">
-            <span onClick={() => likesAndDislikes()}>
+          <div className="flex justify-center align-center items-center cursor-pointer">
+            <span onClick={() => {
+              if(user._id){
+                likesAndDislikes()
+              } else {
+                Swal.fire({
+                  icon: "error",
+                  title: `<span style="color:#FFF">Sign in!</span>`,
+                  background: "#9333ea",
+                  iconColor: "#e9d5ff",
+                  confirmButtonColor: "#9333ea",
+                });
+              }
+              
+              
+              }}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className={`h-8 w-8 ${
