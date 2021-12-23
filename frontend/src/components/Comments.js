@@ -74,7 +74,7 @@ const Comments = ({
             })
           ) : (
             <>
-              <div className="bg-purple-300 py-2 rounded-lg rounded-r-lg">
+              <div className="bg-purple-300 py-2 rounded-lg text-center rounded-r-lg px-5">
                 <div name="comentarios" className="">
                   <p className="text-purple-600 py-3 pl-5 fw-bold">
                     There are no comments on this itinerary, be the first!

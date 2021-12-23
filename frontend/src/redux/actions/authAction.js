@@ -51,7 +51,6 @@ const authActions = {
         const user = await axios.post("http://localhost:4000/api/user/signin", {
           ...values,
         });
-
         if (user.data.success && !user.data.error) {
           localStorage.setItem("token", user.data.response.token);
 

@@ -38,7 +38,6 @@ const Itenirary = ({
 
   const likesAndDislikes = async () => {
     let like;
-
     itinerary.likes.some((like) => like === user._id)
       ? (like = {
           itineraryId: itinerary._id,

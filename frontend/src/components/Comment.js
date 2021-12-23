@@ -9,28 +9,28 @@ const Comment = (props) => {
   const input = useRef();
 
   const handleEditComment = async () => {
-
     let commentEdited = {
       commentary: input.current.value,
     };
-
-    const updateCommentAwait = await props.updateComment(props.comment._id, commentEdited);
-
-    setEditMode(!editMode); 
-    
+    const updateCommentAwait = await props.updateComment(
+      props.comment._id,
+      commentEdited
+    );
+    setEditMode(!editMode);
     if (updateCommentAwait.success) {
       props.fetch(props.idCity);
     }
-    
   };
 
   const handleDeleteComment = async () => {
-    const deleteCommentAwait = await props.deleteComment(props.id, props.comment._id)
-    
+    const deleteCommentAwait = await props.deleteComment(
+      props.id,
+      props.comment._id
+    );
     if (deleteCommentAwait.success) {
       props.fetch(props.idCity);
     }
-  }
+  };
 
   return (
     <>
@@ -104,8 +104,7 @@ const Comment = (props) => {
                             html: `<span style="color:#FFF">Our commentary has been deleted.<span>`,
                           });
 
-                          handleDeleteComment()
-
+                          handleDeleteComment();
                         } else if (
                           result.dismiss === Swal.DismissReason.cancel
                         ) {
@@ -159,7 +158,7 @@ const Comment = (props) => {
                             iconColor: "#e9d5ff",
                             background: "#9333ea",
                             title: `<span style="color:#FFF"> The comment was edited successfully <span>`,
-                          })
+                          });
 
                           handleEditComment();
                         }
@@ -179,7 +178,7 @@ const Comment = (props) => {
                             iconColor: "#e9d5ff",
                             background: "#9333ea",
                             title: `<span style="color:#FFF"> The comment was edited successfully <span>`,
-                          })
+                          });
 
                           handleEditComment();
                         }
@@ -205,7 +204,6 @@ const Comment = (props) => {
                     <button
                       className="inline-flex bg-purple-600 text-white rounded-full h-6 px-3 justify-center items-center ml-3 py-3"
                       onClick={() => {
-
                         Swal.fire({
                           position: "bottom-center",
                           icon: "error",
@@ -214,7 +212,7 @@ const Comment = (props) => {
                           iconColor: "#e9d5ff",
                           background: "#9333ea",
                           title: `<span style="color:#FFF"> The comment was not edited <span>`,
-                        })
+                        });
 
                         setEditMode(!editMode);
                       }}
