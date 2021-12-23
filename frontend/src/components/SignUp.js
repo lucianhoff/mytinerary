@@ -56,7 +56,7 @@ const SignUp = ({ submit, responseGoogle }) => {
       >
         <div className="flex items-center justify-center h-100 w-100  md:w-100 sm:w-100">
           <div className="flex-col flex ml-auto mr-auto items-center w-full">
-            <h1 className="font-bold rubik text-4xl my-16 text-white mb-16">
+            <h1 className="font-bold rubik text-4xl text-center my-16 text-white mb-16">
               {" "}
               Welcome to MyTinerary!{" "}
             </h1>
@@ -82,7 +82,7 @@ const SignUp = ({ submit, responseGoogle }) => {
                     onSubmit={handleSubmit}
                   >
                     <div className="flex flex-col md:flex-row">
-                      <div className="flex flex-col w-6/12 mr-0 md:mr-5">
+                      <div className="flex flex-col md:w-6/12 mr-0 md:mr-5">
                         {/* firstname */}
                         <div className="flex items-stretch w-full relative h-15 bg-white rounded">
                           <div className="flex -mr-px justify-center w-15 p-2">
@@ -156,7 +156,7 @@ const SignUp = ({ submit, responseGoogle }) => {
                         </div>
                       </div>
 
-                      <div className="flex flex-col w-6/12 ">
+                      <div className="flex flex-col md:w-6/12 ">
                         {/* lastname */}
                         <div className=" flex items-stretch w-full relative h-15 bg-white rounded">
                           <div className="flex -mr-px justify-center w-15 p-2">
@@ -232,7 +232,7 @@ const SignUp = ({ submit, responseGoogle }) => {
                     </div>
 
                     <div className="flex flex-col md:flex-row">
-                      <div className="flex flex-col w-6/12 mr-0 md:mr-5">
+                      <div className="flex flex-col md:w-6/12 mr-0 md:mr-5">
                         {/* email */}
                         <div className="flex flex-wrap items-stretch w-full relative h-15 bg-white rounded ">
                           <div className="flex -mr-px justify-center w-15 p-2">
@@ -307,7 +307,7 @@ const SignUp = ({ submit, responseGoogle }) => {
                       </div>
 
                       {/* password */}
-                      <div className="flex flex-col w-6/12">
+                      <div className="flex flex-col md:w-6/12">
                         <div className="flex flex-wrap items-stretch w-full relative h-15 bg-white rounded">
                           <div className="flex -mr-px justify-center w-15 p-2">
                             <span className="flex items-center leading-normal bg-white rounded rounded-r-none text-xl whitespace-no-wrap text-gray-600">
@@ -393,7 +393,7 @@ const SignUp = ({ submit, responseGoogle }) => {
                       {/* photoURL */}
                       <div className="flex flex-col w-full ">
                         <div className="flex flex-wrap items-stretch  relative h-15 bg-white rounded">
-                          <div className="flex -mr-px justify-center w-15 p-2">
+                          <div className="flex -mr-px justify-center md:w-15 p-2">
                             <span className="flex items-center leading-normal bg-white rounded rounded-r-none text-xl whitespace-no-wrap text-gray-600">
                               <svg
                                 className="w-6 h-6"
@@ -413,7 +413,7 @@ const SignUp = ({ submit, responseGoogle }) => {
                           </div>
                           <Field
                             type="url"
-                            className="flex-shrink flex-grow ml-5 text-purple-600 rubik leading-normal border-0 h-10 border-grey-light rounded rounded-l-none px-3  self-center relative  font-roboto text-base outline-none"
+                            className="flex-shrink flex-grow ml-5 text-purple-600 rubik leading-normal border-0 h-10 border-grey-light rounded rounded-l-none px-3 self-center relative text-base outline-none"
                             name="photoURL"
                             placeholder="Photo URL"
                             value={values.photoURL}
