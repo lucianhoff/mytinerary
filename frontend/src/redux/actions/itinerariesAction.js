@@ -12,10 +12,17 @@ const itineraryAction = {
   },
   LikeAndDislike: (like) => {
     return async (dispatch, getState) => {
+      const token = localStorage.getItem("token");
       try {
-        await axios.put(`http://localhost:4000/api/itinerary/likes`, {
-          ...like,
-        });
+        await axios.put(
+          `http://localhost:4000/api/itinerary/likes`,
+          {
+            ...like,
+          },
+          {
+            headers: { Authorization: "Bearer " + token },
+          }
+        );
 
         return { success: true };
       } catch (err) {

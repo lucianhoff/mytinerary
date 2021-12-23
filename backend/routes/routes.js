@@ -67,7 +67,7 @@ Router.route("/itineraries/comments/:idItinerary/:idComment")
 
 // likes
 
-Router.route("/itinerary/likes").put(LikeAndDislike);
+Router.route("/itinerary/likes").put(passport.authenticate("jwt", { session: false }), LikeAndDislike);
 
 /////////////////////////////////////////////////////
 
