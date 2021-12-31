@@ -152,8 +152,7 @@ const SignIn = (props) => {
                       Sign In
                     </button>
                     <GoogleLogin
-                      
-                      clientId="36260654393-jruugt14707a8pcdlf33skgor98eth8c.apps.googleusercontent.com"
+                      clientId="36260654393-ufbarlsfqu9j3e49cohjad06ltg635f2.apps.googleusercontent.com"
                       render={(renderProps) => (
                         <button
                           onClick={renderProps.onClick}
