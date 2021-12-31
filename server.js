@@ -18,6 +18,8 @@ app.use(express.json());
 app.use(passport.initialize())
 app.use('/api', Router)
 
+const port = process.env.PORT || 4000;
+
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
     app.get("*", (req, res) => {
@@ -25,7 +27,7 @@ if (process.env.NODE_ENV === "production") {
     });
   }
 
-  app.listen(process.env.PORT || 4000, () => {
-    console.log(`El server esta en el puerto ${process.env.PORT || "5000"}`);
+  app.listen(port, '0.0.0.0', () => {
+    console.log(`El server esta en el puerto ${port}`);
   });
   
