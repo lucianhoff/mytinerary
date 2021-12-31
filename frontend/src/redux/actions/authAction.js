@@ -5,9 +5,12 @@ const authActions = {
   newUser: (values) => {
     return async (dispatch, getState) => {
       try {
-        const user = await axios.post("http://localhost:4000/api/user/signup", {
-          ...values,
-        });
+        const user = await axios.post(
+          "https://mytinerary-aguirre.herokuapp.com/user/signup",
+          {
+            ...values,
+          }
+        );
 
         if (user.data.success) {
           dispatch({ type: "user", payload: user.data.response });
@@ -48,9 +51,12 @@ const authActions = {
   accessAccount: (values) => {
     return async (dispatch, getState) => {
       try {
-        const user = await axios.post("http://localhost:4000/api/user/signin", {
-          ...values,
-        });
+        const user = await axios.post(
+          "https://mytinerary-aguirre.herokuapp.com/user/signin",
+          {
+            ...values,
+          }
+        );
         if (user.data.success && !user.data.error) {
           localStorage.setItem("token", user.data.response.token);
 
@@ -96,7 +102,7 @@ const authActions = {
       try {
         const token = localStorage.getItem("token");
         const user = await axios.post(
-          "http://localhost:4000/api/user/signin/token",
+          "https://mytinerary-aguirre.herokuapp.com/user/signin/token",
           {},
           {
             headers: { Authorization: "Bearer " + token },
@@ -119,7 +125,9 @@ const authActions = {
   getAllUsers: () => {
     return async (dispatch, getState) => {
       try {
-        const users = await axios.get("http://localhost:4000/api/users");
+        const users = await axios.get(
+          "https://mytinerary-aguirre.herokuapp.com/users"
+        );
         dispatch({ type: "users", payload: users.data.response });
       } catch (error) {
         console.log(error);

@@ -6,7 +6,7 @@ const commentAction = {
       try {
         const token = localStorage.getItem("token");
         await axios.post(
-          `http://localhost:4000/api/itineraries/comments/${id}`,
+          `https://mytinerary-aguirre.herokuapp.com/itineraries/comments/${id}`,
           { ...comment },
           { headers: { Authorization: "Bearer " + token } }
         );
@@ -21,7 +21,7 @@ const commentAction = {
       try {
         const token = localStorage.getItem("token");
         await axios.delete(
-          `http://localhost:4000/api/itineraries/comments/${idItinerary}/${idComment}`,
+          `https://mytinerary-aguirre.herokuapp.com/itineraries/comments/${idItinerary}/${idComment}`,
           { headers: { Authorization: "Bearer " + token } }
         );
         return { success: true };
@@ -35,7 +35,7 @@ const commentAction = {
       try {
         const token = localStorage.getItem("token");
         await axios.put(
-          `http://localhost:4000/api/itineraries/comments/${id}`,
+          `https://mytinerary-aguirre.herokuapp.com/itineraries/comments/${id}`,
           {
             ...comentary,
           },

@@ -5,8 +5,8 @@ const activitiesActions = {
     return async (dispatch, getState) => {
       try {
         let response = await axios.get(
-          `http://localhost:4000/api/activities/${itineraryId}`
-        )
+          `https://mytinerary-aguirre.herokuapp.com/activities/${itineraryId}`
+        );
         return { success: true, response: response.data.response };
       } catch (error) {
         return {
