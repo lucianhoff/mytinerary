@@ -6,7 +6,7 @@ const authActions = {
     return async (dispatch, getState) => {
       try {
         const user = await axios.post(
-          "https://mytinerary-aguirre.herokuapp.com/user/signup",
+          "https://mytinerary-aguirre.herokuapp.com/api/user/signup",
           {
             ...values,
           }
@@ -52,7 +52,7 @@ const authActions = {
     return async (dispatch, getState) => {
       try {
         const user = await axios.post(
-          "https://mytinerary-aguirre.herokuapp.com/user/signin",
+          "https://mytinerary-aguirre.herokuapp.com/api/user/signin",
           {
             ...values,
           }
@@ -102,7 +102,7 @@ const authActions = {
       try {
         const token = localStorage.getItem("token");
         const user = await axios.post(
-          "https://mytinerary-aguirre.herokuapp.com/user/signin/token",
+          "https://mytinerary-aguirre.herokuapp.com/api/user/signin/token",
           {},
           {
             headers: { Authorization: "Bearer " + token },
@@ -126,7 +126,7 @@ const authActions = {
     return async (dispatch, getState) => {
       try {
         const users = await axios.get(
-          "https://mytinerary-aguirre.herokuapp.com/users"
+          "https://mytinerary-aguirre.herokuapp.com/api/users"
         );
         dispatch({ type: "users", payload: users.data.response });
       } catch (error) {

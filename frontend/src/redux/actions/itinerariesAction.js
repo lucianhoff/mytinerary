@@ -4,7 +4,7 @@ const itineraryAction = {
   getItineraryByCity: (idCity) => {
     return async (dispatch, getState) => {
       let res = await axios.get(
-        `https://mytinerary-aguirre.herokuapp.com/itinerarycity/${idCity}`
+        `https://mytinerary-aguirre.herokuapp.com/api/itinerarycity/${idCity}`
       );
 
       dispatch({ type: "GET_ITINERARY", payload: res.data.response });
@@ -15,7 +15,7 @@ const itineraryAction = {
       const token = localStorage.getItem("token");
       try {
         await axios.put(
-          `https://mytinerary-aguirre.herokuapp.com/itinerary/likes`,
+          `https://mytinerary-aguirre.herokuapp.com/api/itinerary/likes`,
           {
             ...like,
           },

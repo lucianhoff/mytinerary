@@ -5,7 +5,7 @@ const citiesAction = {
     return async (dispatch, getState) => {
       try {
         const res = await axios.get(
-          "https://mytinerary-aguirre.herokuapp.com/cities"
+          "https://mytinerary-aguirre.herokuapp.com/api/cities"
         );
 
         dispatch({ type: "ALL_CITIES", payload: res.data.response });
