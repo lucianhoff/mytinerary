@@ -17,6 +17,7 @@ const Comments = ({
   updateComment,
 }) => {
   const input = useRef();
+
   const handleComment = async () => {
     if (user._id) {
       let commentObj = {
@@ -25,7 +26,7 @@ const Comments = ({
       const addComentAwait = await addComment(id, commentObj);
       input.current.value = "";
 
-      if (addComentAwait.success) {
+      // if (addComentAwait.success) {
         const Toast = Swal.mixin({
           toast: true,
           position: "bottom-end",
@@ -47,7 +48,7 @@ const Comments = ({
         });
 
         fetch(idCity);
-      }
+      // }
     }
   };
 

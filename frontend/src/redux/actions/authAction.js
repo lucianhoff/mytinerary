@@ -71,7 +71,7 @@ const authActions = {
 
           Toast.fire({
             icon: "success",
-            title: `<span style="color:#FFF" className="rubik"> Welcome, ${user.data.response.firstName}! :)<span>`,
+            title: `<span style="color:#FFF" className="rubik"> Welcome, ${user.data.response.firstName}!<span>`,
           });
 
           dispatch({ type: "user", payload: user.data.response });
