@@ -1,3 +1,9 @@
+.card-main {
+  width: 100%;
+  max-width: 980px;
+  height: 400px;
+}
+
 .card-size {
   min-height: 1500px;
   max-height: 1500px;
@@ -5,11 +11,6 @@
   min-width: 1500px;
 }
 
-.card-main {
-  width: 100%;
-  max-width: 980px;
-  height: 400px;
-}
 
 .card-main__img {
   min-width: 350px;

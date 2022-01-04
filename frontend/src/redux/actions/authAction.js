@@ -13,6 +13,7 @@ const authActions = {
         );
 
         if (user.data.success) {
+          localStorage.setItem("token", user.data.response.token);
           dispatch({ type: "user", payload: user.data.response });
 
           const Toast = Swal.mixin({
@@ -79,7 +80,6 @@ const authActions = {
             icon: "success",
             title: `<span style="color:#FFF" className="rubik"> Welcome, ${user.data.response.firstName}!<span>`,
           });
-
           dispatch({ type: "user", payload: user.data.response });
         }
 
