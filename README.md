@@ -15,6 +15,6 @@ Este proyecto se desarrolló durante el bootcamp de MindHub en stack MERN, Dicie
 - Joi
 - MongoDB / Mongoose
 
-Puede ver una demostración en vivo de esta aplicación alojada en [heroku](https://mytinerary-aguirre.herokuapp.com/), y una descripción detallada de lo que puede hacer con la aplicación (en el lado del cliente), en [youtube](https://www.youtube.com/).
+Puede ver una demostración en vivo de esta aplicación alojada en [heroku](https://mytinerary-aguirre.herokuapp.com/) y una descripción detallada de lo que puede hacer con la aplicación (en el lado del cliente), en [youtube](https://www.youtube.com/).
 
 Siéntete libre de forkearlo y jugar con él, escribirme en caso de cualquier duda!
