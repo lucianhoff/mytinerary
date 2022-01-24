@@ -12,6 +12,7 @@ Este proyecto se desarrolló durante el bootcamp de MindHub en stack MERN, Dicie
 - Node.js
 - Express
 - Passport
+- JWT
 - Joi
 - MongoDB / Mongoose
 
