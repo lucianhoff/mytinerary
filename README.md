@@ -1,0 +1,2 @@
+# mytinerary-aguirre
+soloq project
